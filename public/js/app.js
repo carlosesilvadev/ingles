@@ -1,0 +1,1 @@
+/*Arquivo responsável pelos scripts de interação nas páginas do projeto*/
