@@ -1,0 +1,559 @@
+Speaker A: Esta lição quatro de Pimsleur inglês um. Escute esta conversa.
+
+Speaker B: Excuse me, Miss. Are you American?
+
+Speaker C: Yes, sir. I'm American. And you?
+
+Speaker B: I'm Brazilian.
+
+Speaker C: But you understand English?
+
+Speaker A: A little.
+
+Speaker B: Not very well.
+
+Speaker C: Oh yes. You speak very well.
+
+Speaker B: Thank you.
+
+Speaker A: Escute outra vez.
+
+Speaker B: Excuse me, Miss. Are you American?
+
+Speaker C: Yes, sir. I'm American. And you?
+
+Speaker B: I'm Brazilian.
+
+Speaker C: But you understand English?
+
+Speaker A: A little.
+
+Speaker B: Not very well.
+
+Speaker C: Oh, yes. You speak very well.
+
+Speaker B: Thank you.
+
+Speaker A: Você se lembra de como saudar alguém em inglês?
+
+Speaker C: Hello. Hello.
+
+Speaker A: Diga olá, senhor.
+
+Speaker C: Hello, sir.
+
+Speaker A: E como se diz até logo?
+
+Speaker B: Goodbye.
+
+Speaker A: Diga até logo, senhora.
+
+Speaker B: Goodbye, ma'am.
+
+Speaker A: Como se pergunta a alguém como está?
+
+Speaker C: How are you? How are you?
+
+Speaker A: Responda bem, obrigado.
+
+Speaker B: Fine, thanks. Fine, thanks.
+
+Speaker A: E você?
+
+Speaker B: And you? And you?
+
+Speaker A: Diga, estou bem, eu agradeço.
+
+Speaker C: I'm fine, thank you.
+
+Speaker A: Diga, eu não entendo inglês.
+
+Speaker B: I don't understand English.
+
+Speaker A: Diga assim.
+
+Speaker C: Oh yes.
+
+Speaker A: Você entende muito bem.
+
+Speaker C: You understand very well. You understand very well.
+
+Speaker A: Como ela pergunta, você é brasileiro?
+
+Speaker C: Are you Brazilian? Are you Brazilian?
+
+Speaker A: Diga sim, senhorita.
+
+Speaker B: Yes, miss.
+
+Speaker A: Pergunte se ela é americana.
+
+Speaker B: Are you American?
+
+Speaker A: Diga-lhe você não é brasileira.
+
+Speaker B: You're not Brazilian.
+
+Speaker A: Diga-lhe que você é brasileiro.
+
+Speaker B: I'm Brazilian.
+
+Speaker A: Pergunte-me se eu sou americano.
+
+Speaker C: Are you American?
+
+Speaker A: Diga, eu sou americana.
+
+Speaker C: I'm American. I'm American.
+
+Speaker A: Agora diga, eu não sou americano.
+
+Speaker B: I'm not American.
+
+Speaker C: I'm not American.
+
+Speaker A: Agora pergunte-me se eu entendo inglês.
+
+Speaker C: Do you understand English?
+
+Speaker A: Responda sim. Yes. Mas não muito bem.
+
+Speaker B: But not very well. Yes, but not very well.
+
+Speaker A: Agora pergunte a uma moça se ela entende português.
+
+Speaker B: Do you understand Portuguese, Miss?
+
+Speaker A: Como ela diz que não entende português?
+
+Speaker C: I don't understand Portuguese.
+
+Speaker A: Sinto muito, eu não entendo português.
+
+Speaker C: I'm sorry, I don't understand Portuguese. I'm sorry. I'm sorry, I don't understand Portuguese.
+
+Speaker A: Como se diz você entende?
+
+Speaker B: You understand.
+
+Speaker A: É assim que se diz você fala. Escute e repita.
+
+Speaker B: You speak. Ik. Ik. Sp. Speak. You speak.
+
+Speaker A: Diga você fala.
+
+Speaker B: You speak.
+
+Speaker A: Tente dizer eu falo.
+
+Speaker B: I speak. I speak.
+
+Speaker A: Tente dizer eu falo um pouco.
+
+Speaker B: I speak a little. I speak a little.
+
+Speaker A: Mas, but, diga eu não entendo.
+
+Speaker B: I don't understand.
+
+Speaker A: Tente dizer eu não falo.
+
+Speaker B: I don't speak. I don't speak.
+
+Speaker A: Agora tente dizer eu não falo muito bem.
+
+Speaker B: I don't speak very well. I don't speak very well.
+
+Speaker A: Eu não entendo.
+
+Speaker C: I don't understand.
+
+Speaker A: Eu não sou brasileira.
+
+Speaker C: I'm not Brazilian. I'm not Brazilian.
+
+Speaker A: Sinto muito, eu não entendo.
+
+Speaker C: I'm sorry, I don't understand.
+
+Speaker A: Tente perguntar sem mudar a ordem das palavras. Você não entende português?
+
+Speaker B: You don't understand Portuguese?
+
+Speaker A: Em inglês como em português, você pode fazer uma pergunta mudando a entonação da frase. Pergunte outra vez: Você não entende português?
+
+Speaker B: You don't understand Portuguese? You don't understand Portuguese.
+
+Speaker A: Eu entendo um pouco.
+
+Speaker C: I understand a little.
+
+Speaker A: Tente dizer, e eu falo um pouco.
+
+Speaker C: And I speak a little. And I speak a little.
+
+Speaker A: Diga, eu entendo um pouco e eu falo um pouco.
+
+Speaker C: I understand a little and I speak a little.
+
+Speaker A: Mas, but, eu não falo muito bem.
+
+Speaker C: I don't speak very well. I don't speak very well.
+
+Speaker A: Agora diga: eu não sou americano.
+
+Speaker B: I'm not American. I'm not American.
+
+Speaker A: Pergunte: E você?
+
+Speaker B: And you? And you?
+
+Speaker A: Diga: Sim, eu sou americana.
+
+Speaker C: Yes, I'm American. I'm American.
+
+Speaker A: Diga, eu falo inglês.
+
+Speaker C: And I speak English. And I speak English.
+
+Speaker A: Mas eu não falo português.
+
+Speaker C: But I don't speak Portuguese. But I don't speak Portuguese.
+
+Speaker A: Diga: Sinto muito, eu não falo português.
+
+Speaker C: I'm sorry, I don't speak Portuguese.
+
+Speaker A: Diga por favor.
+
+Speaker B: Please. Please.
+
+Speaker A: Agora vamos aprender a pedir informações. Começamos perguntando onde fica a rua East 52nd. Escute sem repetir.
+
+Speaker B: Where is East 52nd Street, please?
+
+Speaker A: Nas grandes cidades dos Estados Unidos, as ruas frequentemente são numeradas. Fifty-second quer dizer quinquagésima, literalmente cinquenta segunda. Agora a palavra para segunda. Escute e repita.
+
+Speaker B: Second. Second.
+
+Speaker C: Second.
+
+Speaker A: Agora cinquenta. Escute e repita.
+
+Speaker B: Fifty. T. Fifth. Fifty.
+
+Speaker A: Preste atenção ao som i, é e e não i. Diga cinquenta.
+
+Speaker C: Fifty.
+
+Speaker A: Diga cinquenta e dois ou literalmente cinquenta segunda.
+
+Speaker B: Fifty second. Fifty second. Fifty second.
+
+Speaker A: E agora a palavra para rua. Escute e repita. Street.
+
+Speaker B: Street. Fifty-second Street. Fifty-second Street.
+
+Speaker A: Diga a Rua 52. Note que em inglês o artigo a não é utilizado.
+
+Speaker B: 52nd Street.
+
+Speaker A: 52nd Street. A direção se junta com frequência ao nome da rua. Esta é a palavra para leste. Escute e repita: East.
+
+Speaker B: East.
+
+Speaker A: East. A Rua 52 Leste. Escute e repita.
+
+Speaker B: East 52nd Street. East 52nd Street.
+
+Speaker A: Diga outra vez. A Rua 52 Leste.
+
+Speaker B: East 52nd Street.
+
+Speaker A: Este é outro nome para uma rua. Quer dizer parque. Escute e repita: park, park, park. Agora tente dizer a Rua Parque.
+
+Speaker B: Park Street. Park Street. East Park Street.
+
+Speaker A: Como se diz a Rua Parque Leste?
+
+Speaker B: East Park Street. East Park Street.
+
+Speaker A: É assim que se pede informações. Apenas escute.
+
+Speaker B: Where is East 52nd Street?
+
+Speaker A: Primeira palavra onde. Escute e repita.
+
+Speaker B: Where? Where? Where?
+
+Speaker A: E agora, onde fica? Escute e repita.
+
+Speaker B: Where is?
+
+Speaker A: Is?
+
+Speaker B: Is? Where is?
+
+Speaker A: Literalmente, isto quer dizer onde está? Pergunte outra vez. Onde fica?
+
+Speaker B: Where is?
+
+Speaker A: Agora tente perguntar: Onde fica a Rua 52 Leste?
+
+Speaker B: Where is East 52nd Street? Where is East 52nd Street?
+
+Speaker A: Pergunte outra vez. Onde fica a Rua 52 Leste?
+
+Speaker B: Where is East 52nd Street?
+
+Speaker A: Diga por favor.
+
+Speaker B: Please.
+
+Speaker A: Agora pergunte: onde fica a Rua Parque?
+
+Speaker B: Where is Park Street? Where is Park Street, please?
+
+Speaker A: É assim que se diz avenida em inglês. Escute e repita. Avenue. U.
+
+Speaker B: Venue. Avenue. Avenue.
+
+Speaker A: Tente dizer Avenida Parque.
+
+Speaker B: Park Avenue. Park Avenue.
+
+Speaker A: Agora pergunte onde fica Avenida Parque.
+
+Speaker B: Where is Park Avenue? Where is Park Avenue? Where is Park Avenue, please?
+
+Speaker A: A resposta é fica aqui. Primeira palavra para aqui. Escute e repita. Here.
+
+Speaker C: Here. Here.
+
+Speaker A: E agora fica ou ela fica. Escute e repita.
+
+Speaker C: It is. It is. It is.
+
+Speaker A: Que palavra quer dizer fica? Is. Is. A primeira parte quer dizer ela. Escute e repita.
+
+Speaker B: It.
+
+Speaker C: It.
+
+Speaker A: Diga outra vez. Ela fica.
+
+Speaker C: It is. It is.
+
+Speaker A: Diga aqui. Here. Tente dizer fica aqui.
+
+Speaker C: It is here. It is here.
+
+Speaker A: Agora escute a resposta outra vez.
+
+Speaker C: It's here. It's here.
+
+Speaker A: Você acaba de ouvir outra contração muito comum, dessa vez de it is. Repita depois da locutora.
+
+Speaker C: It's here. It's. It's. It's here.
+
+Speaker A: Usando a contração, diga outra vez: fica aqui.
+
+Speaker C: It's here. It's here.
+
+Speaker A: Pergunte onde fica a Rua 52 Leste.
+
+Speaker B: Where is East 52nd Street? Where is East 52nd Street, please?
+
+Speaker A: Responda: fica aqui. Prossiga usando a contração.
+
+Speaker C: It's here. It's here, sir.
+
+Speaker A: Agora, tente perguntar fica aqui como com you are. Você vai mudar a ordem das palavras.
+
+Speaker B: It is. Is it here? Is it here? Is it?
+
+Speaker A: Responda: Sim, fica aqui.
+
+Speaker C: Yes, it's here.
+
+Speaker A: Pergunte outra vez: Fica aqui?
+
+Speaker B: Is it here?
+
+Speaker A: Ela te diz: Não, não fica aqui. Escute e repita.
+
+Speaker C: No, it's not here. Not is not. It's not here. It's not here.
+
+Speaker A: Diga outra vez. Não fica aqui.
+
+Speaker C: It's not here.
+
+Speaker A: É assim que se diz lá. Escute e repita.
+
+Speaker C: Over there. There. There. Over.
+
+Speaker A: Over.
+
+Speaker C: Over there.
+
+Speaker A: Diga fica lá.
+
+Speaker C: It's over there. It's over there.
+
+Speaker A: A sua pronúncia da palavra it's se parece com a do locutor. Agora, como se diz não fica lá?
+
+Speaker B: It's not over there. It's it's not over there.
+
+Speaker A: Diga fica aqui, senhor.
+
+Speaker C: It's here, sir.
+
+Speaker A: Diga Avenida Parque fica aqui.
+
+Speaker C: Park Avenue is here. Park Avenue is here.
+
+Speaker A: Pergunte-lhe onde fica a Rua 52 Leste.
+
+Speaker B: Where is East 52nd Street? Where is East 52nd Street, please?
+
+Speaker A: Fica aqui?
+
+Speaker B: Is it here?
+
+Speaker A: Responda: Não fica aqui.
+
+Speaker C: It's not here. It's not here, sir.
+
+Speaker A: Diga: Fica lá.
+
+Speaker C: It's over there.
+
+Speaker A: E a Avenida Parque fica aqui.
+
+Speaker C: And Park Avenue is here.
+
+Speaker A: Agora você vai conversar com uma moça americana. Ela vai te dizer algo e você vai responder.
+
+Speaker C: Hello, sir.
+
+Speaker B: Hello, miss.
+
+Speaker C: How are you?
+
+Speaker B: Fine, thanks. I'm fine, thanks. And you?
+
+Speaker C: I'm fine. Are you Brazilian?
+
+Speaker B: Yes. I'm Brazilian.
+
+Speaker C: I'm American. Do you understand English?
+
+Speaker B: Yes, a little, not very well. A little, not very well.
+
+Speaker C: But you speak English very well.
+
+Speaker A: Responda: Eu agradeço.
+
+Speaker B: Thank you.
+
+Speaker A: Agora ela vai te pedir algumas informações. Eu te direi o que responder.
+
+Speaker C: Excuse me, where is East 52nd Street, please?
+
+Speaker A: Responda: Fica aqui, senhorita.
+
+Speaker B: It's here, miss.
+
+Speaker C: And Park Avenue?
+
+Speaker A: Diga-lhe que fica lá.
+
+Speaker B: It's over there.
+
+Speaker A: Diga-lhe que a Rua 52 Leste não fica lá.
+
+Speaker B: East 52nd Street is not over there. East 52nd Street is not over there.
+
+Speaker A: Dígelica Avenida Parque fica lá.
+
+Speaker B: Park Avenue is over there. Park Avenue is over there.
+
+Speaker A: Diga-lhe, mas a Rua 52 Leste fica aqui.
+
+Speaker B: But East 52nd Street is here. But East 52nd Street is here.
+
+Speaker A: Agora ela te pergunta algo. Como você responde?
+
+Speaker C: Do you know where there is a good restaurant?
+
+Speaker B: I don't understand. I'm sorry, I don't understand.
+
+Speaker A: Agora se despeça. Goodbye.
+
+Speaker B: Goodbye, Miss.
+
+Speaker A: Vamos tentar esta conversa de novo. Escute e responda.
+
+Speaker C: Hello, sir.
+
+Speaker B: Hello, Miss.
+
+Speaker C: How are you?
+
+Speaker B: Fine, thanks. Fine, thanks. And you?
+
+Speaker C: I'm fine. Are you Brazilian?
+
+Speaker B: Yes, I'm Brazilian.
+
+Speaker C: I'm American. Do you understand English?
+
+Speaker B: A little, not very well.
+
+Speaker C: But you speak English very well.
+
+Speaker A: Responda: Eu agradeço.
+
+Speaker B: Thank you.
+
+Speaker A: Agora escute.
+
+Speaker C: Excuse me, where is East 52nd Street, please?
+
+Speaker A: Responda: Fica aqui, senhorita.
+
+Speaker B: It's here, miss.
+
+Speaker C: And Park Avenue?
+
+Speaker A: Diga-lhe que fica lá.
+
+Speaker B: It's over there.
+
+Speaker A: Diga-lhe que a Rua 52 Leste não fica lá.
+
+Speaker B: East 52nd Street is not over there.
+
+Speaker A: Diga-lhe que a Avenida Parque fica lá.
+
+Speaker B: Park Avenue is over there.
+
+Speaker A: Diga-lhe, mas a Rua 52 Leste fica aqui.
+
+Speaker B: But East 52nd Street is here.
+
+Speaker A: Agora ela te pergunta algo. Como você responde?
+
+Speaker C: Do you know where there is a good restaurant?
+
+Speaker B: I don't understand. I'm sorry, I don't understand.
+
+Speaker A: Agora se despeça. Goodbye.
+
+Speaker B: Goodbye, Miss.
+
+Speaker C: Goodbye.
+
+Speaker A: Este é o fim da lição quatro.
+
+Speaker B: Pimsleur courses work most effectively when done consecutively and on a daily basis. For best results, please continue with the next unit tomorrow. This has been a presentation of Simon Schuster Audio. Copyright 2010 by Simon Schuster, Incorporated. Recording copyright 2010 by Simon Schuster, Incorporated. All rights reserved.

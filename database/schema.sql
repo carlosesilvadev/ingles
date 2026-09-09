@@ -216,4 +216,53 @@ UPDATE lessons
 SET audio_path = '../storage/audio/Lesson1.mp3'
 WHERE id = 1;
 
+ALTER TABLE lessons
+ADD COLUMN subtitle_offset DECIMAL(5,2) NOT NULL DEFAULT 0.20
+AFTER srt_path;
+
+UPDATE lessons
+SET subtitle_offset = 0.20
+WHERE id = 1;
+
+UPDATE lessons
+SET subtitle_offset = 0.20
+WHERE id = 2;
+
+DELIMITER $$
+
+CREATE PROCEDURE inserirAulas()*/
+BEGIN
+    DECLARE i INT DEFAULT 1;
+
+    WHILE i <= 30 DO
+        INSERT INTO lessons (
+            course_id,
+            lesson_number,
+            title,
+            type,
+            duration_seconds,
+            audio_path,
+            subtitle_offset
+        ) VALUES (
+            1,
+            i,
+            CONCAT('Lesson ', i),
+            'main',
+            1822,
+            CONCAT('../storage/audio/Lesson', i, '.mp3'),
+            0.20
+        );
+
+        SET i = i + 1;
+    END WHILE;
+END$$
+
+DELIMITER ;
+
+-- Para executar:
+CALL inserirAulas();
+
+-- Se quiser remover a procedure depois de usar:
+-- DROP PROCEDURE inserirAulas;
+
 /*DADOS INICIAIS - FIM*/

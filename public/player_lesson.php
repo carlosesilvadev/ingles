@@ -24,7 +24,8 @@ try {
             lesson_number,
             title,
             duration_seconds,
-            audio_path
+            audio_path,
+            subtitle_offset
         FROM lessons
         WHERE id = ?
         LIMIT 1
@@ -649,6 +650,10 @@ if ($lesson && !empty($lesson['audio_path'])) {
 
     let currentIndex = -1;
 
+    // Ajuste de sincronização.
+    // Valor negativo = legenda aparece mais cedo.
+    // Valor positivo = legenda aparece mais tarde.
+    const subtitleOffset = <?= json_encode((float) $lesson['subtitle_offset']) ?>;
 
     /*
     |--------------------------------------------------------------------------
@@ -738,12 +743,11 @@ if ($lesson && !empty($lesson['audio_path'])) {
         }
 
 
-        const time =
-            audio.currentTime;
+    const time =
+        audio.currentTime + subtitleOffset;
 
-
-        const index =
-            findSegmentIndex(time);
+    const index =
+        findSegmentIndex(time);
 
 
         /*
@@ -765,15 +769,7 @@ if ($lesson && !empty($lesson['audio_path'])) {
             }
 
 
-            current.innerHTML = `
-
-                <div class="empty-current">
-
-                    Nenhuma fala neste momento
-
-                </div>
-
-            `;
+            
 
 
             return;
@@ -831,13 +827,13 @@ if ($lesson && !empty($lesson['audio_path'])) {
         |--------------------------------------------------------------------------
         */
 
-        element.scrollIntoView({
+        /*element.scrollIntoView({
 
             behavior: 'smooth',
 
             block: 'center'
 
-        });
+        });*/
 
 
         /*
