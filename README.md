@@ -57,12 +57,12 @@ Você pode rodar tudo localmente sem instalar nada além de um navegador.
 ```
 ├── index.html            # Lista das 30 aulas
 |
-└── aulas/
-    ├── lesson-1.html          
-    ├── lesson-2.html     # Player + legenda sincronizada de cada aula
-    ├── ...
-    ├── lesson-30.html
-└── storage/
+|── aulas/
+|   ├── lesson-1.html          
+|   ├── lesson-2.html     # Player + legenda sincronizada de cada aula
+|   ├── ...
+|   ├── lesson-30.html
+|── storage/
     ├── audio/            # Arquivos .mp3 de cada aula
     ├── srt/              # Legendas originais (fonte da verdade)
     └── txt/              # Transcrições em texto puro
