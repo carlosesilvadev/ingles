@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curso de Inglês</title>
+<style>
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f8;
+    color: #222;
+}
+.container { max-width: 900px; margin: 50px auto; padding: 20px; }
+.header {
+    background: white; padding: 30px; border-radius: 12px;
+    margin-bottom: 25px; box-shadow: 0 2px 10px rgba(0,0,0,.08);
+}
+.header h1 { margin: 0 0 10px 0; font-size: 32px; }
+.header p { margin: 0; color: #666; font-size: 16px; }
+.card {
+    background: white; padding: 30px; border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.08);
+}
+.card h2 { margin-top: 0; margin-bottom: 20px; }
+.lesson-select {
+    width: 100%; padding: 15px; font-size: 17px; border: 1px solid #ccc;
+    border-radius: 8px; background: white; cursor: pointer;
+}
+.lesson-select:focus {
+    outline: none; border-color: #4d7cff;
+    box-shadow: 0 0 0 3px rgba(77,124,255,.12);
+}
+.button {
+    display: inline-block; width: 100%; margin-top: 20px; padding: 15px;
+    border: none; border-radius: 8px; background: #4d7cff; color: white;
+    font-size: 17px; font-weight: bold; cursor: pointer; text-align: center;
+    text-decoration: none;
+}
+.button:hover { background: #3b68e8; }
+.info {
+    margin-top: 20px; padding: 15px; background: #f5f7fa;
+    border-radius: 8px; color: #666; font-size: 14px;
+}
+.error {
+    background: #ffe1e1; border: 1px solid #ffbaba; color: #a00000;
+    padding: 15px; border-radius: 8px;
+}
+.footer { text-align: center; margin-top: 25px; color: #999; font-size: 13px; }
+@media (max-width: 700px) {
+    .container { margin: 20px auto; padding: 15px; }
+    .header { padding: 22px; } .header h1 { font-size: 26px; }
+    .card { padding: 22px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Curso de Inglês</h1>
+        <p>Selecione uma aula para começar seus estudos.</p>
+    </div>
+
+    <div class="card">
+        <h2>Escolha a aula</h2>
+
+        <select class="lesson-select" id="lesson_id" required>
+            <option value="">Selecione uma aula...</option>
+            <option value="aulas\lesson-1.html">Lesson 1</option>
+<option value="aulas\lesson-2.html">Lesson 2</option>
+<option value="aulas\lesson-3.html">Lesson 3</option>
+<option value="aulas\lesson-4.html">Lesson 4</option>
+<option value="aulas\lesson-5.html">Lesson 5</option>
+<option value="aulas\lesson-6.html">Lesson 6</option>
+<option value="aulas\lesson-7.html">Lesson 7</option>
+<option value="aulas\lesson-8.html">Lesson 8</option>
+<option value="aulas\lesson-9.html">Lesson 9</option>
+<option value="aulas\lesson-10.html">Lesson 10</option>
+<option value="aulas\lesson-11.html">Lesson 11</option>
+<option value="aulas\lesson-12.html">Lesson 12</option>
+<option value="aulas\lesson-13.html">Lesson 13</option>
+<option value="aulas\lesson-14.html">Lesson 14</option>
+<option value="aulas\lesson-15.html">Lesson 15</option>
+<option value="aulas\lesson-16.html">Lesson 16</option>
+<option value="aulas\lesson-17.html">Lesson 17</option>
+<option value="aulas\lesson-18.html">Lesson 18</option>
+<option value="aulas\lesson-19.html">Lesson 19</option>
+<option value="aulas\lesson-20.html">Lesson 20</option>
+<option value="aulas\lesson-21.html">Lesson 21</option>
+<option value="aulas\lesson-22.html">Lesson 22</option>
+<option value="aulas\lesson-23.html">Lesson 23</option>
+<option value="aulas\lesson-24.html">Lesson 24</option>
+<option value="aulas\lesson-25.html">Lesson 25</option>
+<option value="aulas\lesson-26.html">Lesson 26</option>
+<option value="aulas\lesson-27.html">Lesson 27</option>
+<option value="aulas\lesson-28.html">Lesson 28</option>
+<option value="aulas\lesson-29.html">Lesson 29</option>
+<option value="aulas\lesson-30.html">Lesson 30</option>
+        </select>
+
+        <a href="#" class="button" id="startBtn">▶ Iniciar aula</a>
+
+        <div class="info">
+            30 aulas disponíveis.
+            <br>
+            Escolha uma aula acima para abrir o player com áudio e legenda sincronizada.
+        </div>
+    </div>
+
+    <div class="footer">Curso de Inglês</div>
+</div>
+
+<script>
+document.getElementById('startBtn').addEventListener('click', function (e) {
+    e.preventDefault();
+    const sel = document.getElementById('lesson_id');
+    if (sel.value) window.location.href = sel.value;
+});
+</script>
+</body>
+</html>

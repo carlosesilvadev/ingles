@@ -1,0 +1,1972 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 1</title>
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: #f4f6f8; color: #222; }
+.container { max-width: 1100px; margin: 30px auto; padding: 20px; }
+.header { background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+.header h1 { margin: 0 0 8px 0; }
+.header p { margin: 0; color: #666; }
+.player { background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+audio { width: 100%; margin-bottom: 15px; }
+.current {
+    min-height: 120px; display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 20px; border-radius: 10px; background: #eef4ff; border: 2px solid #d7e3ff;
+}
+.current-text { font-size: 25px; line-height: 1.5; font-weight: bold; }
+.current-speaker { font-size: 14px; color: #666; margin-bottom: 8px; }
+.empty-current { color: #999; font-size: 18px; }
+.segments { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+.segments-header { padding: 18px 20px; border-bottom: 1px solid #ddd; }
+.segments-header h2 { margin: 0; }
+.segment {
+    display: grid; grid-template-columns: 70px 150px 1fr; gap: 15px;
+    padding: 13px 20px; border-bottom: 1px solid #eee; cursor: pointer; transition: background .15s;
+}
+.segment:hover { background: #f5f8ff; }
+.segment.active { background: #dfeaff; }
+.segment-number { font-weight: bold; color: #666; }
+.segment-time { font-family: monospace; color: #666; }
+.segment-text { line-height: 1.5; }
+.error { background: #ffe1e1; border: 1px solid #ffbaba; color: #a00000; padding: 15px; border-radius: 8px; }
+.info { margin-top: 10px; color: #666; font-size: 14px; }
+.back-link { display: inline-block; margin-bottom: 15px; color: #4d7cff; text-decoration: none; font-weight: bold; }
+@media (max-width: 700px) {
+    .segment { grid-template-columns: 50px 110px 1fr; gap: 8px; padding: 10px; }
+    .current-text { font-size: 20px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <a href="..\index.html" class="back-link">&larr; Voltar para a lista de aulas</a>
+
+    <div class="header">
+        <h1>Lesson 1 &mdash; Lesson 1</h1>
+        <p>Player de áudio com SRT sincronizado</p>
+    </div>
+
+    <div class="player">
+        <audio id="audio" controls preload="metadata">
+            <source src="../storage/audio/Lesson1.mp3" type="audio/mpeg">
+            Seu navegador não suporta áudio.
+        </audio>
+
+        <div id="current" class="current">
+            <div class="empty-current">▶ Inicie o áudio para começar</div>
+        </div>
+    </div>
+
+    <div class="segments">
+        <div class="segments-header">
+            <h2>Legenda da aula</h2>
+            <div class="info">363 segmentos SRT</div>
+        </div>
+        <div id="segmentList">
+<div class="segment" data-index="0" data-start="0.593" data-end="4.647">
+    <div class="segment-number">#1</div>
+    <div class="segment-time">0.593 &rarr; 4.647</div>
+    <div class="segment-text">Esta lição um de Pimsleur Inglês um. Escute esta conversa em</div>
+</div>
+<div class="segment" data-index="1" data-start="4.76" data-end="8.638">
+    <div class="segment-number">#2</div>
+    <div class="segment-time">4.760 &rarr; 8.638</div>
+    <div class="segment-text">inglês. Excuse me, miss. Do you understand</div>
+</div>
+<div class="segment" data-index="2" data-start="8.75" data-end="12.036">
+    <div class="segment-number">#3</div>
+    <div class="segment-time">8.750 &rarr; 12.036</div>
+    <div class="segment-text">Portuguese? No, sir. I don't understand</div>
+</div>
+<div class="segment" data-index="3" data-start="12.536" data-end="16.412">
+    <div class="segment-number">#4</div>
+    <div class="segment-time">12.536 &rarr; 16.412</div>
+    <div class="segment-text">Portuguese. I understand a little English. Are you Brazilian?</div>
+</div>
+<div class="segment" data-index="4" data-start="16.94" data-end="20.643">
+    <div class="segment-number">#5</div>
+    <div class="segment-time">16.940 &rarr; 20.643</div>
+    <div class="segment-text">Yes, miss. Em alguns minutos, você poderá</div>
+</div>
+<div class="segment" data-index="5" data-start="21.143" data-end="24.586">
+    <div class="segment-number">#6</div>
+    <div class="segment-time">21.143 &rarr; 24.586</div>
+    <div class="segment-text">não apenas entender esta conversa, mas também participar dela.</div>
+</div>
+<div class="segment" data-index="6" data-start="25.275" data-end="28.913">
+    <div class="segment-number">#7</div>
+    <div class="segment-time">25.275 &rarr; 28.913</div>
+    <div class="segment-text">Imagine um brasileiro nos Estados Unidos sentado ao lado de uma jovem.</div>
+</div>
+<div class="segment" data-index="7" data-start="29.684" data-end="33.734">
+    <div class="segment-number">#8</div>
+    <div class="segment-time">29.684 &rarr; 33.734</div>
+    <div class="segment-text">Ele tenta conversar com ela. Então ele diz: Com licença.</div>
+</div>
+<div class="segment" data-index="8" data-start="34.506" data-end="38.043">
+    <div class="segment-number">#9</div>
+    <div class="segment-time">34.506 &rarr; 38.043</div>
+    <div class="segment-text">Excuse me. O locutor americano vai repetir esta</div>
+</div>
+<div class="segment" data-index="9" data-start="38.543" data-end="41.457">
+    <div class="segment-number">#10</div>
+    <div class="segment-time">38.543 &rarr; 41.457</div>
+    <div class="segment-text">expressão sílaba por sílaba, começando pela última.</div>
+</div>
+<div class="segment" data-index="10" data-start="41.972" data-end="45.515">
+    <div class="segment-number">#11</div>
+    <div class="segment-time">41.972 &rarr; 45.515</div>
+    <div class="segment-text">Repita depois de ouvir cada sílaba, tentando imitar a pronúncia</div>
+</div>
+<div class="segment" data-index="11" data-start="45.596" data-end="48.787">
+    <div class="segment-number">#12</div>
+    <div class="segment-time">45.596 &rarr; 48.787</div>
+    <div class="segment-text">dele. Repita em voz alta. Me.</div>
+</div>
+<div class="segment" data-index="12" data-start="51.318" data-end="54.592">
+    <div class="segment-number">#13</div>
+    <div class="segment-time">51.318 &rarr; 54.592</div>
+    <div class="segment-text">Me. Use.</div>
+</div>
+<div class="segment" data-index="13" data-start="54.918" data-end="60.553">
+    <div class="segment-number">#14</div>
+    <div class="segment-time">54.918 &rarr; 60.553</div>
+    <div class="segment-text">Use.</div>
+</div>
+<div class="segment" data-index="14" data-start="61.23" data-end="64.572">
+    <div class="segment-number">#15</div>
+    <div class="segment-time">61.230 &rarr; 64.572</div>
+    <div class="segment-text">Skews. Skews.</div>
+</div>
+<div class="segment" data-index="15" data-start="67.85" data-end="67.963">
+    <div class="segment-number">#16</div>
+    <div class="segment-time">67.850 &rarr; 67.963</div>
+    <div class="segment-text">X.</div>
+</div>
+<div class="segment" data-index="16" data-start="70.703" data-end="73.637">
+    <div class="segment-number">#17</div>
+    <div class="segment-time">70.703 &rarr; 73.637</div>
+    <div class="segment-text">X.</div>
+</div>
+<div class="segment" data-index="17" data-start="77.187" data-end="78.106">
+    <div class="segment-number">#18</div>
+    <div class="segment-time">77.187 &rarr; 78.106</div>
+    <div class="segment-text">Excuse. Excuse.</div>
+</div>
+<div class="segment" data-index="18" data-start="81.162" data-end="81.99">
+    <div class="segment-number">#19</div>
+    <div class="segment-time">81.162 &rarr; 81.990</div>
+    <div class="segment-text">Excuse me.</div>
+</div>
+<div class="segment" data-index="19" data-start="85.936" data-end="86.61">
+    <div class="segment-number">#20</div>
+    <div class="segment-time">85.936 &rarr; 86.610</div>
+    <div class="segment-text">Excuse me.</div>
+</div>
+<div class="segment" data-index="20" data-start="90.435" data-end="94.018">
+    <div class="segment-number">#21</div>
+    <div class="segment-time">90.435 &rarr; 94.018</div>
+    <div class="segment-text">Como se diz com licença ou desculpe-me em</div>
+</div>
+<div class="segment" data-index="21" data-start="94.066" data-end="94.5">
+    <div class="segment-number">#22</div>
+    <div class="segment-time">94.066 &rarr; 94.500</div>
+    <div class="segment-text">inglês?</div>
+</div>
+<div class="segment" data-index="22" data-start="97.736" data-end="98.494">
+    <div class="segment-number">#23</div>
+    <div class="segment-time">97.736 &rarr; 98.494</div>
+    <div class="segment-text">Excuse me.</div>
+</div>
+<div class="segment" data-index="23" data-start="101.869" data-end="104.565">
+    <div class="segment-number">#24</div>
+    <div class="segment-time">101.869 &rarr; 104.565</div>
+    <div class="segment-text">Agora ele pergunta à moça se ela entende português.</div>
+</div>
+<div class="segment" data-index="24" data-start="105.162" data-end="108.026">
+    <div class="segment-number">#25</div>
+    <div class="segment-time">105.162 &rarr; 108.026</div>
+    <div class="segment-text">Primeiro, português. Escuche y repita.</div>
+</div>
+<div class="segment" data-index="25" data-start="109.04" data-end="109.894">
+    <div class="segment-number">#26</div>
+    <div class="segment-time">109.040 &rarr; 109.894</div>
+    <div class="segment-text">Portuguese.</div>
+</div>
+<div class="segment" data-index="26" data-start="112.906" data-end="113.116">
+    <div class="segment-number">#27</div>
+    <div class="segment-time">112.906 &rarr; 113.116</div>
+    <div class="segment-text">Keys.</div>
+</div>
+<div class="segment" data-index="27" data-start="115.742" data-end="118.87">
+    <div class="segment-number">#28</div>
+    <div class="segment-time">115.742 &rarr; 118.870</div>
+    <div class="segment-text">Keys.</div>
+</div>
+<div class="segment" data-index="28" data-start="119.13" data-end="121.811">
+    <div class="segment-number">#29</div>
+    <div class="segment-time">119.130 &rarr; 121.811</div>
+    <div class="segment-text">Chew. Chew.</div>
+</div>
+<div class="segment" data-index="29" data-start="124.25" data-end="124.881">
+    <div class="segment-number">#30</div>
+    <div class="segment-time">124.250 &rarr; 124.881</div>
+    <div class="segment-text">Chuggies.</div>
+</div>
+<div class="segment" data-index="30" data-start="127.668" data-end="128.041">
+    <div class="segment-number">#31</div>
+    <div class="segment-time">127.668 &rarr; 128.041</div>
+    <div class="segment-text">Poor.</div>
+</div>
+<div class="segment" data-index="31" data-start="130.747" data-end="131.67">
+    <div class="segment-number">#32</div>
+    <div class="segment-time">130.747 &rarr; 131.670</div>
+    <div class="segment-text">Portuguese.</div>
+</div>
+<div class="segment" data-index="32" data-start="135.106" data-end="138.36">
+    <div class="segment-number">#33</div>
+    <div class="segment-time">135.106 &rarr; 138.360</div>
+    <div class="segment-text">Português. Como se</div>
+</div>
+<div class="segment" data-index="33" data-start="138.86" data-end="139.745">
+    <div class="segment-number">#34</div>
+    <div class="segment-time">138.860 &rarr; 139.745</div>
+    <div class="segment-text">diz português?</div>
+</div>
+<div class="segment" data-index="34" data-start="142.516" data-end="143.301">
+    <div class="segment-number">#35</div>
+    <div class="segment-time">142.516 &rarr; 143.301</div>
+    <div class="segment-text">Portuguese.</div>
+</div>
+<div class="segment" data-index="35" data-start="146.117" data-end="147.229">
+    <div class="segment-number">#36</div>
+    <div class="segment-time">146.117 &rarr; 147.229</div>
+    <div class="segment-text">Diga com licença.</div>
+</div>
+<div class="segment" data-index="36" data-start="150.78" data-end="151.25">
+    <div class="segment-number">#37</div>
+    <div class="segment-time">150.780 &rarr; 151.250</div>
+    <div class="segment-text">Excuse me.</div>
+</div>
+<div class="segment" data-index="37" data-start="154.851" data-end="158.062">
+    <div class="segment-number">#38</div>
+    <div class="segment-time">154.851 &rarr; 158.062</div>
+    <div class="segment-text">Escute e repita depois do locutor que vai te dar a resposta.</div>
+</div>
+<div class="segment" data-index="38" data-start="158.616" data-end="161.947">
+    <div class="segment-number">#39</div>
+    <div class="segment-time">158.616 &rarr; 161.947</div>
+    <div class="segment-text">Tente imitar a pronúncia dele. Excuse me.</div>
+</div>
+<div class="segment" data-index="39" data-start="165.536" data-end="166.073">
+    <div class="segment-number">#40</div>
+    <div class="segment-time">165.536 &rarr; 166.073</div>
+    <div class="segment-text">Excuse me.</div>
+</div>
+<div class="segment" data-index="40" data-start="169.363" data-end="171.04">
+    <div class="segment-number">#41</div>
+    <div class="segment-time">169.363 &rarr; 171.040</div>
+    <div class="segment-text">Diga outra vez português.</div>
+</div>
+<div class="segment" data-index="41" data-start="174.34" data-end="174.807">
+    <div class="segment-number">#42</div>
+    <div class="segment-time">174.340 &rarr; 174.807</div>
+    <div class="segment-text">Portuguese.</div>
+</div>
+<div class="segment" data-index="42" data-start="177.821" data-end="178.675">
+    <div class="segment-number">#43</div>
+    <div class="segment-time">177.821 &rarr; 178.675</div>
+    <div class="segment-text">Portuguese.</div>
+</div>
+<div class="segment" data-index="43" data-start="181.786" data-end="186.196">
+    <div class="segment-number">#44</div>
+    <div class="segment-time">181.786 &rarr; 186.196</div>
+    <div class="segment-text">Agora ele quer perguntar: Você entende? Primeiro a palavra entende,</div>
+</div>
+<div class="segment" data-index="44" data-start="186.663" data-end="189.349">
+    <div class="segment-number">#45</div>
+    <div class="segment-time">186.663 &rarr; 189.349</div>
+    <div class="segment-text">apenas escute. Understand.</div>
+</div>
+<div class="segment" data-index="45" data-start="190.218" data-end="192.327">
+    <div class="segment-number">#46</div>
+    <div class="segment-time">190.218 &rarr; 192.327</div>
+    <div class="segment-text">Escute e repita sílaba por sílaba.</div>
+</div>
+<div class="segment" data-index="46" data-start="193.655" data-end="197.915">
+    <div class="segment-number">#47</div>
+    <div class="segment-time">193.655 &rarr; 197.915</div>
+    <div class="segment-text">Stand.</div>
+</div>
+<div class="segment" data-index="47" data-start="200.905" data-end="201.134">
+    <div class="segment-number">#48</div>
+    <div class="segment-time">200.905 &rarr; 201.134</div>
+    <div class="segment-text">Stand. Der.</div>
+</div>
+<div class="segment" data-index="48" data-start="203.495" data-end="204.347">
+    <div class="segment-number">#49</div>
+    <div class="segment-time">203.495 &rarr; 204.347</div>
+    <div class="segment-text">Derstand.</div>
+</div>
+<div class="segment" data-index="49" data-start="207.527" data-end="207.64">
+    <div class="segment-number">#50</div>
+    <div class="segment-time">207.527 &rarr; 207.640</div>
+    <div class="segment-text">Un.</div>
+</div>
+<div class="segment" data-index="50" data-start="220.446" data-end="224.158">
+    <div class="segment-number">#51</div>
+    <div class="segment-time">220.446 &rarr; 224.158</div>
+    <div class="segment-text">Understand. Understand. Você ouviu o som do R americano na</div>
+</div>
+<div class="segment" data-index="51" data-start="224.658" data-end="228.549">
+    <div class="segment-number">#52</div>
+    <div class="segment-time">224.658 &rarr; 228.549</div>
+    <div class="segment-text">palavra understand? O R americano nunca se pronuncia como</div>
+</div>
+<div class="segment" data-index="52" data-start="228.613" data-end="231.023">
+    <div class="segment-number">#53</div>
+    <div class="segment-time">228.613 &rarr; 231.023</div>
+    <div class="segment-text">R em português. Diga entende.</div>
+</div>
+<div class="segment" data-index="53" data-start="234.15" data-end="234.911">
+    <div class="segment-number">#54</div>
+    <div class="segment-time">234.150 &rarr; 234.911</div>
+    <div class="segment-text">Understand.</div>
+</div>
+<div class="segment" data-index="54" data-start="240.976" data-end="243.944">
+    <div class="segment-number">#55</div>
+    <div class="segment-time">240.976 &rarr; 243.944</div>
+    <div class="segment-text">Understand. É assim que se diz você entende.</div>
+</div>
+<div class="segment" data-index="55" data-start="244.482" data-end="247.773">
+    <div class="segment-number">#56</div>
+    <div class="segment-time">244.482 &rarr; 247.773</div>
+    <div class="segment-text">Escute e repita. You understand.</div>
+</div>
+<div class="segment" data-index="56" data-start="251.289" data-end="254.638">
+    <div class="segment-number">#57</div>
+    <div class="segment-time">251.289 &rarr; 254.638</div>
+    <div class="segment-text">You. You.</div>
+</div>
+<div class="segment" data-index="57" data-start="257.062" data-end="258.077">
+    <div class="segment-number">#58</div>
+    <div class="segment-time">257.062 &rarr; 258.077</div>
+    <div class="segment-text">You understand.</div>
+</div>
+<div class="segment" data-index="58" data-start="261.484" data-end="262.489">
+    <div class="segment-number">#59</div>
+    <div class="segment-time">261.484 &rarr; 262.489</div>
+    <div class="segment-text">You understand.</div>
+</div>
+<div class="segment" data-index="59" data-start="265.925" data-end="268.243">
+    <div class="segment-number">#60</div>
+    <div class="segment-time">265.925 &rarr; 268.243</div>
+    <div class="segment-text">Como se diz você em inglês?</div>
+</div>
+<div class="segment" data-index="60" data-start="273.428" data-end="277.028">
+    <div class="segment-number">#61</div>
+    <div class="segment-time">273.428 &rarr; 277.028</div>
+    <div class="segment-text">You. You. Preste atenção</div>
+</div>
+<div class="segment" data-index="61" data-start="277.092" data-end="280.397">
+    <div class="segment-number">#62</div>
+    <div class="segment-time">277.092 &rarr; 280.397</div>
+    <div class="segment-text">ao som do início da palavra. Soa como o começo</div>
+</div>
+<div class="segment" data-index="62" data-start="280.897" data-end="283.688">
+    <div class="segment-number">#63</div>
+    <div class="segment-time">280.897 &rarr; 283.688</div>
+    <div class="segment-text">da palavra iogurte. Diga: Você entende?</div>
+</div>
+<div class="segment" data-index="63" data-start="287.319" data-end="288.415">
+    <div class="segment-number">#64</div>
+    <div class="segment-time">287.319 &rarr; 288.415</div>
+    <div class="segment-text">You understand.</div>
+</div>
+<div class="segment" data-index="64" data-start="291.991" data-end="294.101">
+    <div class="segment-number">#65</div>
+    <div class="segment-time">291.991 &rarr; 294.101</div>
+    <div class="segment-text">Você se lembra de como se diz português?</div>
+</div>
+<div class="segment" data-index="65" data-start="297.416" data-end="298.193">
+    <div class="segment-number">#66</div>
+    <div class="segment-time">297.416 &rarr; 298.193</div>
+    <div class="segment-text">Portuguese.</div>
+</div>
+<div class="segment" data-index="66" data-start="301.3" data-end="302.789">
+    <div class="segment-number">#67</div>
+    <div class="segment-time">301.300 &rarr; 302.789</div>
+    <div class="segment-text">Diga: Você entende.</div>
+</div>
+<div class="segment" data-index="67" data-start="306.012" data-end="307.01">
+    <div class="segment-number">#68</div>
+    <div class="segment-time">306.012 &rarr; 307.010</div>
+    <div class="segment-text">You understand.</div>
+</div>
+<div class="segment" data-index="68" data-start="310.276" data-end="312.963">
+    <div class="segment-number">#69</div>
+    <div class="segment-time">310.276 &rarr; 312.963</div>
+    <div class="segment-text">Agora tente dizer: Você entende português.</div>
+</div>
+<div class="segment" data-index="69" data-start="318.248" data-end="320.234">
+    <div class="segment-number">#70</div>
+    <div class="segment-time">318.248 &rarr; 320.234</div>
+    <div class="segment-text">You understand Portuguese?</div>
+</div>
+<div class="segment" data-index="70" data-start="325.366" data-end="327.357">
+    <div class="segment-number">#71</div>
+    <div class="segment-time">325.366 &rarr; 327.357</div>
+    <div class="segment-text">You understand Portuguese?</div>
+</div>
+<div class="segment" data-index="71" data-start="332.58" data-end="335.462">
+    <div class="segment-number">#72</div>
+    <div class="segment-time">332.580 &rarr; 335.462</div>
+    <div class="segment-text">Esta é uma palavra que se usa para fazer perguntas em inglês.</div>
+</div>
+<div class="segment" data-index="72" data-start="336.138" data-end="338.44">
+    <div class="segment-number">#73</div>
+    <div class="segment-time">336.138 &rarr; 338.440</div>
+    <div class="segment-text">Escute e repita. Do.</div>
+</div>
+<div class="segment" data-index="73" data-start="347.365" data-end="351.442">
+    <div class="segment-number">#74</div>
+    <div class="segment-time">347.365 &rarr; 351.442</div>
+    <div class="segment-text">Do, do. Em inglês, muitas afirmações podem ser transformadas em perguntas</div>
+</div>
+<div class="segment" data-index="74" data-start="351.942" data-end="355.611">
+    <div class="segment-number">#75</div>
+    <div class="segment-time">351.942 &rarr; 355.611</div>
+    <div class="segment-text">pondo esta palavra no começo da frase. Diga outra vez: Você</div>
+</div>
+<div class="segment" data-index="75" data-start="356.111" data-end="356.141">
+    <div class="segment-number">#76</div>
+    <div class="segment-time">356.111 &rarr; 356.141</div>
+    <div class="segment-text">entende?</div>
+</div>
+<div class="segment" data-index="76" data-start="359.763" data-end="360.88">
+    <div class="segment-number">#77</div>
+    <div class="segment-time">359.763 &rarr; 360.880</div>
+    <div class="segment-text">You understand.</div>
+</div>
+<div class="segment" data-index="77" data-start="364.652" data-end="367.445">
+    <div class="segment-number">#78</div>
+    <div class="segment-time">364.652 &rarr; 367.445</div>
+    <div class="segment-text">Agora tente perguntar: Você entende?</div>
+</div>
+<div class="segment" data-index="78" data-start="371.463" data-end="372.55">
+    <div class="segment-number">#79</div>
+    <div class="segment-time">371.463 &rarr; 372.550</div>
+    <div class="segment-text">Do you understand?</div>
+</div>
+<div class="segment" data-index="79" data-start="377.017" data-end="378.282">
+    <div class="segment-number">#80</div>
+    <div class="segment-time">377.017 &rarr; 378.282</div>
+    <div class="segment-text">You understand?</div>
+</div>
+<div class="segment" data-index="80" data-start="381.638" data-end="385.013">
+    <div class="segment-number">#81</div>
+    <div class="segment-time">381.638 &rarr; 385.013</div>
+    <div class="segment-text">Do, do,</div>
+</div>
+<div class="segment" data-index="81" data-start="387.405" data-end="388.836">
+    <div class="segment-number">#82</div>
+    <div class="segment-time">387.405 &rarr; 388.836</div>
+    <div class="segment-text">do you understand?</div>
+</div>
+<div class="segment" data-index="82" data-start="392.97" data-end="394.395">
+    <div class="segment-number">#83</div>
+    <div class="segment-time">392.970 &rarr; 394.395</div>
+    <div class="segment-text">Diga com licença.</div>
+</div>
+<div class="segment" data-index="83" data-start="398.43" data-end="398.64">
+    <div class="segment-number">#84</div>
+    <div class="segment-time">398.430 &rarr; 398.640</div>
+    <div class="segment-text">Excuse me.</div>
+</div>
+<div class="segment" data-index="84" data-start="401.758" data-end="403.163">
+    <div class="segment-number">#85</div>
+    <div class="segment-time">401.758 &rarr; 403.163</div>
+    <div class="segment-text">Você entende?</div>
+</div>
+<div class="segment" data-index="85" data-start="406.847" data-end="407.623">
+    <div class="segment-number">#86</div>
+    <div class="segment-time">406.847 &rarr; 407.623</div>
+    <div class="segment-text">Do you understand?</div>
+</div>
+<div class="segment" data-index="86" data-start="411.886" data-end="413.333">
+    <div class="segment-number">#87</div>
+    <div class="segment-time">411.886 &rarr; 413.333</div>
+    <div class="segment-text">Pergunte-me se eu entendo.</div>
+</div>
+<div class="segment" data-index="87" data-start="416.985" data-end="418.484">
+    <div class="segment-number">#88</div>
+    <div class="segment-time">416.985 &rarr; 418.484</div>
+    <div class="segment-text">Do you understand?</div>
+</div>
+<div class="segment" data-index="88" data-start="422.32" data-end="424.609">
+    <div class="segment-number">#89</div>
+    <div class="segment-time">422.320 &rarr; 424.609</div>
+    <div class="segment-text">Agora pergunte-me se eu entendo português.</div>
+</div>
+<div class="segment" data-index="89" data-start="429.796" data-end="431.857">
+    <div class="segment-number">#90</div>
+    <div class="segment-time">429.796 &rarr; 431.857</div>
+    <div class="segment-text">Do you understand Portuguese?</div>
+</div>
+<div class="segment" data-index="90" data-start="436.901" data-end="438.919">
+    <div class="segment-number">#91</div>
+    <div class="segment-time">436.901 &rarr; 438.919</div>
+    <div class="segment-text">Do you understand Portuguese?</div>
+</div>
+<div class="segment" data-index="91" data-start="443.975" data-end="447.432">
+    <div class="segment-number">#92</div>
+    <div class="segment-time">443.975 &rarr; 447.432</div>
+    <div class="segment-text">A moça responde não. Escute e repita.</div>
+</div>
+<div class="segment" data-index="92" data-start="448.65" data-end="451.077">
+    <div class="segment-number">#93</div>
+    <div class="segment-time">448.650 &rarr; 451.077</div>
+    <div class="segment-text">No, no,</div>
+</div>
+<div class="segment" data-index="93" data-start="453.488" data-end="457.346">
+    <div class="segment-number">#94</div>
+    <div class="segment-time">453.488 &rarr; 457.346</div>
+    <div class="segment-text">no. Preste atenção ao som</div>
+</div>
+<div class="segment" data-index="94" data-start="457.846" data-end="460.775">
+    <div class="segment-number">#95</div>
+    <div class="segment-time">457.846 &rarr; 460.775</div>
+    <div class="segment-text">final ou. Repita-o depois da locutora.</div>
+</div>
+<div class="segment" data-index="95" data-start="461.95" data-end="465.024">
+    <div class="segment-number">#96</div>
+    <div class="segment-time">461.950 &rarr; 465.024</div>
+    <div class="segment-text">Ou, ou,</div>
+</div>
+<div class="segment" data-index="96" data-start="466.602" data-end="469.685">
+    <div class="segment-number">#97</div>
+    <div class="segment-time">466.602 &rarr; 469.685</div>
+    <div class="segment-text">no. Não, senhor.</div>
+</div>
+<div class="segment" data-index="97" data-start="470.243" data-end="473.094">
+    <div class="segment-number">#98</div>
+    <div class="segment-time">470.243 &rarr; 473.094</div>
+    <div class="segment-text">Escute e repita. No, sir.</div>
+</div>
+<div class="segment" data-index="98" data-start="474.997" data-end="477.626">
+    <div class="segment-number">#99</div>
+    <div class="segment-time">474.997 &rarr; 477.626</div>
+    <div class="segment-text">Sir. Sir.</div>
+</div>
+<div class="segment" data-index="99" data-start="479.836" data-end="482.548">
+    <div class="segment-number">#100</div>
+    <div class="segment-time">479.836 &rarr; 482.548</div>
+    <div class="segment-text">No. No, sir.</div>
+</div>
+<div class="segment" data-index="100" data-start="485.002" data-end="486.342">
+    <div class="segment-number">#101</div>
+    <div class="segment-time">485.002 &rarr; 486.342</div>
+    <div class="segment-text">Como se diz senhor?</div>
+</div>
+<div class="segment" data-index="101" data-start="491.659" data-end="494.702">
+    <div class="segment-number">#102</div>
+    <div class="segment-time">491.659 &rarr; 494.702</div>
+    <div class="segment-text">Sir. Diga não. No,</div>
+</div>
+<div class="segment" data-index="102" data-start="496.926" data-end="500.136">
+    <div class="segment-number">#103</div>
+    <div class="segment-time">496.926 &rarr; 500.136</div>
+    <div class="segment-text">no. Diga não,</div>
+</div>
+<div class="segment" data-index="103" data-start="500.168" data-end="503.594">
+    <div class="segment-number">#104</div>
+    <div class="segment-time">500.168 &rarr; 503.594</div>
+    <div class="segment-text">senhor. No, sir.</div>
+</div>
+<div class="segment" data-index="104" data-start="506.119" data-end="507.535">
+    <div class="segment-number">#105</div>
+    <div class="segment-time">506.119 &rarr; 507.535</div>
+    <div class="segment-text">Diga com licença, senhor.</div>
+</div>
+<div class="segment" data-index="105" data-start="511.49" data-end="512.294">
+    <div class="segment-number">#106</div>
+    <div class="segment-time">511.490 &rarr; 512.294</div>
+    <div class="segment-text">Excuse me, sir.</div>
+</div>
+<div class="segment" data-index="106" data-start="516.046" data-end="516.915">
+    <div class="segment-number">#107</div>
+    <div class="segment-time">516.046 &rarr; 516.915</div>
+    <div class="segment-text">Excuse me, sir.</div>
+</div>
+<div class="segment" data-index="107" data-start="520.732" data-end="522.895">
+    <div class="segment-number">#108</div>
+    <div class="segment-time">520.732 &rarr; 522.895</div>
+    <div class="segment-text">Como você pergunta alguém se ele entende?</div>
+</div>
+<div class="segment" data-index="108" data-start="527.12" data-end="527.787">
+    <div class="segment-number">#109</div>
+    <div class="segment-time">527.120 &rarr; 527.787</div>
+    <div class="segment-text">Do you understand?</div>
+</div>
+<div class="segment" data-index="109" data-start="532.358" data-end="532.952">
+    <div class="segment-number">#110</div>
+    <div class="segment-time">532.358 &rarr; 532.952</div>
+    <div class="segment-text">Do you understand?</div>
+</div>
+<div class="segment" data-index="110" data-start="537.68" data-end="538.974">
+    <div class="segment-number">#111</div>
+    <div class="segment-time">537.680 &rarr; 538.974</div>
+    <div class="segment-text">Você entende português?</div>
+</div>
+<div class="segment" data-index="111" data-start="543.847" data-end="545.762">
+    <div class="segment-number">#112</div>
+    <div class="segment-time">543.847 &rarr; 545.762</div>
+    <div class="segment-text">Do you understand Portuguese?</div>
+</div>
+<div class="segment" data-index="112" data-start="550.75" data-end="552.538">
+    <div class="segment-number">#113</div>
+    <div class="segment-time">550.750 &rarr; 552.538</div>
+    <div class="segment-text">Do you understand Portuguese?</div>
+</div>
+<div class="segment" data-index="113" data-start="557.582" data-end="560.88">
+    <div class="segment-number">#114</div>
+    <div class="segment-time">557.582 &rarr; 560.880</div>
+    <div class="segment-text">O homem diz a você: eu entendo. Primeiro a palavra</div>
+</div>
+<div class="segment" data-index="114" data-start="561.058" data-end="563.79">
+    <div class="segment-number">#115</div>
+    <div class="segment-time">561.058 &rarr; 563.790</div>
+    <div class="segment-text">eu. Escute e repita: I.</div>
+</div>
+<div class="segment" data-index="115" data-start="566.636" data-end="573.439">
+    <div class="segment-number">#116</div>
+    <div class="segment-time">566.636 &rarr; 573.439</div>
+    <div class="segment-text">I. I understand.</div>
+</div>
+<div class="segment" data-index="116" data-start="576.596" data-end="578.247">
+    <div class="segment-number">#117</div>
+    <div class="segment-time">576.596 &rarr; 578.247</div>
+    <div class="segment-text">Agora diga eu entendo.</div>
+</div>
+<div class="segment" data-index="117" data-start="583.074" data-end="584.235">
+    <div class="segment-number">#118</div>
+    <div class="segment-time">583.074 &rarr; 584.235</div>
+    <div class="segment-text">I understand.</div>
+</div>
+<div class="segment" data-index="118" data-start="588.865" data-end="591.091">
+    <div class="segment-number">#119</div>
+    <div class="segment-time">588.865 &rarr; 591.091</div>
+    <div class="segment-text">Tente dizer eu entendo português.</div>
+</div>
+<div class="segment" data-index="119" data-start="596.172" data-end="598.14">
+    <div class="segment-number">#120</div>
+    <div class="segment-time">596.172 &rarr; 598.140</div>
+    <div class="segment-text">I understand Portuguese.</div>
+</div>
+<div class="segment" data-index="120" data-start="603.263" data-end="605.034">
+    <div class="segment-number">#121</div>
+    <div class="segment-time">603.263 &rarr; 605.034</div>
+    <div class="segment-text">I understand Portuguese.</div>
+</div>
+<div class="segment" data-index="121" data-start="610.002" data-end="613.529">
+    <div class="segment-number">#122</div>
+    <div class="segment-time">610.002 &rarr; 613.529</div>
+    <div class="segment-text">Agora diga eu entendo e você entende</div>
+</div>
+<div class="segment" data-index="122" data-start="613.905" data-end="614.28">
+    <div class="segment-number">#123</div>
+    <div class="segment-time">613.905 &rarr; 614.280</div>
+    <div class="segment-text">juntos.</div>
+</div>
+<div class="segment" data-index="123" data-start="620.855" data-end="624.113">
+    <div class="segment-number">#124</div>
+    <div class="segment-time">620.855 &rarr; 624.113</div>
+    <div class="segment-text">I understand. You understand.</div>
+</div>
+<div class="segment" data-index="124" data-start="630.772" data-end="633.863">
+    <div class="segment-number">#125</div>
+    <div class="segment-time">630.772 &rarr; 633.863</div>
+    <div class="segment-text">I understand. You understand.</div>
+</div>
+<div class="segment" data-index="125" data-start="640.593" data-end="642.6">
+    <div class="segment-number">#126</div>
+    <div class="segment-time">640.593 &rarr; 642.600</div>
+    <div class="segment-text">Agora diga: Você entende?</div>
+</div>
+<div class="segment" data-index="126" data-start="646.372" data-end="647.473">
+    <div class="segment-number">#127</div>
+    <div class="segment-time">646.372 &rarr; 647.473</div>
+    <div class="segment-text">You understand.</div>
+</div>
+<div class="segment" data-index="127" data-start="647.667" data-end="651.685">
+    <div class="segment-number">#128</div>
+    <div class="segment-time">647.667 &rarr; 651.685</div>
+    <div class="segment-text">Diga,</div>
+</div>
+<div class="segment" data-index="128" data-start="652.057" data-end="652.575">
+    <div class="segment-number">#129</div>
+    <div class="segment-time">652.057 &rarr; 652.575</div>
+    <div class="segment-text">eu entendo.</div>
+</div>
+<div class="segment" data-index="129" data-start="655.882" data-end="656.892">
+    <div class="segment-number">#130</div>
+    <div class="segment-time">655.882 &rarr; 656.892</div>
+    <div class="segment-text">I understand.</div>
+</div>
+<div class="segment" data-index="130" data-start="660.428" data-end="661.617">
+    <div class="segment-number">#131</div>
+    <div class="segment-time">660.428 &rarr; 661.617</div>
+    <div class="segment-text">Diga, com licença.</div>
+</div>
+<div class="segment" data-index="131" data-start="665.39" data-end="665.845">
+    <div class="segment-number">#132</div>
+    <div class="segment-time">665.390 &rarr; 665.845</div>
+    <div class="segment-text">Excuse me.</div>
+</div>
+<div class="segment" data-index="132" data-start="669.553" data-end="671.309">
+    <div class="segment-number">#133</div>
+    <div class="segment-time">669.553 &rarr; 671.309</div>
+    <div class="segment-text">Pergunte, você entende?</div>
+</div>
+<div class="segment" data-index="133" data-start="675.105" data-end="676.367">
+    <div class="segment-number">#134</div>
+    <div class="segment-time">675.105 &rarr; 676.367</div>
+    <div class="segment-text">Do you understand?</div>
+</div>
+<div class="segment" data-index="134" data-start="680.121" data-end="682.627">
+    <div class="segment-number">#135</div>
+    <div class="segment-time">680.121 &rarr; 682.627</div>
+    <div class="segment-text">Pergunte à moça: Você entende português?</div>
+</div>
+<div class="segment" data-index="135" data-start="687.526" data-end="689.435">
+    <div class="segment-number">#136</div>
+    <div class="segment-time">687.526 &rarr; 689.435</div>
+    <div class="segment-text">Do you understand Portuguese?</div>
+</div>
+<div class="segment" data-index="136" data-start="694.242" data-end="696.091">
+    <div class="segment-number">#137</div>
+    <div class="segment-time">694.242 &rarr; 696.091</div>
+    <div class="segment-text">Do you understand Portuguese?</div>
+</div>
+<div class="segment" data-index="137" data-start="700.891" data-end="702.855">
+    <div class="segment-number">#138</div>
+    <div class="segment-time">700.891 &rarr; 702.855</div>
+    <div class="segment-text">Como ela responde não senhor?</div>
+</div>
+<div class="segment" data-index="138" data-start="705.68" data-end="709.054">
+    <div class="segment-number">#139</div>
+    <div class="segment-time">705.680 &rarr; 709.054</div>
+    <div class="segment-text">No sir. No sir.</div>
+</div>
+<div class="segment" data-index="139" data-start="711.83" data-end="713.332">
+    <div class="segment-number">#140</div>
+    <div class="segment-time">711.830 &rarr; 713.332</div>
+    <div class="segment-text">Como se diz eu entendo?</div>
+</div>
+<div class="segment" data-index="140" data-start="716.516" data-end="722.041">
+    <div class="segment-number">#141</div>
+    <div class="segment-time">716.516 &rarr; 722.041</div>
+    <div class="segment-text">I understand. I understand.</div>
+</div>
+<div class="segment" data-index="141" data-start="725.371" data-end="729.366">
+    <div class="segment-number">#142</div>
+    <div class="segment-time">725.371 &rarr; 729.366</div>
+    <div class="segment-text">Agora ela quer dizer eu não entendo. Escute e repita.</div>
+</div>
+<div class="segment" data-index="142" data-start="730.385" data-end="731.712">
+    <div class="segment-number">#143</div>
+    <div class="segment-time">730.385 &rarr; 731.712</div>
+    <div class="segment-text">I don't understand.</div>
+</div>
+<div class="segment" data-index="143" data-start="735.186" data-end="737.824">
+    <div class="segment-number">#144</div>
+    <div class="segment-time">735.186 &rarr; 737.824</div>
+    <div class="segment-text">Don't, don't,</div>
+</div>
+<div class="segment" data-index="144" data-start="739.637" data-end="740.818">
+    <div class="segment-number">#145</div>
+    <div class="segment-time">739.637 &rarr; 740.818</div>
+    <div class="segment-text">don't understand.</div>
+</div>
+<div class="segment" data-index="145" data-start="743.926" data-end="745.079">
+    <div class="segment-number">#146</div>
+    <div class="segment-time">743.926 &rarr; 745.079</div>
+    <div class="segment-text">Don't understand.</div>
+</div>
+<div class="segment" data-index="146" data-start="748.232" data-end="751.723">
+    <div class="segment-number">#147</div>
+    <div class="segment-time">748.232 &rarr; 751.723</div>
+    <div class="segment-text">I don't. I don't.</div>
+</div>
+<div class="segment" data-index="147" data-start="754.184" data-end="755.423">
+    <div class="segment-number">#148</div>
+    <div class="segment-time">754.184 &rarr; 755.423</div>
+    <div class="segment-text">I don't understand.</div>
+</div>
+<div class="segment" data-index="148" data-start="759.38" data-end="760.382">
+    <div class="segment-number">#149</div>
+    <div class="segment-time">759.380 &rarr; 760.382</div>
+    <div class="segment-text">I don't understand.</div>
+</div>
+<div class="segment" data-index="149" data-start="764.32" data-end="765.467">
+    <div class="segment-number">#150</div>
+    <div class="segment-time">764.320 &rarr; 765.467</div>
+    <div class="segment-text">Diga eu não entendo.</div>
+</div>
+<div class="segment" data-index="150" data-start="768.88" data-end="769.891">
+    <div class="segment-number">#151</div>
+    <div class="segment-time">768.880 &rarr; 769.891</div>
+    <div class="segment-text">I don't understand.</div>
+</div>
+<div class="segment" data-index="151" data-start="773.796" data-end="776.97">
+    <div class="segment-number">#152</div>
+    <div class="segment-time">773.796 &rarr; 776.970</div>
+    <div class="segment-text">Escute com cuidado os sons finais da palavra. Don't.</div>
+</div>
+<div class="segment" data-index="152" data-start="777.49" data-end="780.201">
+    <div class="segment-number">#153</div>
+    <div class="segment-time">777.490 &rarr; 780.201</div>
+    <div class="segment-text">Escute e repita. Don't.</div>
+</div>
+<div class="segment" data-index="153" data-start="782.75" data-end="786.044">
+    <div class="segment-number">#154</div>
+    <div class="segment-time">782.750 &rarr; 786.044</div>
+    <div class="segment-text">Don't. Don't.</div>
+</div>
+<div class="segment" data-index="154" data-start="788.515" data-end="791.697">
+    <div class="segment-number">#155</div>
+    <div class="segment-time">788.515 &rarr; 791.697</div>
+    <div class="segment-text">O nt no fim da palavra produz a negação.</div>
+</div>
+<div class="segment" data-index="155" data-start="792.394" data-end="796.313">
+    <div class="segment-number">#156</div>
+    <div class="segment-time">792.394 &rarr; 796.313</div>
+    <div class="segment-text">Acrescenta-se ao final de do, mudando a pronúncia e o sentido.</div>
+</div>
+<div class="segment" data-index="156" data-start="796.912" data-end="800.119">
+    <div class="segment-number">#157</div>
+    <div class="segment-time">796.912 &rarr; 800.119</div>
+    <div class="segment-text">Escute e repita outra vez. Don't.</div>
+</div>
+<div class="segment" data-index="157" data-start="804.749" data-end="805.708">
+    <div class="segment-number">#158</div>
+    <div class="segment-time">804.749 &rarr; 805.708</div>
+    <div class="segment-text">Don't. I don't understand.</div>
+</div>
+<div class="segment" data-index="158" data-start="809.596" data-end="811.579">
+    <div class="segment-number">#159</div>
+    <div class="segment-time">809.596 &rarr; 811.579</div>
+    <div class="segment-text">Agora diga outra vez. Eu não entendo.</div>
+</div>
+<div class="segment" data-index="159" data-start="815.196" data-end="816.246">
+    <div class="segment-number">#160</div>
+    <div class="segment-time">815.196 &rarr; 816.246</div>
+    <div class="segment-text">I don't understand.</div>
+</div>
+<div class="segment" data-index="160" data-start="819.756" data-end="820.69">
+    <div class="segment-number">#161</div>
+    <div class="segment-time">819.756 &rarr; 820.690</div>
+    <div class="segment-text">Diga português.</div>
+</div>
+<div class="segment" data-index="161" data-start="823.139" data-end="823.912">
+    <div class="segment-number">#162</div>
+    <div class="segment-time">823.139 &rarr; 823.912</div>
+    <div class="segment-text">Portuguese.</div>
+</div>
+<div class="segment" data-index="162" data-start="826.361" data-end="828.262">
+    <div class="segment-number">#163</div>
+    <div class="segment-time">826.361 &rarr; 828.262</div>
+    <div class="segment-text">Diga eu não entendo português.</div>
+</div>
+<div class="segment" data-index="163" data-start="833.065" data-end="834.834">
+    <div class="segment-number">#164</div>
+    <div class="segment-time">833.065 &rarr; 834.834</div>
+    <div class="segment-text">I don't understand Portuguese.</div>
+</div>
+<div class="segment" data-index="164" data-start="839.586" data-end="841.402">
+    <div class="segment-number">#165</div>
+    <div class="segment-time">839.586 &rarr; 841.402</div>
+    <div class="segment-text">I don't understand Portuguese.</div>
+</div>
+<div class="segment" data-index="165" data-start="846.236" data-end="847.721">
+    <div class="segment-number">#166</div>
+    <div class="segment-time">846.236 &rarr; 847.721</div>
+    <div class="segment-text">Pergunte: Você entende?</div>
+</div>
+<div class="segment" data-index="166" data-start="851.24" data-end="852.564">
+    <div class="segment-number">#167</div>
+    <div class="segment-time">851.240 &rarr; 852.564</div>
+    <div class="segment-text">Do you understand?</div>
+</div>
+<div class="segment" data-index="167" data-start="856.115" data-end="857.961">
+    <div class="segment-number">#168</div>
+    <div class="segment-time">856.115 &rarr; 857.961</div>
+    <div class="segment-text">Pergunte-me se eu entendo português.</div>
+</div>
+<div class="segment" data-index="168" data-start="862.89" data-end="864.662">
+    <div class="segment-number">#169</div>
+    <div class="segment-time">862.890 &rarr; 864.662</div>
+    <div class="segment-text">Do you understand Portuguese?</div>
+</div>
+<div class="segment" data-index="169" data-start="869.49" data-end="871.362">
+    <div class="segment-number">#170</div>
+    <div class="segment-time">869.490 &rarr; 871.362</div>
+    <div class="segment-text">Responda: Não, eu não entendo.</div>
+</div>
+<div class="segment" data-index="170" data-start="875.621" data-end="877.18">
+    <div class="segment-number">#171</div>
+    <div class="segment-time">875.621 &rarr; 877.180</div>
+    <div class="segment-text">No, I don't understand.</div>
+</div>
+<div class="segment" data-index="171" data-start="881.437" data-end="883.061">
+    <div class="segment-number">#172</div>
+    <div class="segment-time">881.437 &rarr; 883.061</div>
+    <div class="segment-text">No, I don't understand.</div>
+</div>
+<div class="segment" data-index="172" data-start="887.317" data-end="888.494">
+    <div class="segment-number">#173</div>
+    <div class="segment-time">887.317 &rarr; 888.494</div>
+    <div class="segment-text">Eu não entendo português.</div>
+</div>
+<div class="segment" data-index="173" data-start="893.232" data-end="894.902">
+    <div class="segment-number">#174</div>
+    <div class="segment-time">893.232 &rarr; 894.902</div>
+    <div class="segment-text">I don't understand Portuguese.</div>
+</div>
+<div class="segment" data-index="174" data-start="899.6" data-end="904.254">
+    <div class="segment-number">#175</div>
+    <div class="segment-time">899.600 &rarr; 904.254</div>
+    <div class="segment-text">Aqui está o nome do idioma inglês. Escute e repita: English.</div>
+</div>
+<div class="segment" data-index="175" data-start="905.162" data-end="907.29">
+    <div class="segment-number">#176</div>
+    <div class="segment-time">905.162 &rarr; 907.290</div>
+    <div class="segment-text">Glish.</div>
+</div>
+<div class="segment" data-index="176" data-start="907.564" data-end="910.112">
+    <div class="segment-number">#177</div>
+    <div class="segment-time">907.564 &rarr; 910.112</div>
+    <div class="segment-text">Glish.</div>
+</div>
+<div class="segment" data-index="177" data-start="912.886" data-end="916.1">
+    <div class="segment-number">#178</div>
+    <div class="segment-time">912.886 &rarr; 916.100</div>
+    <div class="segment-text">Eng. Eng.</div>
+</div>
+<div class="segment" data-index="178" data-start="918.582" data-end="919.017">
+    <div class="segment-number">#179</div>
+    <div class="segment-time">918.582 &rarr; 919.017</div>
+    <div class="segment-text">English.</div>
+</div>
+<div class="segment" data-index="179" data-start="922.046" data-end="922.561">
+    <div class="segment-number">#180</div>
+    <div class="segment-time">922.046 &rarr; 922.561</div>
+    <div class="segment-text">English.</div>
+</div>
+<div class="segment" data-index="180" data-start="925.573" data-end="927.071">
+    <div class="segment-number">#181</div>
+    <div class="segment-time">925.573 &rarr; 927.071</div>
+    <div class="segment-text">Digo otra vez inglés.</div>
+</div>
+<div class="segment" data-index="181" data-start="929.637" data-end="929.927">
+    <div class="segment-number">#182</div>
+    <div class="segment-time">929.637 &rarr; 929.927</div>
+    <div class="segment-text">English.</div>
+</div>
+<div class="segment" data-index="182" data-start="932.689" data-end="933.865">
+    <div class="segment-number">#183</div>
+    <div class="segment-time">932.689 &rarr; 933.865</div>
+    <div class="segment-text">Diga eu entendo.</div>
+</div>
+<div class="segment" data-index="183" data-start="936.873" data-end="937.733">
+    <div class="segment-number">#184</div>
+    <div class="segment-time">936.873 &rarr; 937.733</div>
+    <div class="segment-text">I understand.</div>
+</div>
+<div class="segment" data-index="184" data-start="937.846" data-end="941.448">
+    <div class="segment-number">#185</div>
+    <div class="segment-time">937.846 &rarr; 941.448</div>
+    <div class="segment-text">Diga eu</div>
+</div>
+<div class="segment" data-index="185" data-start="941.577" data-end="942.417">
+    <div class="segment-number">#186</div>
+    <div class="segment-time">941.577 &rarr; 942.417</div>
+    <div class="segment-text">entendo inglês.</div>
+</div>
+<div class="segment" data-index="186" data-start="946.713" data-end="948.149">
+    <div class="segment-number">#187</div>
+    <div class="segment-time">946.713 &rarr; 948.149</div>
+    <div class="segment-text">I understand English.</div>
+</div>
+<div class="segment" data-index="187" data-start="952.376" data-end="953.811">
+    <div class="segment-number">#188</div>
+    <div class="segment-time">952.376 &rarr; 953.811</div>
+    <div class="segment-text">I understand English.</div>
+</div>
+<div class="segment" data-index="188" data-start="958.107" data-end="960.413">
+    <div class="segment-number">#189</div>
+    <div class="segment-time">958.107 &rarr; 960.413</div>
+    <div class="segment-text">E agora diga-me que você não entende inglês.</div>
+</div>
+<div class="segment" data-index="189" data-start="965.486" data-end="967.244">
+    <div class="segment-number">#190</div>
+    <div class="segment-time">965.486 &rarr; 967.244</div>
+    <div class="segment-text">I don't understand English.</div>
+</div>
+<div class="segment" data-index="190" data-start="972.343" data-end="974.029">
+    <div class="segment-number">#191</div>
+    <div class="segment-time">972.343 &rarr; 974.029</div>
+    <div class="segment-text">I don't understand English.</div>
+</div>
+<div class="segment" data-index="191" data-start="979.27" data-end="980.725">
+    <div class="segment-number">#192</div>
+    <div class="segment-time">979.270 &rarr; 980.725</div>
+    <div class="segment-text">Diga, você entende inglês?</div>
+</div>
+<div class="segment" data-index="192" data-start="985.446" data-end="986.866">
+    <div class="segment-number">#193</div>
+    <div class="segment-time">985.446 &rarr; 986.866</div>
+    <div class="segment-text">You understand English.</div>
+</div>
+<div class="segment" data-index="193" data-start="991.48" data-end="992.783">
+    <div class="segment-number">#194</div>
+    <div class="segment-time">991.480 &rarr; 992.783</div>
+    <div class="segment-text">You understand English.</div>
+</div>
+<div class="segment" data-index="194" data-start="997.42" data-end="998.367">
+    <div class="segment-number">#195</div>
+    <div class="segment-time">997.420 &rarr; 998.367</div>
+    <div class="segment-text">Diga com licença.</div>
+</div>
+<div class="segment" data-index="195" data-start="1001.116" data-end="1004.699">
+    <div class="segment-number">#196</div>
+    <div class="segment-time">1001.116 &rarr; 1004.699</div>
+    <div class="segment-text">Excuse me. Excuse me,</div>
+</div>
+<div class="segment" data-index="196" data-start="1004.748" data-end="1004.958">
+    <div class="segment-number">#197</div>
+    <div class="segment-time">1004.748 &rarr; 1004.958</div>
+    <div class="segment-text">sir.</div>
+</div>
+<div class="segment" data-index="197" data-start="1008.086" data-end="1009.789">
+    <div class="segment-number">#198</div>
+    <div class="segment-time">1008.086 &rarr; 1009.789</div>
+    <div class="segment-text">Pergunte-me se eu entendo inglês.</div>
+</div>
+<div class="segment" data-index="198" data-start="1013.83" data-end="1015.367">
+    <div class="segment-number">#199</div>
+    <div class="segment-time">1013.830 &rarr; 1015.367</div>
+    <div class="segment-text">Do you understand English?</div>
+</div>
+<div class="segment" data-index="199" data-start="1019.166" data-end="1020.698">
+    <div class="segment-number">#200</div>
+    <div class="segment-time">1019.166 &rarr; 1020.698</div>
+    <div class="segment-text">Do you understand English?</div>
+</div>
+<div class="segment" data-index="200" data-start="1024.51" data-end="1027.823">
+    <div class="segment-number">#201</div>
+    <div class="segment-time">1024.510 &rarr; 1027.823</div>
+    <div class="segment-text">É assim que se diz um pouco. Escute e repita.</div>
+</div>
+<div class="segment" data-index="201" data-start="1028.684" data-end="1032.078">
+    <div class="segment-number">#202</div>
+    <div class="segment-time">1028.684 &rarr; 1032.078</div>
+    <div class="segment-text">A little. A little.</div>
+</div>
+<div class="segment" data-index="202" data-start="1032.828" data-end="1036.885">
+    <div class="segment-number">#203</div>
+    <div class="segment-time">1032.828 &rarr; 1036.885</div>
+    <div class="segment-text">L,</div>
+</div>
+<div class="segment" data-index="203" data-start="1036.933" data-end="1037.046">
+    <div class="segment-number">#204</div>
+    <div class="segment-time">1036.933 &rarr; 1037.046</div>
+    <div class="segment-text">l,</div>
+</div>
+<div class="segment" data-index="204" data-start="1039.524" data-end="1042.564">
+    <div class="segment-number">#205</div>
+    <div class="segment-time">1039.524 &rarr; 1042.564</div>
+    <div class="segment-text">l,</div>
+</div>
+<div class="segment" data-index="205" data-start="1045.598" data-end="1048.35">
+    <div class="segment-number">#206</div>
+    <div class="segment-time">1045.598 &rarr; 1048.350</div>
+    <div class="segment-text">little. A, a,</div>
+</div>
+<div class="segment" data-index="206" data-start="1050.792" data-end="1051.39">
+    <div class="segment-number">#207</div>
+    <div class="segment-time">1050.792 &rarr; 1051.390</div>
+    <div class="segment-text">a little,</div>
+</div>
+<div class="segment" data-index="207" data-start="1054.346" data-end="1058.417">
+    <div class="segment-number">#208</div>
+    <div class="segment-time">1054.346 &rarr; 1058.417</div>
+    <div class="segment-text">a little. Chiga um</div>
+</div>
+<div class="segment" data-index="208" data-start="1058.53" data-end="1062.226">
+    <div class="segment-number">#209</div>
+    <div class="segment-time">1058.530 &rarr; 1062.226</div>
+    <div class="segment-text">pouco. A little.</div>
+</div>
+<div class="segment" data-index="209" data-start="1064.216" data-end="1066.837">
+    <div class="segment-number">#210</div>
+    <div class="segment-time">1064.216 &rarr; 1066.837</div>
+    <div class="segment-text">Agora tente dizer eu entendo um pouco.</div>
+</div>
+<div class="segment" data-index="210" data-start="1071.062" data-end="1072.474">
+    <div class="segment-number">#211</div>
+    <div class="segment-time">1071.062 &rarr; 1072.474</div>
+    <div class="segment-text">I understand a little.</div>
+</div>
+<div class="segment" data-index="211" data-start="1076.802" data-end="1078.151">
+    <div class="segment-number">#212</div>
+    <div class="segment-time">1076.802 &rarr; 1078.151</div>
+    <div class="segment-text">I understand a little.</div>
+</div>
+<div class="segment" data-index="212" data-start="1082.526" data-end="1083.891">
+    <div class="segment-number">#213</div>
+    <div class="segment-time">1082.526 &rarr; 1083.891</div>
+    <div class="segment-text">Diga eu entendo inglês.</div>
+</div>
+<div class="segment" data-index="213" data-start="1087.947" data-end="1089.345">
+    <div class="segment-number">#214</div>
+    <div class="segment-time">1087.947 &rarr; 1089.345</div>
+    <div class="segment-text">I understand English.</div>
+</div>
+<div class="segment" data-index="214" data-start="1093.492" data-end="1094.811">
+    <div class="segment-number">#215</div>
+    <div class="segment-time">1093.492 &rarr; 1094.811</div>
+    <div class="segment-text">I understand English.</div>
+</div>
+<div class="segment" data-index="215" data-start="1098.946" data-end="1104.471">
+    <div class="segment-number">#216</div>
+    <div class="segment-time">1098.946 &rarr; 1104.471</div>
+    <div class="segment-text">Diga um pouco. A little.</div>
+</div>
+<div class="segment" data-index="216" data-start="1105.152" data-end="1108.588">
+    <div class="segment-number">#217</div>
+    <div class="segment-time">1105.152 &rarr; 1108.588</div>
+    <div class="segment-text">Tente dizer um pouco de inglês. Literalmente se</div>
+</div>
+<div class="segment" data-index="217" data-start="1108.636" data-end="1110.062">
+    <div class="segment-number">#218</div>
+    <div class="segment-time">1108.636 &rarr; 1110.062</div>
+    <div class="segment-text">diz um pouco inglês.</div>
+</div>
+<div class="segment" data-index="218" data-start="1113.345" data-end="1114.406">
+    <div class="segment-number">#219</div>
+    <div class="segment-time">1113.345 &rarr; 1114.406</div>
+    <div class="segment-text">A little English.</div>
+</div>
+<div class="segment" data-index="219" data-start="1117.605" data-end="1118.682">
+    <div class="segment-number">#220</div>
+    <div class="segment-time">1117.605 &rarr; 1118.682</div>
+    <div class="segment-text">A little English.</div>
+</div>
+<div class="segment" data-index="220" data-start="1122.06" data-end="1124.19">
+    <div class="segment-number">#221</div>
+    <div class="segment-time">1122.060 &rarr; 1124.190</div>
+    <div class="segment-text">Diga-me que você entende um pouco de inglês.</div>
+</div>
+<div class="segment" data-index="221" data-start="1129.496" data-end="1131.337">
+    <div class="segment-number">#222</div>
+    <div class="segment-time">1129.496 &rarr; 1131.337</div>
+    <div class="segment-text">I understand a little English.</div>
+</div>
+<div class="segment" data-index="222" data-start="1136.709" data-end="1138.599">
+    <div class="segment-number">#223</div>
+    <div class="segment-time">1136.709 &rarr; 1138.599</div>
+    <div class="segment-text">I understand a little English.</div>
+</div>
+<div class="segment" data-index="223" data-start="1144.19" data-end="1147.264">
+    <div class="segment-number">#224</div>
+    <div class="segment-time">1144.190 &rarr; 1147.264</div>
+    <div class="segment-text">Agora, a moça quer te perguntar: Você é brasileiro?</div>
+</div>
+<div class="segment" data-index="224" data-start="1147.947" data-end="1149.948">
+    <div class="segment-number">#225</div>
+    <div class="segment-time">1147.947 &rarr; 1149.948</div>
+    <div class="segment-text">Escute e repita a palavra brasileiro.</div>
+</div>
+<div class="segment" data-index="225" data-start="1151.026" data-end="1151.398">
+    <div class="segment-number">#226</div>
+    <div class="segment-time">1151.026 &rarr; 1151.398</div>
+    <div class="segment-text">Brazilian.</div>
+</div>
+<div class="segment" data-index="226" data-start="1154.019" data-end="1156.899">
+    <div class="segment-number">#227</div>
+    <div class="segment-time">1154.019 &rarr; 1156.899</div>
+    <div class="segment-text">Yun. Yun.</div>
+</div>
+<div class="segment" data-index="227" data-start="1159.439" data-end="1159.568">
+    <div class="segment-number">#228</div>
+    <div class="segment-time">1159.439 &rarr; 1159.568</div>
+    <div class="segment-text">Zi.</div>
+</div>
+<div class="segment" data-index="228" data-start="1164.517" data-end="1166.807">
+    <div class="segment-number">#229</div>
+    <div class="segment-time">1164.517 &rarr; 1166.807</div>
+    <div class="segment-text">Brazilian. Bruh.</div>
+</div>
+<div class="segment" data-index="229" data-start="1168.769" data-end="1172.384">
+    <div class="segment-number">#230</div>
+    <div class="segment-time">1168.769 &rarr; 1172.384</div>
+    <div class="segment-text">Bruh. Brazilian. Brazilian.</div>
+</div>
+<div class="segment" data-index="230" data-start="1175.06" data-end="1178.683">
+    <div class="segment-number">#231</div>
+    <div class="segment-time">1175.060 &rarr; 1178.683</div>
+    <div class="segment-text">Diga brasileiro. Brazilian.</div>
+</div>
+<div class="segment" data-index="231" data-start="1181.158" data-end="1184.421">
+    <div class="segment-number">#232</div>
+    <div class="segment-time">1181.158 &rarr; 1184.421</div>
+    <div class="segment-text">É assim que se diz você é. Escute e repita.</div>
+</div>
+<div class="segment" data-index="232" data-start="1185.355" data-end="1188.446">
+    <div class="segment-number">#233</div>
+    <div class="segment-time">1185.355 &rarr; 1188.446</div>
+    <div class="segment-text">You are. Are,</div>
+</div>
+<div class="segment" data-index="233" data-start="1190.755" data-end="1193.612">
+    <div class="segment-number">#234</div>
+    <div class="segment-time">1190.755 &rarr; 1193.612</div>
+    <div class="segment-text">are you?</div>
+</div>
+<div class="segment" data-index="234" data-start="1195.824" data-end="1198.86">
+    <div class="segment-number">#235</div>
+    <div class="segment-time">1195.824 &rarr; 1198.860</div>
+    <div class="segment-text">You are, you are.</div>
+</div>
+<div class="segment" data-index="235" data-start="1201.153" data-end="1202.494">
+    <div class="segment-number">#236</div>
+    <div class="segment-time">1201.153 &rarr; 1202.494</div>
+    <div class="segment-text">Diga, você é?</div>
+</div>
+<div class="segment" data-index="236" data-start="1204.626" data-end="1207.671">
+    <div class="segment-number">#237</div>
+    <div class="segment-time">1204.626 &rarr; 1207.671</div>
+    <div class="segment-text">You are. Diga,</div>
+</div>
+<div class="segment" data-index="237" data-start="1208.108" data-end="1209.21">
+    <div class="segment-number">#238</div>
+    <div class="segment-time">1208.108 &rarr; 1209.210</div>
+    <div class="segment-text">você é brasileiro?</div>
+</div>
+<div class="segment" data-index="238" data-start="1211.996" data-end="1212.692">
+    <div class="segment-number">#239</div>
+    <div class="segment-time">1211.996 &rarr; 1212.692</div>
+    <div class="segment-text">You are Brazilian.</div>
+</div>
+<div class="segment" data-index="239" data-start="1215.596" data-end="1216.496">
+    <div class="segment-number">#240</div>
+    <div class="segment-time">1215.596 &rarr; 1216.496</div>
+    <div class="segment-text">You are Brazilian.</div>
+</div>
+<div class="segment" data-index="240" data-start="1219.213" data-end="1221.109">
+    <div class="segment-number">#241</div>
+    <div class="segment-time">1219.213 &rarr; 1221.109</div>
+    <div class="segment-text">Diga outra vez: Você é?</div>
+</div>
+<div class="segment" data-index="241" data-start="1223.262" data-end="1226.588">
+    <div class="segment-number">#242</div>
+    <div class="segment-time">1223.262 &rarr; 1226.588</div>
+    <div class="segment-text">You are? Para perguntar</div>
+</div>
+<div class="segment" data-index="242" data-start="1227.021" data-end="1230.363">
+    <div class="segment-number">#243</div>
+    <div class="segment-time">1227.021 &rarr; 1230.363</div>
+    <div class="segment-text">Você é?, você inverte as duas palavras em inglês.</div>
+</div>
+<div class="segment" data-index="243" data-start="1230.733" data-end="1233.489">
+    <div class="segment-number">#244</div>
+    <div class="segment-time">1230.733 &rarr; 1233.489</div>
+    <div class="segment-text">Agora, tente perguntar: Você é brasileiro?</div>
+</div>
+<div class="segment" data-index="244" data-start="1237.27" data-end="1237.91">
+    <div class="segment-number">#245</div>
+    <div class="segment-time">1237.270 &rarr; 1237.910</div>
+    <div class="segment-text">Are you Brazilian?</div>
+</div>
+<div class="segment" data-index="245" data-start="1238.748" data-end="1242.562">
+    <div class="segment-number">#246</div>
+    <div class="segment-time">1238.748 &rarr; 1242.562</div>
+    <div class="segment-text">Are you?</div>
+</div>
+<div class="segment" data-index="246" data-start="1244.656" data-end="1245.581">
+    <div class="segment-number">#247</div>
+    <div class="segment-time">1244.656 &rarr; 1245.581</div>
+    <div class="segment-text">Are you Brazilian?</div>
+</div>
+<div class="segment" data-index="247" data-start="1248.8" data-end="1249.745">
+    <div class="segment-number">#248</div>
+    <div class="segment-time">1248.800 &rarr; 1249.745</div>
+    <div class="segment-text">Diga com licença.</div>
+</div>
+<div class="segment" data-index="248" data-start="1252.56" data-end="1256.669">
+    <div class="segment-number">#249</div>
+    <div class="segment-time">1252.560 &rarr; 1256.669</div>
+    <div class="segment-text">Excuse me. Pergunte: Você</div>
+</div>
+<div class="segment" data-index="249" data-start="1257.169" data-end="1257.419">
+    <div class="segment-number">#250</div>
+    <div class="segment-time">1257.169 &rarr; 1257.419</div>
+    <div class="segment-text">entende inglês?</div>
+</div>
+<div class="segment" data-index="250" data-start="1261.576" data-end="1263.002">
+    <div class="segment-number">#251</div>
+    <div class="segment-time">1261.576 &rarr; 1263.002</div>
+    <div class="segment-text">Do you understand English?</div>
+</div>
+<div class="segment" data-index="251" data-start="1267.239" data-end="1268.743">
+    <div class="segment-number">#252</div>
+    <div class="segment-time">1267.239 &rarr; 1268.743</div>
+    <div class="segment-text">Do you understand English?</div>
+</div>
+<div class="segment" data-index="252" data-start="1273.306" data-end="1275.245">
+    <div class="segment-number">#253</div>
+    <div class="segment-time">1273.306 &rarr; 1275.245</div>
+    <div class="segment-text">Pergunte: Você entende português?</div>
+</div>
+<div class="segment" data-index="253" data-start="1279.311" data-end="1281.069">
+    <div class="segment-number">#254</div>
+    <div class="segment-time">1279.311 &rarr; 1281.069</div>
+    <div class="segment-text">Do you understand Portuguese?</div>
+</div>
+<div class="segment" data-index="254" data-start="1284.991" data-end="1287.084">
+    <div class="segment-number">#255</div>
+    <div class="segment-time">1284.991 &rarr; 1287.084</div>
+    <div class="segment-text">Pergunte: Você é brasileiro?</div>
+</div>
+<div class="segment" data-index="255" data-start="1290.2" data-end="1290.937">
+    <div class="segment-number">#256</div>
+    <div class="segment-time">1290.200 &rarr; 1290.937</div>
+    <div class="segment-text">Are you Brazilian?</div>
+</div>
+<div class="segment" data-index="256" data-start="1294.0" data-end="1296.887">
+    <div class="segment-number">#257</div>
+    <div class="segment-time">1294.000 &rarr; 1296.887</div>
+    <div class="segment-text">Aqui está a palavra para sim. Escute e repita.</div>
+</div>
+<div class="segment" data-index="257" data-start="1300.698" data-end="1303.98">
+    <div class="segment-number">#258</div>
+    <div class="segment-time">1300.698 &rarr; 1303.980</div>
+    <div class="segment-text">Yes. Yes. Yes.</div>
+</div>
+<div class="segment" data-index="258" data-start="1306.596" data-end="1310.725">
+    <div class="segment-number">#259</div>
+    <div class="segment-time">1306.596 &rarr; 1310.725</div>
+    <div class="segment-text">Preste atenção ao som no princípio de yes. Como se</div>
+</div>
+<div class="segment" data-index="259" data-start="1311.225" data-end="1312.202">
+    <div class="segment-number">#260</div>
+    <div class="segment-time">1311.225 &rarr; 1312.202</div>
+    <div class="segment-text">diz sim em inglês?</div>
+</div>
+<div class="segment" data-index="260" data-start="1314.82" data-end="1315.105">
+    <div class="segment-number">#261</div>
+    <div class="segment-time">1314.820 &rarr; 1315.105</div>
+    <div class="segment-text">Yes.</div>
+</div>
+<div class="segment" data-index="261" data-start="1320.71" data-end="1322.76">
+    <div class="segment-number">#262</div>
+    <div class="segment-time">1320.710 &rarr; 1322.760</div>
+    <div class="segment-text">Yes. Escute e repita a palavra senhorita.</div>
+</div>
+<div class="segment" data-index="262" data-start="1324.33" data-end="1327.116">
+    <div class="segment-number">#263</div>
+    <div class="segment-time">1324.330 &rarr; 1327.116</div>
+    <div class="segment-text">Miss. Miss.</div>
+</div>
+<div class="segment" data-index="263" data-start="1329.821" data-end="1333.445">
+    <div class="segment-number">#264</div>
+    <div class="segment-time">1329.821 &rarr; 1333.445</div>
+    <div class="segment-text">Miss. Agora diga</div>
+</div>
+<div class="segment" data-index="264" data-start="1333.768" data-end="1334.63">
+    <div class="segment-number">#265</div>
+    <div class="segment-time">1333.768 &rarr; 1334.630</div>
+    <div class="segment-text">sim, senhorita.</div>
+</div>
+<div class="segment" data-index="265" data-start="1337.666" data-end="1338.298">
+    <div class="segment-number">#266</div>
+    <div class="segment-time">1337.666 &rarr; 1338.298</div>
+    <div class="segment-text">Yes, miss.</div>
+</div>
+<div class="segment" data-index="266" data-start="1342.44" data-end="1344.841">
+    <div class="segment-number">#267</div>
+    <div class="segment-time">1342.440 &rarr; 1344.841</div>
+    <div class="segment-text">Yes, Miss.</div>
+</div>
+<div class="segment" data-index="267" data-start="1345.56" data-end="1347.602">
+    <div class="segment-number">#268</div>
+    <div class="segment-time">1345.560 &rarr; 1347.602</div>
+    <div class="segment-text">Pergunte ao homem: Você é brasileiro?</div>
+</div>
+<div class="segment" data-index="268" data-start="1351.363" data-end="1352.271">
+    <div class="segment-number">#269</div>
+    <div class="segment-time">1351.363 &rarr; 1352.271</div>
+    <div class="segment-text">Are you Brazilian?</div>
+</div>
+<div class="segment" data-index="269" data-start="1355.916" data-end="1356.761">
+    <div class="segment-number">#270</div>
+    <div class="segment-time">1355.916 &rarr; 1356.761</div>
+    <div class="segment-text">Are you Brazilian?</div>
+</div>
+<div class="segment" data-index="270" data-start="1360.236" data-end="1362.004">
+    <div class="segment-number">#271</div>
+    <div class="segment-time">1360.236 &rarr; 1362.004</div>
+    <div class="segment-text">Responda: Sim, senhorita.</div>
+</div>
+<div class="segment" data-index="271" data-start="1364.941" data-end="1365.63">
+    <div class="segment-number">#272</div>
+    <div class="segment-time">1364.941 &rarr; 1365.630</div>
+    <div class="segment-text">Yes, Miss.</div>
+</div>
+<div class="segment" data-index="272" data-start="1368.691" data-end="1369.288">
+    <div class="segment-number">#273</div>
+    <div class="segment-time">1368.691 &rarr; 1369.288</div>
+    <div class="segment-text">Yes, Miss.</div>
+</div>
+<div class="segment" data-index="273" data-start="1372.321" data-end="1374.629">
+    <div class="segment-number">#274</div>
+    <div class="segment-time">1372.321 &rarr; 1374.629</div>
+    <div class="segment-text">Pergunte-lhe: Você entende português?</div>
+</div>
+<div class="segment" data-index="274" data-start="1379.59" data-end="1381.502">
+    <div class="segment-number">#275</div>
+    <div class="segment-time">1379.590 &rarr; 1381.502</div>
+    <div class="segment-text">Do you understand Portuguese?</div>
+</div>
+<div class="segment" data-index="275" data-start="1386.425" data-end="1388.267">
+    <div class="segment-number">#276</div>
+    <div class="segment-time">1386.425 &rarr; 1388.267</div>
+    <div class="segment-text">Do you understand Portuguese?</div>
+</div>
+<div class="segment" data-index="276" data-start="1393.345" data-end="1395.281">
+    <div class="segment-number">#277</div>
+    <div class="segment-time">1393.345 &rarr; 1395.281</div>
+    <div class="segment-text">Responda não, eu não entendo.</div>
+</div>
+<div class="segment" data-index="277" data-start="1399.996" data-end="1401.205">
+    <div class="segment-number">#278</div>
+    <div class="segment-time">1399.996 &rarr; 1401.205</div>
+    <div class="segment-text">No, I don't understand.</div>
+</div>
+<div class="segment" data-index="278" data-start="1405.696" data-end="1407.411">
+    <div class="segment-number">#279</div>
+    <div class="segment-time">1405.696 &rarr; 1407.411</div>
+    <div class="segment-text">No, I don't understand.</div>
+</div>
+<div class="segment" data-index="279" data-start="1411.779" data-end="1413.057">
+    <div class="segment-number">#280</div>
+    <div class="segment-time">1411.779 &rarr; 1413.057</div>
+    <div class="segment-text">Eu não entendo português.</div>
+</div>
+<div class="segment" data-index="280" data-start="1417.275" data-end="1418.64">
+    <div class="segment-number">#281</div>
+    <div class="segment-time">1417.275 &rarr; 1418.640</div>
+    <div class="segment-text">I don't understand Portuguese.</div>
+</div>
+<div class="segment" data-index="281" data-start="1422.858" data-end="1424.917">
+    <div class="segment-number">#282</div>
+    <div class="segment-time">1422.858 &rarr; 1424.917</div>
+    <div class="segment-text">Diga, eu entendo um pouco de inglês.</div>
+</div>
+<div class="segment" data-index="282" data-start="1429.853" data-end="1431.476">
+    <div class="segment-number">#283</div>
+    <div class="segment-time">1429.853 &rarr; 1431.476</div>
+    <div class="segment-text">I understand a little English.</div>
+</div>
+<div class="segment" data-index="283" data-start="1436.295" data-end="1437.9">
+    <div class="segment-number">#284</div>
+    <div class="segment-time">1436.295 &rarr; 1437.900</div>
+    <div class="segment-text">I understand a little English.</div>
+</div>
+<div class="segment" data-index="284" data-start="1442.733" data-end="1446.248">
+    <div class="segment-number">#285</div>
+    <div class="segment-time">1442.733 &rarr; 1446.248</div>
+    <div class="segment-text">Agora escute esta conversa em inglês. É a mesma</div>
+</div>
+<div class="segment" data-index="285" data-start="1446.748" data-end="1449.188">
+    <div class="segment-number">#286</div>
+    <div class="segment-time">1446.748 &rarr; 1449.188</div>
+    <div class="segment-text">que você escutou no início da lição, há alguns minutos.</div>
+</div>
+<div class="segment" data-index="286" data-start="1450.73" data-end="1453.789">
+    <div class="segment-number">#287</div>
+    <div class="segment-time">1450.730 &rarr; 1453.789</div>
+    <div class="segment-text">Excuse me, miss. Do you understand Portuguese?</div>
+</div>
+<div class="segment" data-index="287" data-start="1454.469" data-end="1458.29">
+    <div class="segment-number">#288</div>
+    <div class="segment-time">1454.469 &rarr; 1458.290</div>
+    <div class="segment-text">No, sir. I don't understand Portuguese. I understand</div>
+</div>
+<div class="segment" data-index="288" data-start="1458.79" data-end="1461.601">
+    <div class="segment-number">#289</div>
+    <div class="segment-time">1458.790 &rarr; 1461.601</div>
+    <div class="segment-text">a little English. Are you Brazilian? Yes, miss.</div>
+</div>
+<div class="segment" data-index="289" data-start="1462.931" data-end="1465.883">
+    <div class="segment-number">#290</div>
+    <div class="segment-time">1462.931 &rarr; 1465.883</div>
+    <div class="segment-text">Escute outra vez. Excuse me,</div>
+</div>
+<div class="segment" data-index="290" data-start="1465.932" data-end="1469.204">
+    <div class="segment-number">#291</div>
+    <div class="segment-time">1465.932 &rarr; 1469.204</div>
+    <div class="segment-text">miss. Do you understand Portuguese? No,</div>
+</div>
+<div class="segment" data-index="291" data-start="1469.367" data-end="1473.001">
+    <div class="segment-number">#292</div>
+    <div class="segment-time">1469.367 &rarr; 1473.001</div>
+    <div class="segment-text">sir. I don't understand Portuguese. I understand a</div>
+</div>
+<div class="segment" data-index="292" data-start="1473.501" data-end="1476.264">
+    <div class="segment-number">#293</div>
+    <div class="segment-time">1473.501 &rarr; 1476.264</div>
+    <div class="segment-text">little English. Are you Brazilian? Yes, Miss.</div>
+</div>
+<div class="segment" data-index="293" data-start="1477.357" data-end="1481.04">
+    <div class="segment-number">#294</div>
+    <div class="segment-time">1477.357 &rarr; 1481.040</div>
+    <div class="segment-text">Agora imagine que você está sentado ao lado de uma jovem americana.</div>
+</div>
+<div class="segment" data-index="294" data-start="1481.847" data-end="1484.721">
+    <div class="segment-number">#295</div>
+    <div class="segment-time">1481.847 &rarr; 1484.721</div>
+    <div class="segment-text">Você quer conversar com ela. O que você lhe diz?</div>
+</div>
+<div class="segment" data-index="295" data-start="1487.792" data-end="1488.632">
+    <div class="segment-number">#296</div>
+    <div class="segment-time">1487.792 &rarr; 1488.632</div>
+    <div class="segment-text">Excuse me.</div>
+</div>
+<div class="segment" data-index="296" data-start="1491.833" data-end="1492.996">
+    <div class="segment-number">#297</div>
+    <div class="segment-time">1491.833 &rarr; 1492.996</div>
+    <div class="segment-text">Excuse me, Miss.</div>
+</div>
+<div class="segment" data-index="297" data-start="1496.176" data-end="1499.4">
+    <div class="segment-number">#298</div>
+    <div class="segment-time">1496.176 &rarr; 1499.400</div>
+    <div class="segment-text">Ela não te responde. Pergunte-lhe se ela entende.</div>
+</div>
+<div class="segment" data-index="298" data-start="1503.18" data-end="1503.954">
+    <div class="segment-number">#299</div>
+    <div class="segment-time">1503.180 &rarr; 1503.954</div>
+    <div class="segment-text">Do you understand?</div>
+</div>
+<div class="segment" data-index="299" data-start="1508.108" data-end="1509.191">
+    <div class="segment-number">#300</div>
+    <div class="segment-time">1508.108 &rarr; 1509.191</div>
+    <div class="segment-text">Do you understand?</div>
+</div>
+<div class="segment" data-index="300" data-start="1513.194" data-end="1516.64">
+    <div class="segment-number">#301</div>
+    <div class="segment-time">1513.194 &rarr; 1516.640</div>
+    <div class="segment-text">Ainda não há uma resposta. Agora, pergunte-lhe se ela</div>
+</div>
+<div class="segment" data-index="301" data-start="1517.14" data-end="1517.657">
+    <div class="segment-number">#302</div>
+    <div class="segment-time">1517.140 &rarr; 1517.657</div>
+    <div class="segment-text">entende português.</div>
+</div>
+<div class="segment" data-index="302" data-start="1522.442" data-end="1523.961">
+    <div class="segment-number">#303</div>
+    <div class="segment-time">1522.442 &rarr; 1523.961</div>
+    <div class="segment-text">Do you understand Portuguese?</div>
+</div>
+<div class="segment" data-index="303" data-start="1529.018" data-end="1530.826">
+    <div class="segment-number">#304</div>
+    <div class="segment-time">1529.018 &rarr; 1530.826</div>
+    <div class="segment-text">Do you understand Portuguese?</div>
+</div>
+<div class="segment" data-index="304" data-start="1535.321" data-end="1537.309">
+    <div class="segment-number">#305</div>
+    <div class="segment-time">1535.321 &rarr; 1537.309</div>
+    <div class="segment-text">Como ela responde não, senhor?</div>
+</div>
+<div class="segment" data-index="305" data-start="1539.986" data-end="1543.414">
+    <div class="segment-number">#306</div>
+    <div class="segment-time">1539.986 &rarr; 1543.414</div>
+    <div class="segment-text">No, sir. No, sir.</div>
+</div>
+<div class="segment" data-index="306" data-start="1546.022" data-end="1548.066">
+    <div class="segment-number">#307</div>
+    <div class="segment-time">1546.022 &rarr; 1548.066</div>
+    <div class="segment-text">Como ela te diz que não entende o português?</div>
+</div>
+<div class="segment" data-index="307" data-start="1552.789" data-end="1554.512">
+    <div class="segment-number">#308</div>
+    <div class="segment-time">1552.789 &rarr; 1554.512</div>
+    <div class="segment-text">I don't understand Portuguese.</div>
+</div>
+<div class="segment" data-index="308" data-start="1559.069" data-end="1560.75">
+    <div class="segment-number">#309</div>
+    <div class="segment-time">1559.069 &rarr; 1560.750</div>
+    <div class="segment-text">I don't understand Portuguese.</div>
+</div>
+<div class="segment" data-index="309" data-start="1565.236" data-end="1567.593">
+    <div class="segment-number">#310</div>
+    <div class="segment-time">1565.236 &rarr; 1567.593</div>
+    <div class="segment-text">Como ela te pergunta se você entende inglês?</div>
+</div>
+<div class="segment" data-index="310" data-start="1571.509" data-end="1573.022">
+    <div class="segment-number">#311</div>
+    <div class="segment-time">1571.509 &rarr; 1573.022</div>
+    <div class="segment-text">Do you understand English?</div>
+</div>
+<div class="segment" data-index="311" data-start="1577.117" data-end="1578.8">
+    <div class="segment-number">#312</div>
+    <div class="segment-time">1577.117 &rarr; 1578.800</div>
+    <div class="segment-text">Do you understand English, sir?</div>
+</div>
+<div class="segment" data-index="312" data-start="1583.03" data-end="1584.526">
+    <div class="segment-number">#313</div>
+    <div class="segment-time">1583.030 &rarr; 1584.526</div>
+    <div class="segment-text">Diga-lhe que você entende um pouco.</div>
+</div>
+<div class="segment" data-index="313" data-start="1588.206" data-end="1589.55">
+    <div class="segment-number">#314</div>
+    <div class="segment-time">1588.206 &rarr; 1589.550</div>
+    <div class="segment-text">I understand a little.</div>
+</div>
+<div class="segment" data-index="314" data-start="1593.643" data-end="1594.834">
+    <div class="segment-number">#315</div>
+    <div class="segment-time">1593.643 &rarr; 1594.834</div>
+    <div class="segment-text">I understand a little.</div>
+</div>
+<div class="segment" data-index="315" data-start="1599.167" data-end="1602.345">
+    <div class="segment-number">#316</div>
+    <div class="segment-time">1599.167 &rarr; 1602.345</div>
+    <div class="segment-text">Ela quer te perguntar se você é brasileiro. O que ela</div>
+</div>
+<div class="segment" data-index="316" data-start="1602.427" data-end="1602.559">
+    <div class="segment-number">#317</div>
+    <div class="segment-time">1602.427 &rarr; 1602.559</div>
+    <div class="segment-text">diz?</div>
+</div>
+<div class="segment" data-index="317" data-start="1606.167" data-end="1607.023">
+    <div class="segment-number">#318</div>
+    <div class="segment-time">1606.167 &rarr; 1607.023</div>
+    <div class="segment-text">Are you Brazilian?</div>
+</div>
+<div class="segment" data-index="318" data-start="1610.343" data-end="1611.129">
+    <div class="segment-number">#319</div>
+    <div class="segment-time">1610.343 &rarr; 1611.129</div>
+    <div class="segment-text">Are you Brazilian?</div>
+</div>
+<div class="segment" data-index="319" data-start="1614.606" data-end="1615.73">
+    <div class="segment-number">#320</div>
+    <div class="segment-time">1614.606 &rarr; 1615.730</div>
+    <div class="segment-text">Diga-lhe sim, senhorita.</div>
+</div>
+<div class="segment" data-index="320" data-start="1618.746" data-end="1619.423">
+    <div class="segment-number">#321</div>
+    <div class="segment-time">1618.746 &rarr; 1619.423</div>
+    <div class="segment-text">Yes, miss.</div>
+</div>
+<div class="segment" data-index="321" data-start="1622.538" data-end="1626.62">
+    <div class="segment-number">#322</div>
+    <div class="segment-time">1622.538 &rarr; 1626.620</div>
+    <div class="segment-text">Vamos tentar esta conversa outra vez. Diga à moça: com licença.</div>
+</div>
+<div class="segment" data-index="322" data-start="1629.733" data-end="1630.554">
+    <div class="segment-number">#323</div>
+    <div class="segment-time">1629.733 &rarr; 1630.554</div>
+    <div class="segment-text">Excuse me.</div>
+</div>
+<div class="segment" data-index="323" data-start="1634.239" data-end="1635.398">
+    <div class="segment-number">#324</div>
+    <div class="segment-time">1634.239 &rarr; 1635.398</div>
+    <div class="segment-text">Excuse me, miss.</div>
+</div>
+<div class="segment" data-index="324" data-start="1639.436" data-end="1642.181">
+    <div class="segment-number">#325</div>
+    <div class="segment-time">1639.436 &rarr; 1642.181</div>
+    <div class="segment-text">Ela não te responde. Pergunte-lhe se ela entende.</div>
+</div>
+<div class="segment" data-index="325" data-start="1645.358" data-end="1646.132">
+    <div class="segment-number">#326</div>
+    <div class="segment-time">1645.358 &rarr; 1646.132</div>
+    <div class="segment-text">Do you understand?</div>
+</div>
+<div class="segment" data-index="326" data-start="1650.555" data-end="1654.9">
+    <div class="segment-number">#327</div>
+    <div class="segment-time">1650.555 &rarr; 1654.900</div>
+    <div class="segment-text">Ainda não há uma resposta. Agora pergunte-lhe se ela entende português.</div>
+</div>
+<div class="segment" data-index="327" data-start="1658.944" data-end="1660.686">
+    <div class="segment-number">#328</div>
+    <div class="segment-time">1658.944 &rarr; 1660.686</div>
+    <div class="segment-text">Do you understand Portuguese?</div>
+</div>
+<div class="segment" data-index="328" data-start="1665.636" data-end="1667.21">
+    <div class="segment-number">#329</div>
+    <div class="segment-time">1665.636 &rarr; 1667.210</div>
+    <div class="segment-text">Como ela responde não senhor?</div>
+</div>
+<div class="segment" data-index="329" data-start="1669.916" data-end="1670.288">
+    <div class="segment-number">#330</div>
+    <div class="segment-time">1669.916 &rarr; 1670.288</div>
+    <div class="segment-text">No sir.</div>
+</div>
+<div class="segment" data-index="330" data-start="1672.992" data-end="1676.473">
+    <div class="segment-number">#331</div>
+    <div class="segment-time">1672.992 &rarr; 1676.473</div>
+    <div class="segment-text">No sir. Como ela</div>
+</div>
+<div class="segment" data-index="331" data-start="1676.973" data-end="1678.302">
+    <div class="segment-number">#332</div>
+    <div class="segment-time">1676.973 &rarr; 1678.302</div>
+    <div class="segment-text">te diz que não entende português?</div>
+</div>
+<div class="segment" data-index="332" data-start="1682.87" data-end="1684.589">
+    <div class="segment-number">#333</div>
+    <div class="segment-time">1682.870 &rarr; 1684.589</div>
+    <div class="segment-text">I don't understand Portuguese.</div>
+</div>
+<div class="segment" data-index="333" data-start="1688.959" data-end="1691.143">
+    <div class="segment-number">#334</div>
+    <div class="segment-time">1688.959 &rarr; 1691.143</div>
+    <div class="segment-text">Como ela te pergunta se você entende inglês?</div>
+</div>
+<div class="segment" data-index="334" data-start="1694.946" data-end="1696.478">
+    <div class="segment-number">#335</div>
+    <div class="segment-time">1694.946 &rarr; 1696.478</div>
+    <div class="segment-text">Do you understand English?</div>
+</div>
+<div class="segment" data-index="335" data-start="1700.486" data-end="1702.004">
+    <div class="segment-number">#336</div>
+    <div class="segment-time">1700.486 &rarr; 1702.004</div>
+    <div class="segment-text">Diga-lhe que você entende um pouco.</div>
+</div>
+<div class="segment" data-index="336" data-start="1705.263" data-end="1706.207">
+    <div class="segment-number">#337</div>
+    <div class="segment-time">1705.263 &rarr; 1706.207</div>
+    <div class="segment-text">I understand a little.</div>
+</div>
+<div class="segment" data-index="337" data-start="1710.326" data-end="1713.77">
+    <div class="segment-number">#338</div>
+    <div class="segment-time">1710.326 &rarr; 1713.770</div>
+    <div class="segment-text">Ela quer te perguntar se você é brasileiro. O que ela diz?</div>
+</div>
+<div class="segment" data-index="338" data-start="1716.811" data-end="1717.604">
+    <div class="segment-number">#339</div>
+    <div class="segment-time">1716.811 &rarr; 1717.604</div>
+    <div class="segment-text">Are you Brazilian?</div>
+</div>
+<div class="segment" data-index="339" data-start="1720.68" data-end="1724.424">
+    <div class="segment-number">#340</div>
+    <div class="segment-time">1720.680 &rarr; 1724.424</div>
+    <div class="segment-text">Diga-lhe sim, senhorita. Yes,</div>
+</div>
+<div class="segment" data-index="340" data-start="1724.553" data-end="1728.559">
+    <div class="segment-number">#341</div>
+    <div class="segment-time">1724.553 &rarr; 1728.559</div>
+    <div class="segment-text">miss. Agora ela</div>
+</div>
+<div class="segment" data-index="341" data-start="1729.059" data-end="1731.407">
+    <div class="segment-number">#342</div>
+    <div class="segment-time">1729.059 &rarr; 1731.407</div>
+    <div class="segment-text">vai te perguntar algo. Responda sinceramente.</div>
+</div>
+<div class="segment" data-index="342" data-start="1732.429" data-end="1734.343">
+    <div class="segment-number">#343</div>
+    <div class="segment-time">1732.429 &rarr; 1734.343</div>
+    <div class="segment-text">Do you understand Portuguese, sir?</div>
+</div>
+<div class="segment" data-index="343" data-start="1735.429" data-end="1737.262">
+    <div class="segment-number">#344</div>
+    <div class="segment-time">1735.429 &rarr; 1737.262</div>
+    <div class="segment-text">Do you understand Portuguese, sir?</div>
+</div>
+<div class="segment" data-index="344" data-start="1742.982" data-end="1745.713">
+    <div class="segment-number">#345</div>
+    <div class="segment-time">1742.982 &rarr; 1745.713</div>
+    <div class="segment-text">Yes, miss. I understand Portuguese.</div>
+</div>
+<div class="segment" data-index="345" data-start="1752.162" data-end="1755.912">
+    <div class="segment-number">#346</div>
+    <div class="segment-time">1752.162 &rarr; 1755.912</div>
+    <div class="segment-text">Ela vai te perguntar outra coisa. Responda com a expressão um</div>
+</div>
+<div class="segment" data-index="346" data-start="1756.009" data-end="1758.713">
+    <div class="segment-number">#347</div>
+    <div class="segment-time">1756.009 &rarr; 1758.713</div>
+    <div class="segment-text">pouco. Do you understand English?</div>
+</div>
+<div class="segment" data-index="347" data-start="1759.789" data-end="1761.289">
+    <div class="segment-number">#348</div>
+    <div class="segment-time">1759.789 &rarr; 1761.289</div>
+    <div class="segment-text">Do you understand English?</div>
+</div>
+<div class="segment" data-index="348" data-start="1763.434" data-end="1767.224">
+    <div class="segment-number">#349</div>
+    <div class="segment-time">1763.434 &rarr; 1767.224</div>
+    <div class="segment-text">A little. I understand</div>
+</div>
+<div class="segment" data-index="349" data-start="1767.724" data-end="1768.063">
+    <div class="segment-number">#350</div>
+    <div class="segment-time">1767.724 &rarr; 1768.063</div>
+    <div class="segment-text">a little English.</div>
+</div>
+<div class="segment" data-index="350" data-start="1772.72" data-end="1776.544">
+    <div class="segment-number">#351</div>
+    <div class="segment-time">1772.720 &rarr; 1776.544</div>
+    <div class="segment-text">E é verdade. Agora você entende um pouco de inglês. Não se</div>
+</div>
+<div class="segment" data-index="351" data-start="1776.592" data-end="1779.854">
+    <div class="segment-number">#352</div>
+    <div class="segment-time">1776.592 &rarr; 1779.854</div>
+    <div class="segment-text">preocupe se você não respondeu corretamente a todas as perguntas.</div>
+</div>
+<div class="segment" data-index="352" data-start="1780.288" data-end="1783.705">
+    <div class="segment-number">#353</div>
+    <div class="segment-time">1780.288 &rarr; 1783.705</div>
+    <div class="segment-text">Tudo o que você acaba de aprender vai ser utilizado nas próximas lições.</div>
+</div>
+<div class="segment" data-index="353" data-start="1784.158" data-end="1787.391">
+    <div class="segment-number">#354</div>
+    <div class="segment-time">1784.158 &rarr; 1787.391</div>
+    <div class="segment-text">Se você se lembrar de mais ou menos 80% do conteúdo da</div>
+</div>
+<div class="segment" data-index="354" data-start="1787.891" data-end="1791.55">
+    <div class="segment-number">#355</div>
+    <div class="segment-time">1787.891 &rarr; 1791.550</div>
+    <div class="segment-text">lição, Pode passar para a próxima lição. Senão, você deve dedicar</div>
+</div>
+<div class="segment" data-index="355" data-start="1792.05" data-end="1795.47">
+    <div class="segment-number">#356</div>
+    <div class="segment-time">1792.050 &rarr; 1795.470</div>
+    <div class="segment-text">mais 30 minutos para rever esta lição. Este é o final da</div>
+</div>
+<div class="segment" data-index="356" data-start="1795.97" data-end="1799.13">
+    <div class="segment-number">#357</div>
+    <div class="segment-time">1795.970 &rarr; 1799.130</div>
+    <div class="segment-text">lição 1. Pimsleur courses work most</div>
+</div>
+<div class="segment" data-index="357" data-start="1799.63" data-end="1802.97">
+    <div class="segment-number">#358</div>
+    <div class="segment-time">1799.630 &rarr; 1802.970</div>
+    <div class="segment-text">effectively when done consecutively and on a daily basis.</div>
+</div>
+<div class="segment" data-index="358" data-start="1803.31" data-end="1806.82">
+    <div class="segment-number">#359</div>
+    <div class="segment-time">1803.310 &rarr; 1806.820</div>
+    <div class="segment-text">For best results, please continue with the next unit tomorrow.</div>
+</div>
+<div class="segment" data-index="359" data-start="1807.39" data-end="1810.44">
+    <div class="segment-number">#360</div>
+    <div class="segment-time">1807.390 &rarr; 1810.440</div>
+    <div class="segment-text">This has been a presentation of Simon and Schuster Audio.</div>
+</div>
+<div class="segment" data-index="360" data-start="1810.93" data-end="1814.58">
+    <div class="segment-number">#361</div>
+    <div class="segment-time">1810.930 &rarr; 1814.580</div>
+    <div class="segment-text">Copyright 2010 by Simon and Schuster Incorporated.</div>
+</div>
+<div class="segment" data-index="361" data-start="1814.82" data-end="1818.892">
+    <div class="segment-number">#362</div>
+    <div class="segment-time">1814.820 &rarr; 1818.892</div>
+    <div class="segment-text">Recording copyright 2010 by Simon Schuster,</div>
+</div>
+<div class="segment" data-index="362" data-start="1819.07" data-end="1821.618">
+    <div class="segment-number">#363</div>
+    <div class="segment-time">1819.070 &rarr; 1821.618</div>
+    <div class="segment-text">Incorporated. All rights reserved.</div>
+</div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+const segments = [{"sequence_number": 1, "start_time": 0.593, "end_time": 4.647, "text": "Esta lição um de Pimsleur Inglês um. Escute esta conversa em", "speaker_id": null}, {"sequence_number": 2, "start_time": 4.76, "end_time": 8.638, "text": "inglês. Excuse me, miss. Do you understand", "speaker_id": null}, {"sequence_number": 3, "start_time": 8.75, "end_time": 12.036, "text": "Portuguese? No, sir. I don't understand", "speaker_id": null}, {"sequence_number": 4, "start_time": 12.536, "end_time": 16.412, "text": "Portuguese. I understand a little English. Are you Brazilian?", "speaker_id": null}, {"sequence_number": 5, "start_time": 16.94, "end_time": 20.643, "text": "Yes, miss. Em alguns minutos, você poderá", "speaker_id": null}, {"sequence_number": 6, "start_time": 21.143, "end_time": 24.586, "text": "não apenas entender esta conversa, mas também participar dela.", "speaker_id": null}, {"sequence_number": 7, "start_time": 25.275, "end_time": 28.913, "text": "Imagine um brasileiro nos Estados Unidos sentado ao lado de uma jovem.", "speaker_id": null}, {"sequence_number": 8, "start_time": 29.684, "end_time": 33.734, "text": "Ele tenta conversar com ela. Então ele diz: Com licença.", "speaker_id": null}, {"sequence_number": 9, "start_time": 34.506, "end_time": 38.043, "text": "Excuse me. O locutor americano vai repetir esta", "speaker_id": null}, {"sequence_number": 10, "start_time": 38.543, "end_time": 41.457, "text": "expressão sílaba por sílaba, começando pela última.", "speaker_id": null}, {"sequence_number": 11, "start_time": 41.972, "end_time": 45.515, "text": "Repita depois de ouvir cada sílaba, tentando imitar a pronúncia", "speaker_id": null}, {"sequence_number": 12, "start_time": 45.596, "end_time": 48.787, "text": "dele. Repita em voz alta. Me.", "speaker_id": null}, {"sequence_number": 13, "start_time": 51.318, "end_time": 54.592, "text": "Me. Use.", "speaker_id": null}, {"sequence_number": 14, "start_time": 54.918, "end_time": 60.553, "text": "Use.", "speaker_id": null}, {"sequence_number": 15, "start_time": 61.23, "end_time": 64.572, "text": "Skews. Skews.", "speaker_id": null}, {"sequence_number": 16, "start_time": 67.85, "end_time": 67.963, "text": "X.", "speaker_id": null}, {"sequence_number": 17, "start_time": 70.703, "end_time": 73.637, "text": "X.", "speaker_id": null}, {"sequence_number": 18, "start_time": 77.187, "end_time": 78.106, "text": "Excuse. Excuse.", "speaker_id": null}, {"sequence_number": 19, "start_time": 81.162, "end_time": 81.99, "text": "Excuse me.", "speaker_id": null}, {"sequence_number": 20, "start_time": 85.936, "end_time": 86.61, "text": "Excuse me.", "speaker_id": null}, {"sequence_number": 21, "start_time": 90.435, "end_time": 94.018, "text": "Como se diz com licença ou desculpe-me em", "speaker_id": null}, {"sequence_number": 22, "start_time": 94.066, "end_time": 94.5, "text": "inglês?", "speaker_id": null}, {"sequence_number": 23, "start_time": 97.736, "end_time": 98.494, "text": "Excuse me.", "speaker_id": null}, {"sequence_number": 24, "start_time": 101.869, "end_time": 104.565, "text": "Agora ele pergunta à moça se ela entende português.", "speaker_id": null}, {"sequence_number": 25, "start_time": 105.162, "end_time": 108.026, "text": "Primeiro, português. Escuche y repita.", "speaker_id": null}, {"sequence_number": 26, "start_time": 109.04, "end_time": 109.894, "text": "Portuguese.", "speaker_id": null}, {"sequence_number": 27, "start_time": 112.906, "end_time": 113.116, "text": "Keys.", "speaker_id": null}, {"sequence_number": 28, "start_time": 115.742, "end_time": 118.87, "text": "Keys.", "speaker_id": null}, {"sequence_number": 29, "start_time": 119.13, "end_time": 121.811, "text": "Chew. Chew.", "speaker_id": null}, {"sequence_number": 30, "start_time": 124.25, "end_time": 124.881, "text": "Chuggies.", "speaker_id": null}, {"sequence_number": 31, "start_time": 127.668, "end_time": 128.041, "text": "Poor.", "speaker_id": null}, {"sequence_number": 32, "start_time": 130.747, "end_time": 131.67, "text": "Portuguese.", "speaker_id": null}, {"sequence_number": 33, "start_time": 135.106, "end_time": 138.36, "text": "Português. Como se", "speaker_id": null}, {"sequence_number": 34, "start_time": 138.86, "end_time": 139.745, "text": "diz português?", "speaker_id": null}, {"sequence_number": 35, "start_time": 142.516, "end_time": 143.301, "text": "Portuguese.", "speaker_id": null}, {"sequence_number": 36, "start_time": 146.117, "end_time": 147.229, "text": "Diga com licença.", "speaker_id": null}, {"sequence_number": 37, "start_time": 150.78, "end_time": 151.25, "text": "Excuse me.", "speaker_id": null}, {"sequence_number": 38, "start_time": 154.851, "end_time": 158.062, "text": "Escute e repita depois do locutor que vai te dar a resposta.", "speaker_id": null}, {"sequence_number": 39, "start_time": 158.616, "end_time": 161.947, "text": "Tente imitar a pronúncia dele. Excuse me.", "speaker_id": null}, {"sequence_number": 40, "start_time": 165.536, "end_time": 166.073, "text": "Excuse me.", "speaker_id": null}, {"sequence_number": 41, "start_time": 169.363, "end_time": 171.04, "text": "Diga outra vez português.", "speaker_id": null}, {"sequence_number": 42, "start_time": 174.34, "end_time": 174.807, "text": "Portuguese.", "speaker_id": null}, {"sequence_number": 43, "start_time": 177.821, "end_time": 178.675, "text": "Portuguese.", "speaker_id": null}, {"sequence_number": 44, "start_time": 181.786, "end_time": 186.196, "text": "Agora ele quer perguntar: Você entende? Primeiro a palavra entende,", "speaker_id": null}, {"sequence_number": 45, "start_time": 186.663, "end_time": 189.349, "text": "apenas escute. Understand.", "speaker_id": null}, {"sequence_number": 46, "start_time": 190.218, "end_time": 192.327, "text": "Escute e repita sílaba por sílaba.", "speaker_id": null}, {"sequence_number": 47, "start_time": 193.655, "end_time": 197.915, "text": "Stand.", "speaker_id": null}, {"sequence_number": 48, "start_time": 200.905, "end_time": 201.134, "text": "Stand. Der.", "speaker_id": null}, {"sequence_number": 49, "start_time": 203.495, "end_time": 204.347, "text": "Derstand.", "speaker_id": null}, {"sequence_number": 50, "start_time": 207.527, "end_time": 207.64, "text": "Un.", "speaker_id": null}, {"sequence_number": 51, "start_time": 220.446, "end_time": 224.158, "text": "Understand. Understand. Você ouviu o som do R americano na", "speaker_id": null}, {"sequence_number": 52, "start_time": 224.658, "end_time": 228.549, "text": "palavra understand? O R americano nunca se pronuncia como", "speaker_id": null}, {"sequence_number": 53, "start_time": 228.613, "end_time": 231.023, "text": "R em português. Diga entende.", "speaker_id": null}, {"sequence_number": 54, "start_time": 234.15, "end_time": 234.911, "text": "Understand.", "speaker_id": null}, {"sequence_number": 55, "start_time": 240.976, "end_time": 243.944, "text": "Understand. É assim que se diz você entende.", "speaker_id": null}, {"sequence_number": 56, "start_time": 244.482, "end_time": 247.773, "text": "Escute e repita. You understand.", "speaker_id": null}, {"sequence_number": 57, "start_time": 251.289, "end_time": 254.638, "text": "You. You.", "speaker_id": null}, {"sequence_number": 58, "start_time": 257.062, "end_time": 258.077, "text": "You understand.", "speaker_id": null}, {"sequence_number": 59, "start_time": 261.484, "end_time": 262.489, "text": "You understand.", "speaker_id": null}, {"sequence_number": 60, "start_time": 265.925, "end_time": 268.243, "text": "Como se diz você em inglês?", "speaker_id": null}, {"sequence_number": 61, "start_time": 273.428, "end_time": 277.028, "text": "You. You. Preste atenção", "speaker_id": null}, {"sequence_number": 62, "start_time": 277.092, "end_time": 280.397, "text": "ao som do início da palavra. Soa como o começo", "speaker_id": null}, {"sequence_number": 63, "start_time": 280.897, "end_time": 283.688, "text": "da palavra iogurte. Diga: Você entende?", "speaker_id": null}, {"sequence_number": 64, "start_time": 287.319, "end_time": 288.415, "text": "You understand.", "speaker_id": null}, {"sequence_number": 65, "start_time": 291.991, "end_time": 294.101, "text": "Você se lembra de como se diz português?", "speaker_id": null}, {"sequence_number": 66, "start_time": 297.416, "end_time": 298.193, "text": "Portuguese.", "speaker_id": null}, {"sequence_number": 67, "start_time": 301.3, "end_time": 302.789, "text": "Diga: Você entende.", "speaker_id": null}, {"sequence_number": 68, "start_time": 306.012, "end_time": 307.01, "text": "You understand.", "speaker_id": null}, {"sequence_number": 69, "start_time": 310.276, "end_time": 312.963, "text": "Agora tente dizer: Você entende português.", "speaker_id": null}, {"sequence_number": 70, "start_time": 318.248, "end_time": 320.234, "text": "You understand Portuguese?", "speaker_id": null}, {"sequence_number": 71, "start_time": 325.366, "end_time": 327.357, "text": "You understand Portuguese?", "speaker_id": null}, {"sequence_number": 72, "start_time": 332.58, "end_time": 335.462, "text": "Esta é uma palavra que se usa para fazer perguntas em inglês.", "speaker_id": null}, {"sequence_number": 73, "start_time": 336.138, "end_time": 338.44, "text": "Escute e repita. Do.", "speaker_id": null}, {"sequence_number": 74, "start_time": 347.365, "end_time": 351.442, "text": "Do, do. Em inglês, muitas afirmações podem ser transformadas em perguntas", "speaker_id": null}, {"sequence_number": 75, "start_time": 351.942, "end_time": 355.611, "text": "pondo esta palavra no começo da frase. Diga outra vez: Você", "speaker_id": null}, {"sequence_number": 76, "start_time": 356.111, "end_time": 356.141, "text": "entende?", "speaker_id": null}, {"sequence_number": 77, "start_time": 359.763, "end_time": 360.88, "text": "You understand.", "speaker_id": null}, {"sequence_number": 78, "start_time": 364.652, "end_time": 367.445, "text": "Agora tente perguntar: Você entende?", "speaker_id": null}, {"sequence_number": 79, "start_time": 371.463, "end_time": 372.55, "text": "Do you understand?", "speaker_id": null}, {"sequence_number": 80, "start_time": 377.017, "end_time": 378.282, "text": "You understand?", "speaker_id": null}, {"sequence_number": 81, "start_time": 381.638, "end_time": 385.013, "text": "Do, do,", "speaker_id": null}, {"sequence_number": 82, "start_time": 387.405, "end_time": 388.836, "text": "do you understand?", "speaker_id": null}, {"sequence_number": 83, "start_time": 392.97, "end_time": 394.395, "text": "Diga com licença.", "speaker_id": null}, {"sequence_number": 84, "start_time": 398.43, "end_time": 398.64, "text": "Excuse me.", "speaker_id": null}, {"sequence_number": 85, "start_time": 401.758, "end_time": 403.163, "text": "Você entende?", "speaker_id": null}, {"sequence_number": 86, "start_time": 406.847, "end_time": 407.623, "text": "Do you understand?", "speaker_id": null}, {"sequence_number": 87, "start_time": 411.886, "end_time": 413.333, "text": "Pergunte-me se eu entendo.", "speaker_id": null}, {"sequence_number": 88, "start_time": 416.985, "end_time": 418.484, "text": "Do you understand?", "speaker_id": null}, {"sequence_number": 89, "start_time": 422.32, "end_time": 424.609, "text": "Agora pergunte-me se eu entendo português.", "speaker_id": null}, {"sequence_number": 90, "start_time": 429.796, "end_time": 431.857, "text": "Do you understand Portuguese?", "speaker_id": null}, {"sequence_number": 91, "start_time": 436.901, "end_time": 438.919, "text": "Do you understand Portuguese?", "speaker_id": null}, {"sequence_number": 92, "start_time": 443.975, "end_time": 447.432, "text": "A moça responde não. Escute e repita.", "speaker_id": null}, {"sequence_number": 93, "start_time": 448.65, "end_time": 451.077, "text": "No, no,", "speaker_id": null}, {"sequence_number": 94, "start_time": 453.488, "end_time": 457.346, "text": "no. Preste atenção ao som", "speaker_id": null}, {"sequence_number": 95, "start_time": 457.846, "end_time": 460.775, "text": "final ou. Repita-o depois da locutora.", "speaker_id": null}, {"sequence_number": 96, "start_time": 461.95, "end_time": 465.024, "text": "Ou, ou,", "speaker_id": null}, {"sequence_number": 97, "start_time": 466.602, "end_time": 469.685, "text": "no. Não, senhor.", "speaker_id": null}, {"sequence_number": 98, "start_time": 470.243, "end_time": 473.094, "text": "Escute e repita. No, sir.", "speaker_id": null}, {"sequence_number": 99, "start_time": 474.997, "end_time": 477.626, "text": "Sir. Sir.", "speaker_id": null}, {"sequence_number": 100, "start_time": 479.836, "end_time": 482.548, "text": "No. No, sir.", "speaker_id": null}, {"sequence_number": 101, "start_time": 485.002, "end_time": 486.342, "text": "Como se diz senhor?", "speaker_id": null}, {"sequence_number": 102, "start_time": 491.659, "end_time": 494.702, "text": "Sir. Diga não. No,", "speaker_id": null}, {"sequence_number": 103, "start_time": 496.926, "end_time": 500.136, "text": "no. Diga não,", "speaker_id": null}, {"sequence_number": 104, "start_time": 500.168, "end_time": 503.594, "text": "senhor. No, sir.", "speaker_id": null}, {"sequence_number": 105, "start_time": 506.119, "end_time": 507.535, "text": "Diga com licença, senhor.", "speaker_id": null}, {"sequence_number": 106, "start_time": 511.49, "end_time": 512.294, "text": "Excuse me, sir.", "speaker_id": null}, {"sequence_number": 107, "start_time": 516.046, "end_time": 516.915, "text": "Excuse me, sir.", "speaker_id": null}, {"sequence_number": 108, "start_time": 520.732, "end_time": 522.895, "text": "Como você pergunta alguém se ele entende?", "speaker_id": null}, {"sequence_number": 109, "start_time": 527.12, "end_time": 527.787, "text": "Do you understand?", "speaker_id": null}, {"sequence_number": 110, "start_time": 532.358, "end_time": 532.952, "text": "Do you understand?", "speaker_id": null}, {"sequence_number": 111, "start_time": 537.68, "end_time": 538.974, "text": "Você entende português?", "speaker_id": null}, {"sequence_number": 112, "start_time": 543.847, "end_time": 545.762, "text": "Do you understand Portuguese?", "speaker_id": null}, {"sequence_number": 113, "start_time": 550.75, "end_time": 552.538, "text": "Do you understand Portuguese?", "speaker_id": null}, {"sequence_number": 114, "start_time": 557.582, "end_time": 560.88, "text": "O homem diz a você: eu entendo. Primeiro a palavra", "speaker_id": null}, {"sequence_number": 115, "start_time": 561.058, "end_time": 563.79, "text": "eu. Escute e repita: I.", "speaker_id": null}, {"sequence_number": 116, "start_time": 566.636, "end_time": 573.439, "text": "I. I understand.", "speaker_id": null}, {"sequence_number": 117, "start_time": 576.596, "end_time": 578.247, "text": "Agora diga eu entendo.", "speaker_id": null}, {"sequence_number": 118, "start_time": 583.074, "end_time": 584.235, "text": "I understand.", "speaker_id": null}, {"sequence_number": 119, "start_time": 588.865, "end_time": 591.091, "text": "Tente dizer eu entendo português.", "speaker_id": null}, {"sequence_number": 120, "start_time": 596.172, "end_time": 598.14, "text": "I understand Portuguese.", "speaker_id": null}, {"sequence_number": 121, "start_time": 603.263, "end_time": 605.034, "text": "I understand Portuguese.", "speaker_id": null}, {"sequence_number": 122, "start_time": 610.002, "end_time": 613.529, "text": "Agora diga eu entendo e você entende", "speaker_id": null}, {"sequence_number": 123, "start_time": 613.905, "end_time": 614.28, "text": "juntos.", "speaker_id": null}, {"sequence_number": 124, "start_time": 620.855, "end_time": 624.113, "text": "I understand. You understand.", "speaker_id": null}, {"sequence_number": 125, "start_time": 630.772, "end_time": 633.863, "text": "I understand. You understand.", "speaker_id": null}, {"sequence_number": 126, "start_time": 640.593, "end_time": 642.6, "text": "Agora diga: Você entende?", "speaker_id": null}, {"sequence_number": 127, "start_time": 646.372, "end_time": 647.473, "text": "You understand.", "speaker_id": null}, {"sequence_number": 128, "start_time": 647.667, "end_time": 651.685, "text": "Diga,", "speaker_id": null}, {"sequence_number": 129, "start_time": 652.057, "end_time": 652.575, "text": "eu entendo.", "speaker_id": null}, {"sequence_number": 130, "start_time": 655.882, "end_time": 656.892, "text": "I understand.", "speaker_id": null}, {"sequence_number": 131, "start_time": 660.428, "end_time": 661.617, "text": "Diga, com licença.", "speaker_id": null}, {"sequence_number": 132, "start_time": 665.39, "end_time": 665.845, "text": "Excuse me.", "speaker_id": null}, {"sequence_number": 133, "start_time": 669.553, "end_time": 671.309, "text": "Pergunte, você entende?", "speaker_id": null}, {"sequence_number": 134, "start_time": 675.105, "end_time": 676.367, "text": "Do you understand?", "speaker_id": null}, {"sequence_number": 135, "start_time": 680.121, "end_time": 682.627, "text": "Pergunte à moça: Você entende português?", "speaker_id": null}, {"sequence_number": 136, "start_time": 687.526, "end_time": 689.435, "text": "Do you understand Portuguese?", "speaker_id": null}, {"sequence_number": 137, "start_time": 694.242, "end_time": 696.091, "text": "Do you understand Portuguese?", "speaker_id": null}, {"sequence_number": 138, "start_time": 700.891, "end_time": 702.855, "text": "Como ela responde não senhor?", "speaker_id": null}, {"sequence_number": 139, "start_time": 705.68, "end_time": 709.054, "text": "No sir. No sir.", "speaker_id": null}, {"sequence_number": 140, "start_time": 711.83, "end_time": 713.332, "text": "Como se diz eu entendo?", "speaker_id": null}, {"sequence_number": 141, "start_time": 716.516, "end_time": 722.041, "text": "I understand. I understand.", "speaker_id": null}, {"sequence_number": 142, "start_time": 725.371, "end_time": 729.366, "text": "Agora ela quer dizer eu não entendo. Escute e repita.", "speaker_id": null}, {"sequence_number": 143, "start_time": 730.385, "end_time": 731.712, "text": "I don't understand.", "speaker_id": null}, {"sequence_number": 144, "start_time": 735.186, "end_time": 737.824, "text": "Don't, don't,", "speaker_id": null}, {"sequence_number": 145, "start_time": 739.637, "end_time": 740.818, "text": "don't understand.", "speaker_id": null}, {"sequence_number": 146, "start_time": 743.926, "end_time": 745.079, "text": "Don't understand.", "speaker_id": null}, {"sequence_number": 147, "start_time": 748.232, "end_time": 751.723, "text": "I don't. I don't.", "speaker_id": null}, {"sequence_number": 148, "start_time": 754.184, "end_time": 755.423, "text": "I don't understand.", "speaker_id": null}, {"sequence_number": 149, "start_time": 759.38, "end_time": 760.382, "text": "I don't understand.", "speaker_id": null}, {"sequence_number": 150, "start_time": 764.32, "end_time": 765.467, "text": "Diga eu não entendo.", "speaker_id": null}, {"sequence_number": 151, "start_time": 768.88, "end_time": 769.891, "text": "I don't understand.", "speaker_id": null}, {"sequence_number": 152, "start_time": 773.796, "end_time": 776.97, "text": "Escute com cuidado os sons finais da palavra. Don't.", "speaker_id": null}, {"sequence_number": 153, "start_time": 777.49, "end_time": 780.201, "text": "Escute e repita. Don't.", "speaker_id": null}, {"sequence_number": 154, "start_time": 782.75, "end_time": 786.044, "text": "Don't. Don't.", "speaker_id": null}, {"sequence_number": 155, "start_time": 788.515, "end_time": 791.697, "text": "O nt no fim da palavra produz a negação.", "speaker_id": null}, {"sequence_number": 156, "start_time": 792.394, "end_time": 796.313, "text": "Acrescenta-se ao final de do, mudando a pronúncia e o sentido.", "speaker_id": null}, {"sequence_number": 157, "start_time": 796.912, "end_time": 800.119, "text": "Escute e repita outra vez. Don't.", "speaker_id": null}, {"sequence_number": 158, "start_time": 804.749, "end_time": 805.708, "text": "Don't. I don't understand.", "speaker_id": null}, {"sequence_number": 159, "start_time": 809.596, "end_time": 811.579, "text": "Agora diga outra vez. Eu não entendo.", "speaker_id": null}, {"sequence_number": 160, "start_time": 815.196, "end_time": 816.246, "text": "I don't understand.", "speaker_id": null}, {"sequence_number": 161, "start_time": 819.756, "end_time": 820.69, "text": "Diga português.", "speaker_id": null}, {"sequence_number": 162, "start_time": 823.139, "end_time": 823.912, "text": "Portuguese.", "speaker_id": null}, {"sequence_number": 163, "start_time": 826.361, "end_time": 828.262, "text": "Diga eu não entendo português.", "speaker_id": null}, {"sequence_number": 164, "start_time": 833.065, "end_time": 834.834, "text": "I don't understand Portuguese.", "speaker_id": null}, {"sequence_number": 165, "start_time": 839.586, "end_time": 841.402, "text": "I don't understand Portuguese.", "speaker_id": null}, {"sequence_number": 166, "start_time": 846.236, "end_time": 847.721, "text": "Pergunte: Você entende?", "speaker_id": null}, {"sequence_number": 167, "start_time": 851.24, "end_time": 852.564, "text": "Do you understand?", "speaker_id": null}, {"sequence_number": 168, "start_time": 856.115, "end_time": 857.961, "text": "Pergunte-me se eu entendo português.", "speaker_id": null}, {"sequence_number": 169, "start_time": 862.89, "end_time": 864.662, "text": "Do you understand Portuguese?", "speaker_id": null}, {"sequence_number": 170, "start_time": 869.49, "end_time": 871.362, "text": "Responda: Não, eu não entendo.", "speaker_id": null}, {"sequence_number": 171, "start_time": 875.621, "end_time": 877.18, "text": "No, I don't understand.", "speaker_id": null}, {"sequence_number": 172, "start_time": 881.437, "end_time": 883.061, "text": "No, I don't understand.", "speaker_id": null}, {"sequence_number": 173, "start_time": 887.317, "end_time": 888.494, "text": "Eu não entendo português.", "speaker_id": null}, {"sequence_number": 174, "start_time": 893.232, "end_time": 894.902, "text": "I don't understand Portuguese.", "speaker_id": null}, {"sequence_number": 175, "start_time": 899.6, "end_time": 904.254, "text": "Aqui está o nome do idioma inglês. Escute e repita: English.", "speaker_id": null}, {"sequence_number": 176, "start_time": 905.162, "end_time": 907.29, "text": "Glish.", "speaker_id": null}, {"sequence_number": 177, "start_time": 907.564, "end_time": 910.112, "text": "Glish.", "speaker_id": null}, {"sequence_number": 178, "start_time": 912.886, "end_time": 916.1, "text": "Eng. Eng.", "speaker_id": null}, {"sequence_number": 179, "start_time": 918.582, "end_time": 919.017, "text": "English.", "speaker_id": null}, {"sequence_number": 180, "start_time": 922.046, "end_time": 922.561, "text": "English.", "speaker_id": null}, {"sequence_number": 181, "start_time": 925.573, "end_time": 927.071, "text": "Digo otra vez inglés.", "speaker_id": null}, {"sequence_number": 182, "start_time": 929.637, "end_time": 929.927, "text": "English.", "speaker_id": null}, {"sequence_number": 183, "start_time": 932.689, "end_time": 933.865, "text": "Diga eu entendo.", "speaker_id": null}, {"sequence_number": 184, "start_time": 936.873, "end_time": 937.733, "text": "I understand.", "speaker_id": null}, {"sequence_number": 185, "start_time": 937.846, "end_time": 941.448, "text": "Diga eu", "speaker_id": null}, {"sequence_number": 186, "start_time": 941.577, "end_time": 942.417, "text": "entendo inglês.", "speaker_id": null}, {"sequence_number": 187, "start_time": 946.713, "end_time": 948.149, "text": "I understand English.", "speaker_id": null}, {"sequence_number": 188, "start_time": 952.376, "end_time": 953.811, "text": "I understand English.", "speaker_id": null}, {"sequence_number": 189, "start_time": 958.107, "end_time": 960.413, "text": "E agora diga-me que você não entende inglês.", "speaker_id": null}, {"sequence_number": 190, "start_time": 965.486, "end_time": 967.244, "text": "I don't understand English.", "speaker_id": null}, {"sequence_number": 191, "start_time": 972.343, "end_time": 974.029, "text": "I don't understand English.", "speaker_id": null}, {"sequence_number": 192, "start_time": 979.27, "end_time": 980.725, "text": "Diga, você entende inglês?", "speaker_id": null}, {"sequence_number": 193, "start_time": 985.446, "end_time": 986.866, "text": "You understand English.", "speaker_id": null}, {"sequence_number": 194, "start_time": 991.48, "end_time": 992.783, "text": "You understand English.", "speaker_id": null}, {"sequence_number": 195, "start_time": 997.42, "end_time": 998.367, "text": "Diga com licença.", "speaker_id": null}, {"sequence_number": 196, "start_time": 1001.116, "end_time": 1004.699, "text": "Excuse me. Excuse me,", "speaker_id": null}, {"sequence_number": 197, "start_time": 1004.748, "end_time": 1004.958, "text": "sir.", "speaker_id": null}, {"sequence_number": 198, "start_time": 1008.086, "end_time": 1009.789, "text": "Pergunte-me se eu entendo inglês.", "speaker_id": null}, {"sequence_number": 199, "start_time": 1013.83, "end_time": 1015.367, "text": "Do you understand English?", "speaker_id": null}, {"sequence_number": 200, "start_time": 1019.166, "end_time": 1020.698, "text": "Do you understand English?", "speaker_id": null}, {"sequence_number": 201, "start_time": 1024.51, "end_time": 1027.823, "text": "É assim que se diz um pouco. Escute e repita.", "speaker_id": null}, {"sequence_number": 202, "start_time": 1028.684, "end_time": 1032.078, "text": "A little. A little.", "speaker_id": null}, {"sequence_number": 203, "start_time": 1032.828, "end_time": 1036.885, "text": "L,", "speaker_id": null}, {"sequence_number": 204, "start_time": 1036.933, "end_time": 1037.046, "text": "l,", "speaker_id": null}, {"sequence_number": 205, "start_time": 1039.524, "end_time": 1042.564, "text": "l,", "speaker_id": null}, {"sequence_number": 206, "start_time": 1045.598, "end_time": 1048.35, "text": "little. A, a,", "speaker_id": null}, {"sequence_number": 207, "start_time": 1050.792, "end_time": 1051.39, "text": "a little,", "speaker_id": null}, {"sequence_number": 208, "start_time": 1054.346, "end_time": 1058.417, "text": "a little. Chiga um", "speaker_id": null}, {"sequence_number": 209, "start_time": 1058.53, "end_time": 1062.226, "text": "pouco. A little.", "speaker_id": null}, {"sequence_number": 210, "start_time": 1064.216, "end_time": 1066.837, "text": "Agora tente dizer eu entendo um pouco.", "speaker_id": null}, {"sequence_number": 211, "start_time": 1071.062, "end_time": 1072.474, "text": "I understand a little.", "speaker_id": null}, {"sequence_number": 212, "start_time": 1076.802, "end_time": 1078.151, "text": "I understand a little.", "speaker_id": null}, {"sequence_number": 213, "start_time": 1082.526, "end_time": 1083.891, "text": "Diga eu entendo inglês.", "speaker_id": null}, {"sequence_number": 214, "start_time": 1087.947, "end_time": 1089.345, "text": "I understand English.", "speaker_id": null}, {"sequence_number": 215, "start_time": 1093.492, "end_time": 1094.811, "text": "I understand English.", "speaker_id": null}, {"sequence_number": 216, "start_time": 1098.946, "end_time": 1104.471, "text": "Diga um pouco. A little.", "speaker_id": null}, {"sequence_number": 217, "start_time": 1105.152, "end_time": 1108.588, "text": "Tente dizer um pouco de inglês. Literalmente se", "speaker_id": null}, {"sequence_number": 218, "start_time": 1108.636, "end_time": 1110.062, "text": "diz um pouco inglês.", "speaker_id": null}, {"sequence_number": 219, "start_time": 1113.345, "end_time": 1114.406, "text": "A little English.", "speaker_id": null}, {"sequence_number": 220, "start_time": 1117.605, "end_time": 1118.682, "text": "A little English.", "speaker_id": null}, {"sequence_number": 221, "start_time": 1122.06, "end_time": 1124.19, "text": "Diga-me que você entende um pouco de inglês.", "speaker_id": null}, {"sequence_number": 222, "start_time": 1129.496, "end_time": 1131.337, "text": "I understand a little English.", "speaker_id": null}, {"sequence_number": 223, "start_time": 1136.709, "end_time": 1138.599, "text": "I understand a little English.", "speaker_id": null}, {"sequence_number": 224, "start_time": 1144.19, "end_time": 1147.264, "text": "Agora, a moça quer te perguntar: Você é brasileiro?", "speaker_id": null}, {"sequence_number": 225, "start_time": 1147.947, "end_time": 1149.948, "text": "Escute e repita a palavra brasileiro.", "speaker_id": null}, {"sequence_number": 226, "start_time": 1151.026, "end_time": 1151.398, "text": "Brazilian.", "speaker_id": null}, {"sequence_number": 227, "start_time": 1154.019, "end_time": 1156.899, "text": "Yun. Yun.", "speaker_id": null}, {"sequence_number": 228, "start_time": 1159.439, "end_time": 1159.568, "text": "Zi.", "speaker_id": null}, {"sequence_number": 229, "start_time": 1164.517, "end_time": 1166.807, "text": "Brazilian. Bruh.", "speaker_id": null}, {"sequence_number": 230, "start_time": 1168.769, "end_time": 1172.384, "text": "Bruh. Brazilian. Brazilian.", "speaker_id": null}, {"sequence_number": 231, "start_time": 1175.06, "end_time": 1178.683, "text": "Diga brasileiro. Brazilian.", "speaker_id": null}, {"sequence_number": 232, "start_time": 1181.158, "end_time": 1184.421, "text": "É assim que se diz você é. Escute e repita.", "speaker_id": null}, {"sequence_number": 233, "start_time": 1185.355, "end_time": 1188.446, "text": "You are. Are,", "speaker_id": null}, {"sequence_number": 234, "start_time": 1190.755, "end_time": 1193.612, "text": "are you?", "speaker_id": null}, {"sequence_number": 235, "start_time": 1195.824, "end_time": 1198.86, "text": "You are, you are.", "speaker_id": null}, {"sequence_number": 236, "start_time": 1201.153, "end_time": 1202.494, "text": "Diga, você é?", "speaker_id": null}, {"sequence_number": 237, "start_time": 1204.626, "end_time": 1207.671, "text": "You are. Diga,", "speaker_id": null}, {"sequence_number": 238, "start_time": 1208.108, "end_time": 1209.21, "text": "você é brasileiro?", "speaker_id": null}, {"sequence_number": 239, "start_time": 1211.996, "end_time": 1212.692, "text": "You are Brazilian.", "speaker_id": null}, {"sequence_number": 240, "start_time": 1215.596, "end_time": 1216.496, "text": "You are Brazilian.", "speaker_id": null}, {"sequence_number": 241, "start_time": 1219.213, "end_time": 1221.109, "text": "Diga outra vez: Você é?", "speaker_id": null}, {"sequence_number": 242, "start_time": 1223.262, "end_time": 1226.588, "text": "You are? Para perguntar", "speaker_id": null}, {"sequence_number": 243, "start_time": 1227.021, "end_time": 1230.363, "text": "Você é?, você inverte as duas palavras em inglês.", "speaker_id": null}, {"sequence_number": 244, "start_time": 1230.733, "end_time": 1233.489, "text": "Agora, tente perguntar: Você é brasileiro?", "speaker_id": null}, {"sequence_number": 245, "start_time": 1237.27, "end_time": 1237.91, "text": "Are you Brazilian?", "speaker_id": null}, {"sequence_number": 246, "start_time": 1238.748, "end_time": 1242.562, "text": "Are you?", "speaker_id": null}, {"sequence_number": 247, "start_time": 1244.656, "end_time": 1245.581, "text": "Are you Brazilian?", "speaker_id": null}, {"sequence_number": 248, "start_time": 1248.8, "end_time": 1249.745, "text": "Diga com licença.", "speaker_id": null}, {"sequence_number": 249, "start_time": 1252.56, "end_time": 1256.669, "text": "Excuse me. Pergunte: Você", "speaker_id": null}, {"sequence_number": 250, "start_time": 1257.169, "end_time": 1257.419, "text": "entende inglês?", "speaker_id": null}, {"sequence_number": 251, "start_time": 1261.576, "end_time": 1263.002, "text": "Do you understand English?", "speaker_id": null}, {"sequence_number": 252, "start_time": 1267.239, "end_time": 1268.743, "text": "Do you understand English?", "speaker_id": null}, {"sequence_number": 253, "start_time": 1273.306, "end_time": 1275.245, "text": "Pergunte: Você entende português?", "speaker_id": null}, {"sequence_number": 254, "start_time": 1279.311, "end_time": 1281.069, "text": "Do you understand Portuguese?", "speaker_id": null}, {"sequence_number": 255, "start_time": 1284.991, "end_time": 1287.084, "text": "Pergunte: Você é brasileiro?", "speaker_id": null}, {"sequence_number": 256, "start_time": 1290.2, "end_time": 1290.937, "text": "Are you Brazilian?", "speaker_id": null}, {"sequence_number": 257, "start_time": 1294.0, "end_time": 1296.887, "text": "Aqui está a palavra para sim. Escute e repita.", "speaker_id": null}, {"sequence_number": 258, "start_time": 1300.698, "end_time": 1303.98, "text": "Yes. Yes. Yes.", "speaker_id": null}, {"sequence_number": 259, "start_time": 1306.596, "end_time": 1310.725, "text": "Preste atenção ao som no princípio de yes. Como se", "speaker_id": null}, {"sequence_number": 260, "start_time": 1311.225, "end_time": 1312.202, "text": "diz sim em inglês?", "speaker_id": null}, {"sequence_number": 261, "start_time": 1314.82, "end_time": 1315.105, "text": "Yes.", "speaker_id": null}, {"sequence_number": 262, "start_time": 1320.71, "end_time": 1322.76, "text": "Yes. Escute e repita a palavra senhorita.", "speaker_id": null}, {"sequence_number": 263, "start_time": 1324.33, "end_time": 1327.116, "text": "Miss. Miss.", "speaker_id": null}, {"sequence_number": 264, "start_time": 1329.821, "end_time": 1333.445, "text": "Miss. Agora diga", "speaker_id": null}, {"sequence_number": 265, "start_time": 1333.768, "end_time": 1334.63, "text": "sim, senhorita.", "speaker_id": null}, {"sequence_number": 266, "start_time": 1337.666, "end_time": 1338.298, "text": "Yes, miss.", "speaker_id": null}, {"sequence_number": 267, "start_time": 1342.44, "end_time": 1344.841, "text": "Yes, Miss.", "speaker_id": null}, {"sequence_number": 268, "start_time": 1345.56, "end_time": 1347.602, "text": "Pergunte ao homem: Você é brasileiro?", "speaker_id": null}, {"sequence_number": 269, "start_time": 1351.363, "end_time": 1352.271, "text": "Are you Brazilian?", "speaker_id": null}, {"sequence_number": 270, "start_time": 1355.916, "end_time": 1356.761, "text": "Are you Brazilian?", "speaker_id": null}, {"sequence_number": 271, "start_time": 1360.236, "end_time": 1362.004, "text": "Responda: Sim, senhorita.", "speaker_id": null}, {"sequence_number": 272, "start_time": 1364.941, "end_time": 1365.63, "text": "Yes, Miss.", "speaker_id": null}, {"sequence_number": 273, "start_time": 1368.691, "end_time": 1369.288, "text": "Yes, Miss.", "speaker_id": null}, {"sequence_number": 274, "start_time": 1372.321, "end_time": 1374.629, "text": "Pergunte-lhe: Você entende português?", "speaker_id": null}, {"sequence_number": 275, "start_time": 1379.59, "end_time": 1381.502, "text": "Do you understand Portuguese?", "speaker_id": null}, {"sequence_number": 276, "start_time": 1386.425, "end_time": 1388.267, "text": "Do you understand Portuguese?", "speaker_id": null}, {"sequence_number": 277, "start_time": 1393.345, "end_time": 1395.281, "text": "Responda não, eu não entendo.", "speaker_id": null}, {"sequence_number": 278, "start_time": 1399.996, "end_time": 1401.205, "text": "No, I don't understand.", "speaker_id": null}, {"sequence_number": 279, "start_time": 1405.696, "end_time": 1407.411, "text": "No, I don't understand.", "speaker_id": null}, {"sequence_number": 280, "start_time": 1411.779, "end_time": 1413.057, "text": "Eu não entendo português.", "speaker_id": null}, {"sequence_number": 281, "start_time": 1417.275, "end_time": 1418.64, "text": "I don't understand Portuguese.", "speaker_id": null}, {"sequence_number": 282, "start_time": 1422.858, "end_time": 1424.917, "text": "Diga, eu entendo um pouco de inglês.", "speaker_id": null}, {"sequence_number": 283, "start_time": 1429.853, "end_time": 1431.476, "text": "I understand a little English.", "speaker_id": null}, {"sequence_number": 284, "start_time": 1436.295, "end_time": 1437.9, "text": "I understand a little English.", "speaker_id": null}, {"sequence_number": 285, "start_time": 1442.733, "end_time": 1446.248, "text": "Agora escute esta conversa em inglês. É a mesma", "speaker_id": null}, {"sequence_number": 286, "start_time": 1446.748, "end_time": 1449.188, "text": "que você escutou no início da lição, há alguns minutos.", "speaker_id": null}, {"sequence_number": 287, "start_time": 1450.73, "end_time": 1453.789, "text": "Excuse me, miss. Do you understand Portuguese?", "speaker_id": null}, {"sequence_number": 288, "start_time": 1454.469, "end_time": 1458.29, "text": "No, sir. I don't understand Portuguese. I understand", "speaker_id": null}, {"sequence_number": 289, "start_time": 1458.79, "end_time": 1461.601, "text": "a little English. Are you Brazilian? Yes, miss.", "speaker_id": null}, {"sequence_number": 290, "start_time": 1462.931, "end_time": 1465.883, "text": "Escute outra vez. Excuse me,", "speaker_id": null}, {"sequence_number": 291, "start_time": 1465.932, "end_time": 1469.204, "text": "miss. Do you understand Portuguese? No,", "speaker_id": null}, {"sequence_number": 292, "start_time": 1469.367, "end_time": 1473.001, "text": "sir. I don't understand Portuguese. I understand a", "speaker_id": null}, {"sequence_number": 293, "start_time": 1473.501, "end_time": 1476.264, "text": "little English. Are you Brazilian? Yes, Miss.", "speaker_id": null}, {"sequence_number": 294, "start_time": 1477.357, "end_time": 1481.04, "text": "Agora imagine que você está sentado ao lado de uma jovem americana.", "speaker_id": null}, {"sequence_number": 295, "start_time": 1481.847, "end_time": 1484.721, "text": "Você quer conversar com ela. O que você lhe diz?", "speaker_id": null}, {"sequence_number": 296, "start_time": 1487.792, "end_time": 1488.632, "text": "Excuse me.", "speaker_id": null}, {"sequence_number": 297, "start_time": 1491.833, "end_time": 1492.996, "text": "Excuse me, Miss.", "speaker_id": null}, {"sequence_number": 298, "start_time": 1496.176, "end_time": 1499.4, "text": "Ela não te responde. Pergunte-lhe se ela entende.", "speaker_id": null}, {"sequence_number": 299, "start_time": 1503.18, "end_time": 1503.954, "text": "Do you understand?", "speaker_id": null}, {"sequence_number": 300, "start_time": 1508.108, "end_time": 1509.191, "text": "Do you understand?", "speaker_id": null}, {"sequence_number": 301, "start_time": 1513.194, "end_time": 1516.64, "text": "Ainda não há uma resposta. Agora, pergunte-lhe se ela", "speaker_id": null}, {"sequence_number": 302, "start_time": 1517.14, "end_time": 1517.657, "text": "entende português.", "speaker_id": null}, {"sequence_number": 303, "start_time": 1522.442, "end_time": 1523.961, "text": "Do you understand Portuguese?", "speaker_id": null}, {"sequence_number": 304, "start_time": 1529.018, "end_time": 1530.826, "text": "Do you understand Portuguese?", "speaker_id": null}, {"sequence_number": 305, "start_time": 1535.321, "end_time": 1537.309, "text": "Como ela responde não, senhor?", "speaker_id": null}, {"sequence_number": 306, "start_time": 1539.986, "end_time": 1543.414, "text": "No, sir. No, sir.", "speaker_id": null}, {"sequence_number": 307, "start_time": 1546.022, "end_time": 1548.066, "text": "Como ela te diz que não entende o português?", "speaker_id": null}, {"sequence_number": 308, "start_time": 1552.789, "end_time": 1554.512, "text": "I don't understand Portuguese.", "speaker_id": null}, {"sequence_number": 309, "start_time": 1559.069, "end_time": 1560.75, "text": "I don't understand Portuguese.", "speaker_id": null}, {"sequence_number": 310, "start_time": 1565.236, "end_time": 1567.593, "text": "Como ela te pergunta se você entende inglês?", "speaker_id": null}, {"sequence_number": 311, "start_time": 1571.509, "end_time": 1573.022, "text": "Do you understand English?", "speaker_id": null}, {"sequence_number": 312, "start_time": 1577.117, "end_time": 1578.8, "text": "Do you understand English, sir?", "speaker_id": null}, {"sequence_number": 313, "start_time": 1583.03, "end_time": 1584.526, "text": "Diga-lhe que você entende um pouco.", "speaker_id": null}, {"sequence_number": 314, "start_time": 1588.206, "end_time": 1589.55, "text": "I understand a little.", "speaker_id": null}, {"sequence_number": 315, "start_time": 1593.643, "end_time": 1594.834, "text": "I understand a little.", "speaker_id": null}, {"sequence_number": 316, "start_time": 1599.167, "end_time": 1602.345, "text": "Ela quer te perguntar se você é brasileiro. O que ela", "speaker_id": null}, {"sequence_number": 317, "start_time": 1602.427, "end_time": 1602.559, "text": "diz?", "speaker_id": null}, {"sequence_number": 318, "start_time": 1606.167, "end_time": 1607.023, "text": "Are you Brazilian?", "speaker_id": null}, {"sequence_number": 319, "start_time": 1610.343, "end_time": 1611.129, "text": "Are you Brazilian?", "speaker_id": null}, {"sequence_number": 320, "start_time": 1614.606, "end_time": 1615.73, "text": "Diga-lhe sim, senhorita.", "speaker_id": null}, {"sequence_number": 321, "start_time": 1618.746, "end_time": 1619.423, "text": "Yes, miss.", "speaker_id": null}, {"sequence_number": 322, "start_time": 1622.538, "end_time": 1626.62, "text": "Vamos tentar esta conversa outra vez. Diga à moça: com licença.", "speaker_id": null}, {"sequence_number": 323, "start_time": 1629.733, "end_time": 1630.554, "text": "Excuse me.", "speaker_id": null}, {"sequence_number": 324, "start_time": 1634.239, "end_time": 1635.398, "text": "Excuse me, miss.", "speaker_id": null}, {"sequence_number": 325, "start_time": 1639.436, "end_time": 1642.181, "text": "Ela não te responde. Pergunte-lhe se ela entende.", "speaker_id": null}, {"sequence_number": 326, "start_time": 1645.358, "end_time": 1646.132, "text": "Do you understand?", "speaker_id": null}, {"sequence_number": 327, "start_time": 1650.555, "end_time": 1654.9, "text": "Ainda não há uma resposta. Agora pergunte-lhe se ela entende português.", "speaker_id": null}, {"sequence_number": 328, "start_time": 1658.944, "end_time": 1660.686, "text": "Do you understand Portuguese?", "speaker_id": null}, {"sequence_number": 329, "start_time": 1665.636, "end_time": 1667.21, "text": "Como ela responde não senhor?", "speaker_id": null}, {"sequence_number": 330, "start_time": 1669.916, "end_time": 1670.288, "text": "No sir.", "speaker_id": null}, {"sequence_number": 331, "start_time": 1672.992, "end_time": 1676.473, "text": "No sir. Como ela", "speaker_id": null}, {"sequence_number": 332, "start_time": 1676.973, "end_time": 1678.302, "text": "te diz que não entende português?", "speaker_id": null}, {"sequence_number": 333, "start_time": 1682.87, "end_time": 1684.589, "text": "I don't understand Portuguese.", "speaker_id": null}, {"sequence_number": 334, "start_time": 1688.959, "end_time": 1691.143, "text": "Como ela te pergunta se você entende inglês?", "speaker_id": null}, {"sequence_number": 335, "start_time": 1694.946, "end_time": 1696.478, "text": "Do you understand English?", "speaker_id": null}, {"sequence_number": 336, "start_time": 1700.486, "end_time": 1702.004, "text": "Diga-lhe que você entende um pouco.", "speaker_id": null}, {"sequence_number": 337, "start_time": 1705.263, "end_time": 1706.207, "text": "I understand a little.", "speaker_id": null}, {"sequence_number": 338, "start_time": 1710.326, "end_time": 1713.77, "text": "Ela quer te perguntar se você é brasileiro. O que ela diz?", "speaker_id": null}, {"sequence_number": 339, "start_time": 1716.811, "end_time": 1717.604, "text": "Are you Brazilian?", "speaker_id": null}, {"sequence_number": 340, "start_time": 1720.68, "end_time": 1724.424, "text": "Diga-lhe sim, senhorita. Yes,", "speaker_id": null}, {"sequence_number": 341, "start_time": 1724.553, "end_time": 1728.559, "text": "miss. Agora ela", "speaker_id": null}, {"sequence_number": 342, "start_time": 1729.059, "end_time": 1731.407, "text": "vai te perguntar algo. Responda sinceramente.", "speaker_id": null}, {"sequence_number": 343, "start_time": 1732.429, "end_time": 1734.343, "text": "Do you understand Portuguese, sir?", "speaker_id": null}, {"sequence_number": 344, "start_time": 1735.429, "end_time": 1737.262, "text": "Do you understand Portuguese, sir?", "speaker_id": null}, {"sequence_number": 345, "start_time": 1742.982, "end_time": 1745.713, "text": "Yes, miss. I understand Portuguese.", "speaker_id": null}, {"sequence_number": 346, "start_time": 1752.162, "end_time": 1755.912, "text": "Ela vai te perguntar outra coisa. Responda com a expressão um", "speaker_id": null}, {"sequence_number": 347, "start_time": 1756.009, "end_time": 1758.713, "text": "pouco. Do you understand English?", "speaker_id": null}, {"sequence_number": 348, "start_time": 1759.789, "end_time": 1761.289, "text": "Do you understand English?", "speaker_id": null}, {"sequence_number": 349, "start_time": 1763.434, "end_time": 1767.224, "text": "A little. I understand", "speaker_id": null}, {"sequence_number": 350, "start_time": 1767.724, "end_time": 1768.063, "text": "a little English.", "speaker_id": null}, {"sequence_number": 351, "start_time": 1772.72, "end_time": 1776.544, "text": "E é verdade. Agora você entende um pouco de inglês. Não se", "speaker_id": null}, {"sequence_number": 352, "start_time": 1776.592, "end_time": 1779.854, "text": "preocupe se você não respondeu corretamente a todas as perguntas.", "speaker_id": null}, {"sequence_number": 353, "start_time": 1780.288, "end_time": 1783.705, "text": "Tudo o que você acaba de aprender vai ser utilizado nas próximas lições.", "speaker_id": null}, {"sequence_number": 354, "start_time": 1784.158, "end_time": 1787.391, "text": "Se você se lembrar de mais ou menos 80% do conteúdo da", "speaker_id": null}, {"sequence_number": 355, "start_time": 1787.891, "end_time": 1791.55, "text": "lição, Pode passar para a próxima lição. Senão, você deve dedicar", "speaker_id": null}, {"sequence_number": 356, "start_time": 1792.05, "end_time": 1795.47, "text": "mais 30 minutos para rever esta lição. Este é o final da", "speaker_id": null}, {"sequence_number": 357, "start_time": 1795.97, "end_time": 1799.13, "text": "lição 1. Pimsleur courses work most", "speaker_id": null}, {"sequence_number": 358, "start_time": 1799.63, "end_time": 1802.97, "text": "effectively when done consecutively and on a daily basis.", "speaker_id": null}, {"sequence_number": 359, "start_time": 1803.31, "end_time": 1806.82, "text": "For best results, please continue with the next unit tomorrow.", "speaker_id": null}, {"sequence_number": 360, "start_time": 1807.39, "end_time": 1810.44, "text": "This has been a presentation of Simon and Schuster Audio.", "speaker_id": null}, {"sequence_number": 361, "start_time": 1810.93, "end_time": 1814.58, "text": "Copyright 2010 by Simon and Schuster Incorporated.", "speaker_id": null}, {"sequence_number": 362, "start_time": 1814.82, "end_time": 1818.892, "text": "Recording copyright 2010 by Simon Schuster,", "speaker_id": null}, {"sequence_number": 363, "start_time": 1819.07, "end_time": 1821.618, "text": "Incorporated. All rights reserved.", "speaker_id": null}];
+const audio = document.getElementById('audio');
+const current = document.getElementById('current');
+const segmentElements = document.querySelectorAll('.segment');
+let currentIndex = -1;
+const subtitleOffset = 0.2;
+
+function formatTime(seconds) {
+    seconds = Number(seconds);
+    if (!Number.isFinite(seconds)) return '0:00';
+    const minutes = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return minutes + ':' + String(secs).padStart(2, '0');
+}
+
+function findSegmentIndex(time) {
+    for (let i = 0; i < segments.length; i++) {
+        const start = Number(segments[i].start_time);
+        const end = Number(segments[i].end_time);
+        if (time >= start && time < end) return i;
+    }
+    return -1;
+}
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+function updateSubtitle() {
+    if (!audio) return;
+    const time = audio.currentTime + subtitleOffset;
+    const index = findSegmentIndex(time);
+
+    if (index === -1) {
+        if (currentIndex !== -1) {
+            segmentElements[currentIndex].classList.remove('active');
+            currentIndex = -1;
+        }
+        return;
+    }
+
+    if (index === currentIndex) return;
+
+    if (currentIndex !== -1) {
+        segmentElements[currentIndex].classList.remove('active');
+    }
+    currentIndex = index;
+
+    const element = segmentElements[index];
+    element.classList.add('active');
+
+    const segment = segments[index];
+    current.innerHTML = `
+        <div>
+            <div class="current-speaker">
+                ${formatTime(segment.start_time)} &rarr; ${formatTime(segment.end_time)}
+            </div>
+            <div class="current-text">${escapeHtml(segment.text)}</div>
+        </div>
+    `;
+}
+
+if (audio) {
+    audio.addEventListener('timeupdate', updateSubtitle);
+    audio.addEventListener('seeked', updateSubtitle);
+    audio.addEventListener('loadedmetadata', updateSubtitle);
+}
+
+segmentElements.forEach((element, index) => {
+    element.addEventListener('click', () => {
+        if (!audio) return;
+        const start = Number(segments[index].start_time);
+        audio.currentTime = start;
+        updateSubtitle();
+    });
+});
+
+</script>
+</body>
+</html>

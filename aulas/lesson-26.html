@@ -1,0 +1,1632 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 26</title>
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: #f4f6f8; color: #222; }
+.container { max-width: 1100px; margin: 30px auto; padding: 20px; }
+.header { background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+.header h1 { margin: 0 0 8px 0; }
+.header p { margin: 0; color: #666; }
+.player { background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+audio { width: 100%; margin-bottom: 15px; }
+.current {
+    min-height: 120px; display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 20px; border-radius: 10px; background: #eef4ff; border: 2px solid #d7e3ff;
+}
+.current-text { font-size: 25px; line-height: 1.5; font-weight: bold; }
+.current-speaker { font-size: 14px; color: #666; margin-bottom: 8px; }
+.empty-current { color: #999; font-size: 18px; }
+.segments { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+.segments-header { padding: 18px 20px; border-bottom: 1px solid #ddd; }
+.segments-header h2 { margin: 0; }
+.segment {
+    display: grid; grid-template-columns: 70px 150px 1fr; gap: 15px;
+    padding: 13px 20px; border-bottom: 1px solid #eee; cursor: pointer; transition: background .15s;
+}
+.segment:hover { background: #f5f8ff; }
+.segment.active { background: #dfeaff; }
+.segment-number { font-weight: bold; color: #666; }
+.segment-time { font-family: monospace; color: #666; }
+.segment-text { line-height: 1.5; }
+.error { background: #ffe1e1; border: 1px solid #ffbaba; color: #a00000; padding: 15px; border-radius: 8px; }
+.info { margin-top: 10px; color: #666; font-size: 14px; }
+.back-link { display: inline-block; margin-bottom: 15px; color: #4d7cff; text-decoration: none; font-weight: bold; }
+@media (max-width: 700px) {
+    .segment { grid-template-columns: 50px 110px 1fr; gap: 8px; padding: 10px; }
+    .current-text { font-size: 20px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <a href="..\index.html" class="back-link">&larr; Voltar para a lista de aulas</a>
+
+    <div class="header">
+        <h1>Lesson 26 &mdash; Lesson 26</h1>
+        <p>Player de áudio com SRT sincronizado</p>
+    </div>
+
+    <div class="player">
+        <audio id="audio" controls preload="metadata">
+            <source src="../storage/audio/Lesson26.mp3" type="audio/mpeg">
+            Seu navegador não suporta áudio.
+        </audio>
+
+        <div id="current" class="current">
+            <div class="empty-current">▶ Inicie o áudio para começar</div>
+        </div>
+    </div>
+
+    <div class="segments">
+        <div class="segments-header">
+            <h2>Legenda da aula</h2>
+            <div class="info">295 segmentos SRT</div>
+        </div>
+        <div id="segmentList">
+<div class="segment" data-index="0" data-start="0.81" data-end="4.28">
+    <div class="segment-number">#1</div>
+    <div class="segment-time">0.810 &rarr; 4.280</div>
+    <div class="segment-text">Esta lição 26 de Pimsleur Inglês 1.</div>
+</div>
+<div class="segment" data-index="1" data-start="4.78" data-end="8.72">
+    <div class="segment-number">#2</div>
+    <div class="segment-time">4.780 &rarr; 8.720</div>
+    <div class="segment-text">Listen to this conversation. Katie acaba de reconhecer o seu amigo Carlos na</div>
+</div>
+<div class="segment" data-index="2" data-start="9.22" data-end="12.32">
+    <div class="segment-number">#3</div>
+    <div class="segment-time">9.220 &rarr; 12.320</div>
+    <div class="segment-text">rua. Carlos, wait! Where are you going?</div>
+</div>
+<div class="segment" data-index="3" data-start="12.82" data-end="15.92">
+    <div class="segment-number">#4</div>
+    <div class="segment-time">12.820 &rarr; 15.920</div>
+    <div class="segment-text">I'm going to the department store on Park Avenue. Why?</div>
+</div>
+<div class="segment" data-index="4" data-start="16.42" data-end="19.72">
+    <div class="segment-number">#5</div>
+    <div class="segment-time">16.420 &rarr; 19.720</div>
+    <div class="segment-text">Because I want to buy something for my wife. Do you know what time it</div>
+</div>
+<div class="segment" data-index="5" data-start="20.22" data-end="24.04">
+    <div class="segment-number">#6</div>
+    <div class="segment-time">20.220 &rarr; 24.040</div>
+    <div class="segment-text">is? Are the stores open? Yes, they are. It's not too late.</div>
+</div>
+<div class="segment" data-index="6" data-start="24.54" data-end="26.87">
+    <div class="segment-number">#7</div>
+    <div class="segment-time">24.540 &rarr; 26.870</div>
+    <div class="segment-text">It's only eight o'clock. Thanks. Goodbye,</div>
+</div>
+<div class="segment" data-index="7" data-start="27.37" data-end="30.77">
+    <div class="segment-number">#8</div>
+    <div class="segment-time">27.370 &rarr; 30.770</div>
+    <div class="segment-text">Katie. Goodbye, Carlos. Nesta conversa,</div>
+</div>
+<div class="segment" data-index="8" data-start="31.27" data-end="35.15">
+    <div class="segment-number">#9</div>
+    <div class="segment-time">31.270 &rarr; 35.150</div>
+    <div class="segment-text">a mulher disse: It's only eight o'clock. O que quer dizer? São só</div>
+</div>
+<div class="segment" data-index="9" data-start="35.65" data-end="39.23">
+    <div class="segment-number">#10</div>
+    <div class="segment-time">35.650 &rarr; 39.230</div>
+    <div class="segment-text">oito horas. Listen again. Carlos,</div>
+</div>
+<div class="segment" data-index="10" data-start="39.73" data-end="42.97">
+    <div class="segment-number">#11</div>
+    <div class="segment-time">39.730 &rarr; 42.970</div>
+    <div class="segment-text">wait! Where are you going? I'm going to the department store on Park</div>
+</div>
+<div class="segment" data-index="11" data-start="43.47" data-end="46.68">
+    <div class="segment-number">#12</div>
+    <div class="segment-time">43.470 &rarr; 46.680</div>
+    <div class="segment-text">Avenue. Why? Because I want to buy something for my wife.</div>
+</div>
+<div class="segment" data-index="12" data-start="47.13" data-end="50.33">
+    <div class="segment-number">#13</div>
+    <div class="segment-time">47.130 &rarr; 50.330</div>
+    <div class="segment-text">Do you know what time it is? Are the stores open?</div>
+</div>
+<div class="segment" data-index="13" data-start="50.83" data-end="53.61">
+    <div class="segment-number">#14</div>
+    <div class="segment-time">50.830 &rarr; 53.610</div>
+    <div class="segment-text">Yes, they are. It's not too late. It's only eight o'clock.</div>
+</div>
+<div class="segment" data-index="14" data-start="53.73" data-end="56.933">
+    <div class="segment-number">#15</div>
+    <div class="segment-time">53.730 &rarr; 56.933</div>
+    <div class="segment-text">Thanks. Goodbye, Katie. Goodbye, Carlos.</div>
+</div>
+<div class="segment" data-index="15" data-start="58.141" data-end="61.473">
+    <div class="segment-number">#16</div>
+    <div class="segment-time">58.141 &rarr; 61.473</div>
+    <div class="segment-text">Now answer the questions. Agora responda as</div>
+</div>
+<div class="segment" data-index="16" data-start="61.973" data-end="65.322">
+    <div class="segment-number">#17</div>
+    <div class="segment-time">61.973 &rarr; 65.322</div>
+    <div class="segment-text">perguntas. Now answer the questions. Hello,</div>
+</div>
+<div class="segment" data-index="17" data-start="65.502" data-end="66.485">
+    <div class="segment-number">#18</div>
+    <div class="segment-time">65.502 &rarr; 66.485</div>
+    <div class="segment-text">how are you today?</div>
+</div>
+<div class="segment" data-index="18" data-start="68.826" data-end="70.573">
+    <div class="segment-number">#19</div>
+    <div class="segment-time">68.826 &rarr; 70.573</div>
+    <div class="segment-text">I'm fine.</div>
+</div>
+<div class="segment" data-index="19" data-start="73.614" data-end="74.633">
+    <div class="segment-number">#20</div>
+    <div class="segment-time">73.614 &rarr; 74.633</div>
+    <div class="segment-text">I'm fine, thanks.</div>
+</div>
+<div class="segment" data-index="20" data-start="77.33" data-end="80.117">
+    <div class="segment-number">#21</div>
+    <div class="segment-time">77.330 &rarr; 80.117</div>
+    <div class="segment-text">How's your wife? Is she fine?</div>
+</div>
+<div class="segment" data-index="21" data-start="84.474" data-end="86.067">
+    <div class="segment-number">#22</div>
+    <div class="segment-time">84.474 &rarr; 86.067</div>
+    <div class="segment-text">Yes, she's fine too.</div>
+</div>
+<div class="segment" data-index="22" data-start="90.084" data-end="91.933">
+    <div class="segment-number">#23</div>
+    <div class="segment-time">90.084 &rarr; 91.933</div>
+    <div class="segment-text">My wife's fine too, thank you.</div>
+</div>
+<div class="segment" data-index="23" data-start="96.873" data-end="98.925">
+    <div class="segment-number">#24</div>
+    <div class="segment-time">96.873 &rarr; 98.925</div>
+    <div class="segment-text">Ask. E você, como vai?</div>
+</div>
+<div class="segment" data-index="24" data-start="103.984" data-end="105.292">
+    <div class="segment-number">#25</div>
+    <div class="segment-time">103.984 &rarr; 105.292</div>
+    <div class="segment-text">And you? How are you?</div>
+</div>
+<div class="segment" data-index="25" data-start="109.75" data-end="111.607">
+    <div class="segment-number">#26</div>
+    <div class="segment-time">109.750 &rarr; 111.607</div>
+    <div class="segment-text">Como ela diz? Ah, eu não sei.</div>
+</div>
+<div class="segment" data-index="26" data-start="115.406" data-end="116.395">
+    <div class="segment-number">#27</div>
+    <div class="segment-time">115.406 &rarr; 116.395</div>
+    <div class="segment-text">Oh, I don't know.</div>
+</div>
+<div class="segment" data-index="27" data-start="119.758" data-end="121.315">
+    <div class="segment-number">#28</div>
+    <div class="segment-time">119.758 &rarr; 121.315</div>
+    <div class="segment-text">Ask por quê?</div>
+</div>
+<div class="segment" data-index="28" data-start="126.941" data-end="130.09">
+    <div class="segment-number">#29</div>
+    <div class="segment-time">126.941 &rarr; 130.090</div>
+    <div class="segment-text">Why? Why? Porque eu</div>
+</div>
+<div class="segment" data-index="29" data-start="130.59" data-end="131.591">
+    <div class="segment-number">#30</div>
+    <div class="segment-time">130.590 &rarr; 131.591</div>
+    <div class="segment-text">gostaria de comprar algo.</div>
+</div>
+<div class="segment" data-index="30" data-start="135.712" data-end="137.666">
+    <div class="segment-number">#31</div>
+    <div class="segment-time">135.712 &rarr; 137.666</div>
+    <div class="segment-text">Because I'd like to buy something.</div>
+</div>
+<div class="segment" data-index="31" data-start="142.12" data-end="143.55">
+    <div class="segment-number">#32</div>
+    <div class="segment-time">142.120 &rarr; 143.550</div>
+    <div class="segment-text">Because I'd like to buy something.</div>
+</div>
+<div class="segment" data-index="32" data-start="147.767" data-end="148.44">
+    <div class="segment-number">#33</div>
+    <div class="segment-time">147.767 &rarr; 148.440</div>
+    <div class="segment-text">E eu não posso.</div>
+</div>
+<div class="segment" data-index="33" data-start="150.696" data-end="151.833">
+    <div class="segment-number">#34</div>
+    <div class="segment-time">150.696 &rarr; 151.833</div>
+    <div class="segment-text">And I can't.</div>
+</div>
+<div class="segment" data-index="34" data-start="154.401" data-end="158.078">
+    <div class="segment-number">#35</div>
+    <div class="segment-time">154.401 &rarr; 158.078</div>
+    <div class="segment-text">And I can't. Try to</div>
+</div>
+<div class="segment" data-index="35" data-start="158.094" data-end="159.512">
+    <div class="segment-number">#36</div>
+    <div class="segment-time">158.094 &rarr; 159.512</div>
+    <div class="segment-text">ask. Por que não?</div>
+</div>
+<div class="segment" data-index="36" data-start="162.206" data-end="165.853">
+    <div class="segment-number">#37</div>
+    <div class="segment-time">162.206 &rarr; 165.853</div>
+    <div class="segment-text">Why not? Why not?</div>
+</div>
+<div class="segment" data-index="37" data-start="168.5" data-end="170.243">
+    <div class="segment-number">#38</div>
+    <div class="segment-time">168.500 &rarr; 170.243</div>
+    <div class="segment-text">Porque as lojas estão fechadas.</div>
+</div>
+<div class="segment" data-index="38" data-start="174.52" data-end="176.264">
+    <div class="segment-number">#39</div>
+    <div class="segment-time">174.520 &rarr; 176.264</div>
+    <div class="segment-text">Because the stores are closed.</div>
+</div>
+<div class="segment" data-index="39" data-start="180.05" data-end="181.671">
+    <div class="segment-number">#40</div>
+    <div class="segment-time">180.050 &rarr; 181.671</div>
+    <div class="segment-text">The stores are closed.</div>
+</div>
+<div class="segment" data-index="40" data-start="184.981" data-end="185.898">
+    <div class="segment-number">#41</div>
+    <div class="segment-time">184.981 &rarr; 185.898</div>
+    <div class="segment-text">Verdade.</div>
+</div>
+<div class="segment" data-index="41" data-start="188.297" data-end="192.209">
+    <div class="segment-number">#42</div>
+    <div class="segment-time">188.297 &rarr; 192.209</div>
+    <div class="segment-text">Really? Sim, elas estão</div>
+</div>
+<div class="segment" data-index="42" data-start="192.709" data-end="192.821">
+    <div class="segment-number">#43</div>
+    <div class="segment-time">192.709 &rarr; 192.821</div>
+    <div class="segment-text">fechadas.</div>
+</div>
+<div class="segment" data-index="43" data-start="196.336" data-end="197.517">
+    <div class="segment-number">#44</div>
+    <div class="segment-time">196.336 &rarr; 197.517</div>
+    <div class="segment-text">Yes, they're closed.</div>
+</div>
+<div class="segment" data-index="44" data-start="200.882" data-end="202.273">
+    <div class="segment-number">#45</div>
+    <div class="segment-time">200.882 &rarr; 202.273</div>
+    <div class="segment-text">Yes, they're closed.</div>
+</div>
+<div class="segment" data-index="45" data-start="205.38" data-end="206.207">
+    <div class="segment-number">#46</div>
+    <div class="segment-time">205.380 &rarr; 206.207</div>
+    <div class="segment-text">É tarde.</div>
+</div>
+<div class="segment" data-index="46" data-start="211.515" data-end="215.097">
+    <div class="segment-number">#47</div>
+    <div class="segment-time">211.515 &rarr; 215.097</div>
+    <div class="segment-text">It's late. It's late. É tarde</div>
+</div>
+<div class="segment" data-index="47" data-start="215.597" data-end="219.489">
+    <div class="segment-number">#48</div>
+    <div class="segment-time">215.597 &rarr; 219.489</div>
+    <div class="segment-text">demais. It's too</div>
+</div>
+<div class="segment" data-index="48" data-start="219.506" data-end="219.884">
+    <div class="segment-number">#49</div>
+    <div class="segment-time">219.506 &rarr; 219.884</div>
+    <div class="segment-text">late.</div>
+</div>
+<div class="segment" data-index="49" data-start="223.09" data-end="224.019">
+    <div class="segment-number">#50</div>
+    <div class="segment-time">223.090 &rarr; 224.019</div>
+    <div class="segment-text">It's too late.</div>
+</div>
+<div class="segment" data-index="50" data-start="227.288" data-end="228.817">
+    <div class="segment-number">#51</div>
+    <div class="segment-time">227.288 &rarr; 228.817</div>
+    <div class="segment-text">Mas elas estão abertas amanhã.</div>
+</div>
+<div class="segment" data-index="51" data-start="232.518" data-end="233.583">
+    <div class="segment-number">#52</div>
+    <div class="segment-time">232.518 &rarr; 233.583</div>
+    <div class="segment-text">But they're open tomorrow.</div>
+</div>
+<div class="segment" data-index="52" data-start="237.446" data-end="238.655">
+    <div class="segment-number">#53</div>
+    <div class="segment-time">237.446 &rarr; 238.655</div>
+    <div class="segment-text">But they're open tomorrow.</div>
+</div>
+<div class="segment" data-index="53" data-start="242.307" data-end="249.555">
+    <div class="segment-number">#54</div>
+    <div class="segment-time">242.307 &rarr; 249.555</div>
+    <div class="segment-text">Try to say, &quot;Elas estão abertas tarde amanhã.&quot; They're</div>
+</div>
+<div class="segment" data-index="54" data-start="249.685" data-end="250.785">
+    <div class="segment-number">#55</div>
+    <div class="segment-time">249.685 &rarr; 250.785</div>
+    <div class="segment-text">open late tomorrow.</div>
+</div>
+<div class="segment" data-index="55" data-start="254.05" data-end="255.975">
+    <div class="segment-number">#56</div>
+    <div class="segment-time">254.050 &rarr; 255.975</div>
+    <div class="segment-text">They're open late tomorrow.</div>
+</div>
+<div class="segment" data-index="56" data-start="259.857" data-end="261.523">
+    <div class="segment-number">#57</div>
+    <div class="segment-time">259.857 &rarr; 261.523</div>
+    <div class="segment-text">Você pode comprar algo amanhã.</div>
+</div>
+<div class="segment" data-index="57" data-start="265.275" data-end="266.714">
+    <div class="segment-number">#58</div>
+    <div class="segment-time">265.275 &rarr; 266.714</div>
+    <div class="segment-text">You can buy something tomorrow.</div>
+</div>
+<div class="segment" data-index="58" data-start="270.503" data-end="272.162">
+    <div class="segment-number">#59</div>
+    <div class="segment-time">270.503 &rarr; 272.162</div>
+    <div class="segment-text">Em uma loja de departamentos.</div>
+</div>
+<div class="segment" data-index="59" data-start="275.66" data-end="276.72">
+    <div class="segment-number">#60</div>
+    <div class="segment-time">275.660 &rarr; 276.720</div>
+    <div class="segment-text">In a department store.</div>
+</div>
+<div class="segment" data-index="60" data-start="280.14" data-end="281.121">
+    <div class="segment-number">#61</div>
+    <div class="segment-time">280.140 &rarr; 281.121</div>
+    <div class="segment-text">In a department store.</div>
+</div>
+<div class="segment" data-index="61" data-start="284.573" data-end="285.585">
+    <div class="segment-number">#62</div>
+    <div class="segment-time">284.573 &rarr; 285.585</div>
+    <div class="segment-text">O que você quer comprar?</div>
+</div>
+<div class="segment" data-index="62" data-start="289.002" data-end="289.97">
+    <div class="segment-number">#63</div>
+    <div class="segment-time">289.002 &rarr; 289.970</div>
+    <div class="segment-text">What do you want to buy?</div>
+</div>
+<div class="segment" data-index="63" data-start="293.603" data-end="295.847">
+    <div class="segment-number">#64</div>
+    <div class="segment-time">293.603 &rarr; 295.847</div>
+    <div class="segment-text">Sai, meu marido quer comprar algo.</div>
+</div>
+<div class="segment" data-index="64" data-start="299.958" data-end="301.829">
+    <div class="segment-number">#65</div>
+    <div class="segment-time">299.958 &rarr; 301.829</div>
+    <div class="segment-text">My husband wants to buy something.</div>
+</div>
+<div class="segment" data-index="65" data-start="305.856" data-end="307.248">
+    <div class="segment-number">#66</div>
+    <div class="segment-time">305.856 &rarr; 307.248</div>
+    <div class="segment-text">Para nossa menina pequena.</div>
+</div>
+<div class="segment" data-index="66" data-start="309.673" data-end="311.278">
+    <div class="segment-number">#67</div>
+    <div class="segment-time">309.673 &rarr; 311.278</div>
+    <div class="segment-text">For our little girl.</div>
+</div>
+<div class="segment" data-index="67" data-start="314.076" data-end="317.353">
+    <div class="segment-number">#68</div>
+    <div class="segment-time">314.076 &rarr; 317.353</div>
+    <div class="segment-text">Try to say. Então vá para a loja de departamentos.</div>
+</div>
+<div class="segment" data-index="68" data-start="321.58" data-end="322.999">
+    <div class="segment-number">#69</div>
+    <div class="segment-time">321.580 &rarr; 322.999</div>
+    <div class="segment-text">Then go to the department store.</div>
+</div>
+<div class="segment" data-index="69" data-start="327.1" data-end="327.967">
+    <div class="segment-number">#70</div>
+    <div class="segment-time">327.100 &rarr; 327.967</div>
+    <div class="segment-text">The department store.</div>
+</div>
+<div class="segment" data-index="70" data-start="331.173" data-end="332.209">
+    <div class="segment-number">#71</div>
+    <div class="segment-time">331.173 &rarr; 332.209</div>
+    <div class="segment-text">Na Avenida Parque.</div>
+</div>
+<div class="segment" data-index="71" data-start="335.334" data-end="335.976">
+    <div class="segment-number">#72</div>
+    <div class="segment-time">335.334 &rarr; 335.976</div>
+    <div class="segment-text">On Park Avenue.</div>
+</div>
+<div class="segment" data-index="72" data-start="339.189" data-end="341.409">
+    <div class="segment-number">#73</div>
+    <div class="segment-time">339.189 &rarr; 341.409</div>
+    <div class="segment-text">Amanhã as lojas estão abertas.</div>
+</div>
+<div class="segment" data-index="73" data-start="345.89" data-end="347.399">
+    <div class="segment-number">#74</div>
+    <div class="segment-time">345.890 &rarr; 347.399</div>
+    <div class="segment-text">Tomorrow the stores are open.</div>
+</div>
+<div class="segment" data-index="74" data-start="351.57" data-end="355.024">
+    <div class="segment-number">#75</div>
+    <div class="segment-time">351.570 &rarr; 355.024</div>
+    <div class="segment-text">Ask where Park Avenue is. Ask where Park Avenue</div>
+</div>
+<div class="segment" data-index="75" data-start="355.041" data-end="355.073">
+    <div class="segment-number">#76</div>
+    <div class="segment-time">355.041 &rarr; 355.073</div>
+    <div class="segment-text">is.</div>
+</div>
+<div class="segment" data-index="76" data-start="358.395" data-end="359.439">
+    <div class="segment-number">#77</div>
+    <div class="segment-time">358.395 &rarr; 359.439</div>
+    <div class="segment-text">Where's Park Avenue?</div>
+</div>
+<div class="segment" data-index="77" data-start="362.796" data-end="363.33">
+    <div class="segment-number">#78</div>
+    <div class="segment-time">362.796 &rarr; 363.330</div>
+    <div class="segment-text">Fica lá.</div>
+</div>
+<div class="segment" data-index="78" data-start="366.609" data-end="367.304">
+    <div class="segment-number">#79</div>
+    <div class="segment-time">366.609 &rarr; 367.304</div>
+    <div class="segment-text">It's over there.</div>
+</div>
+<div class="segment" data-index="79" data-start="370.713" data-end="371.731">
+    <div class="segment-number">#80</div>
+    <div class="segment-time">370.713 &rarr; 371.731</div>
+    <div class="segment-text">Vá para a direita.</div>
+</div>
+<div class="segment" data-index="80" data-start="374.617" data-end="375.354">
+    <div class="segment-number">#81</div>
+    <div class="segment-time">374.617 &rarr; 375.354</div>
+    <div class="segment-text">Go to the right.</div>
+</div>
+<div class="segment" data-index="81" data-start="378.337" data-end="379.496">
+    <div class="segment-number">#82</div>
+    <div class="segment-time">378.337 &rarr; 379.496</div>
+    <div class="segment-text">Depois para a esquerda.</div>
+</div>
+<div class="segment" data-index="82" data-start="382.36" data-end="383.419">
+    <div class="segment-number">#83</div>
+    <div class="segment-time">382.360 &rarr; 383.419</div>
+    <div class="segment-text">Then to the left.</div>
+</div>
+<div class="segment" data-index="83" data-start="386.282" data-end="389.735">
+    <div class="segment-number">#84</div>
+    <div class="segment-time">386.282 &rarr; 389.735</div>
+    <div class="segment-text">To the left. Sei.</div>
+</div>
+<div class="segment" data-index="84" data-start="390.422" data-end="392.762">
+    <div class="segment-number">#85</div>
+    <div class="segment-time">390.422 &rarr; 392.762</div>
+    <div class="segment-text">Meu marido precisa de um pouco de dinheiro.</div>
+</div>
+<div class="segment" data-index="85" data-start="396.426" data-end="397.867">
+    <div class="segment-number">#86</div>
+    <div class="segment-time">396.426 &rarr; 397.867</div>
+    <div class="segment-text">My husband needs some money.</div>
+</div>
+<div class="segment" data-index="86" data-start="401.566" data-end="405.342">
+    <div class="segment-number">#87</div>
+    <div class="segment-time">401.566 &rarr; 405.342</div>
+    <div class="segment-text">Needs. My husband needs some</div>
+</div>
+<div class="segment" data-index="87" data-start="405.842" data-end="409.761">
+    <div class="segment-number">#88</div>
+    <div class="segment-time">405.842 &rarr; 409.761</div>
+    <div class="segment-text">money. Eu também</div>
+</div>
+<div class="segment" data-index="88" data-start="409.795" data-end="411.349">
+    <div class="segment-number">#89</div>
+    <div class="segment-time">409.795 &rarr; 411.349</div>
+    <div class="segment-text">preciso de um pouco de dinheiro.</div>
+</div>
+<div class="segment" data-index="89" data-start="415.116" data-end="416.389">
+    <div class="segment-number">#90</div>
+    <div class="segment-time">415.116 &rarr; 416.389</div>
+    <div class="segment-text">I need some money too.</div>
+</div>
+<div class="segment" data-index="90" data-start="420.337" data-end="421.5">
+    <div class="segment-number">#91</div>
+    <div class="segment-time">420.337 &rarr; 421.500</div>
+    <div class="segment-text">I need some money too.</div>
+</div>
+<div class="segment" data-index="91" data-start="425.516" data-end="428.416">
+    <div class="segment-number">#92</div>
+    <div class="segment-time">425.516 &rarr; 428.416</div>
+    <div class="segment-text">Por quê? Why?</div>
+</div>
+<div class="segment" data-index="92" data-start="431.156" data-end="434.267">
+    <div class="segment-number">#93</div>
+    <div class="segment-time">431.156 &rarr; 434.267</div>
+    <div class="segment-text">Porque eu vou para Washington, D.C. Washington,</div>
+</div>
+<div class="segment" data-index="93" data-start="434.299" data-end="437.424">
+    <div class="segment-number">#94</div>
+    <div class="segment-time">434.299 &rarr; 437.424</div>
+    <div class="segment-text">D.C. Escute e repita parte por parte.</div>
+</div>
+<div class="segment" data-index="94" data-start="438.347" data-end="438.833">
+    <div class="segment-number">#95</div>
+    <div class="segment-time">438.347 &rarr; 438.833</div>
+    <div class="segment-text">D.C.</div>
+</div>
+<div class="segment" data-index="95" data-start="441.842" data-end="442.197">
+    <div class="segment-number">#96</div>
+    <div class="segment-time">441.842 &rarr; 442.197</div>
+    <div class="segment-text">D.C.</div>
+</div>
+<div class="segment" data-index="96" data-start="448.51" data-end="449.941">
+    <div class="segment-number">#97</div>
+    <div class="segment-time">448.510 &rarr; 449.941</div>
+    <div class="segment-text">Washington.</div>
+</div>
+<div class="segment" data-index="97" data-start="452.709" data-end="453.047">
+    <div class="segment-number">#98</div>
+    <div class="segment-time">452.709 &rarr; 453.047</div>
+    <div class="segment-text">Ton, ton,</div>
+</div>
+<div class="segment" data-index="98" data-start="455.782" data-end="456.024">
+    <div class="segment-number">#99</div>
+    <div class="segment-time">455.782 &rarr; 456.024</div>
+    <div class="segment-text">ing,</div>
+</div>
+<div class="segment" data-index="99" data-start="458.592" data-end="462.031">
+    <div class="segment-number">#100</div>
+    <div class="segment-time">458.592 &rarr; 462.031</div>
+    <div class="segment-text">wash. Washington.</div>
+</div>
+<div class="segment" data-index="100" data-start="464.568" data-end="465.683">
+    <div class="segment-number">#101</div>
+    <div class="segment-time">464.568 &rarr; 465.683</div>
+    <div class="segment-text">Washington, D.C.</div>
+</div>
+<div class="segment" data-index="101" data-start="474.683" data-end="477.843">
+    <div class="segment-number">#102</div>
+    <div class="segment-time">474.683 &rarr; 477.843</div>
+    <div class="segment-text">Washington, D.C. D.C. significa District of Columbia,</div>
+</div>
+<div class="segment" data-index="102" data-start="478.214" data-end="481.999">
+    <div class="segment-number">#103</div>
+    <div class="segment-time">478.214 &rarr; 481.999</div>
+    <div class="segment-text">o que quer dizer Distrito da Colúmbia. Isto distingue</div>
+</div>
+<div class="segment" data-index="103" data-start="482.063" data-end="485.493">
+    <div class="segment-number">#104</div>
+    <div class="segment-time">482.063 &rarr; 485.493</div>
+    <div class="segment-text">a capital do estado com o mesmo nome. Agora diga: por</div>
+</div>
+<div class="segment" data-index="104" data-start="485.557" data-end="486.981">
+    <div class="segment-number">#105</div>
+    <div class="segment-time">485.557 &rarr; 486.981</div>
+    <div class="segment-text">que eu vou para Washington, D.C.?</div>
+</div>
+<div class="segment" data-index="105" data-start="492.524" data-end="494.712">
+    <div class="segment-number">#106</div>
+    <div class="segment-time">492.524 &rarr; 494.712</div>
+    <div class="segment-text">Because I'm going to Washington, D.C.</div>
+</div>
+<div class="segment" data-index="106" data-start="500.37" data-end="500.597">
+    <div class="segment-number">#107</div>
+    <div class="segment-time">500.370 &rarr; 500.597</div>
+    <div class="segment-text">D.C.</div>
+</div>
+<div class="segment" data-index="107" data-start="503.228" data-end="504.251">
+    <div class="segment-number">#108</div>
+    <div class="segment-time">503.228 &rarr; 504.251</div>
+    <div class="segment-text">Washington, D.C.</div>
+</div>
+<div class="segment" data-index="108" data-start="504.381" data-end="507.921">
+    <div class="segment-number">#109</div>
+    <div class="segment-time">504.381 &rarr; 507.921</div>
+    <div class="segment-text">I'm going</div>
+</div>
+<div class="segment" data-index="109" data-start="507.937" data-end="508.392">
+    <div class="segment-number">#110</div>
+    <div class="segment-time">507.937 &rarr; 508.392</div>
+    <div class="segment-text">to Washington,</div>
+</div>
+<div class="segment" data-index="110" data-start="512.597" data-end="516.441">
+    <div class="segment-number">#111</div>
+    <div class="segment-time">512.597 &rarr; 516.441</div>
+    <div class="segment-text">D.C. Sem mudar a ordem das palavras, pergunte: Você vai para Washington?</div>
+</div>
+<div class="segment" data-index="111" data-start="519.79" data-end="521.487">
+    <div class="segment-number">#112</div>
+    <div class="segment-time">519.790 &rarr; 521.487</div>
+    <div class="segment-text">You're going to Washington.</div>
+</div>
+<div class="segment" data-index="112" data-start="525.216" data-end="526.472">
+    <div class="segment-number">#113</div>
+    <div class="segment-time">525.216 &rarr; 526.472</div>
+    <div class="segment-text">You're going to Washington.</div>
+</div>
+<div class="segment" data-index="113" data-start="530.227" data-end="533.079">
+    <div class="segment-number">#114</div>
+    <div class="segment-time">530.227 &rarr; 533.079</div>
+    <div class="segment-text">O que você vai fazer lá? Listen and repeat.</div>
+</div>
+<div class="segment" data-index="114" data-start="533.852" data-end="534.996">
+    <div class="segment-number">#115</div>
+    <div class="segment-time">533.852 &rarr; 534.996</div>
+    <div class="segment-text">What are you going to do there?</div>
+</div>
+<div class="segment" data-index="115" data-start="539.24" data-end="539.652">
+    <div class="segment-number">#116</div>
+    <div class="segment-time">539.240 &rarr; 539.652</div>
+    <div class="segment-text">There.</div>
+</div>
+<div class="segment" data-index="116" data-start="542.356" data-end="546.189">
+    <div class="segment-number">#117</div>
+    <div class="segment-time">542.356 &rarr; 546.189</div>
+    <div class="segment-text">There. Você já usou</div>
+</div>
+<div class="segment" data-index="117" data-start="546.221" data-end="549.115">
+    <div class="segment-number">#118</div>
+    <div class="segment-time">546.221 &rarr; 549.115</div>
+    <div class="segment-text">there antes nas expressões there are,</div>
+</div>
+<div class="segment" data-index="118" data-start="549.484" data-end="553.07">
+    <div class="segment-number">#119</div>
+    <div class="segment-time">549.484 &rarr; 553.070</div>
+    <div class="segment-text">over there. Quando a palavra é usada sozinha, quer dizer</div>
+</div>
+<div class="segment" data-index="119" data-start="553.167" data-end="556.691">
+    <div class="segment-number">#120</div>
+    <div class="segment-time">553.167 &rarr; 556.691</div>
+    <div class="segment-text">naquele lugar. Pergunte outra vez: o que você vai fazer</div>
+</div>
+<div class="segment" data-index="120" data-start="560.967" data-end="561.998">
+    <div class="segment-number">#121</div>
+    <div class="segment-time">560.967 &rarr; 561.998</div>
+    <div class="segment-text">What are you going to do there?</div>
+</div>
+<div class="segment" data-index="121" data-start="566.37" data-end="569.42">
+    <div class="segment-number">#122</div>
+    <div class="segment-time">566.370 &rarr; 569.420</div>
+    <div class="segment-text">Você quer dizer eu vou ver uns amigos. Primeiro,</div>
+</div>
+<div class="segment" data-index="122" data-start="569.712" data-end="573.621">
+    <div class="segment-number">#123</div>
+    <div class="segment-time">569.712 &rarr; 573.621</div>
+    <div class="segment-text">uns amigos. Listen and repeat. Some friends.</div>
+</div>
+<div class="segment" data-index="123" data-start="576.586" data-end="580.429">
+    <div class="segment-number">#124</div>
+    <div class="segment-time">576.586 &rarr; 580.429</div>
+    <div class="segment-text">Friends. Friends.</div>
+</div>
+<div class="segment" data-index="124" data-start="583.11" data-end="583.788">
+    <div class="segment-number">#125</div>
+    <div class="segment-time">583.110 &rarr; 583.788</div>
+    <div class="segment-text">Some friends.</div>
+</div>
+<div class="segment" data-index="125" data-start="586.842" data-end="588.588">
+    <div class="segment-number">#126</div>
+    <div class="segment-time">586.842 &rarr; 588.588</div>
+    <div class="segment-text">Say again. Uns amigos.</div>
+</div>
+<div class="segment" data-index="126" data-start="591.611" data-end="592.436">
+    <div class="segment-number">#127</div>
+    <div class="segment-time">591.611 &rarr; 592.436</div>
+    <div class="segment-text">Some friends.</div>
+</div>
+<div class="segment" data-index="127" data-start="595.432" data-end="598.741">
+    <div class="segment-number">#128</div>
+    <div class="segment-time">595.432 &rarr; 598.741</div>
+    <div class="segment-text">Eu vou ver. Listen and repeat. I'm going</div>
+</div>
+<div class="segment" data-index="128" data-start="598.758" data-end="599.038">
+    <div class="segment-number">#129</div>
+    <div class="segment-time">598.758 &rarr; 599.038</div>
+    <div class="segment-text">to see.</div>
+</div>
+<div class="segment" data-index="129" data-start="604.946" data-end="607.988">
+    <div class="segment-number">#130</div>
+    <div class="segment-time">604.946 &rarr; 607.988</div>
+    <div class="segment-text">See. See. To see.</div>
+</div>
+<div class="segment" data-index="130" data-start="608.134" data-end="611.545">
+    <div class="segment-number">#131</div>
+    <div class="segment-time">608.134 &rarr; 611.545</div>
+    <div class="segment-text">I'm going to see.</div>
+</div>
+<div class="segment" data-index="131" data-start="614.13" data-end="615.164">
+    <div class="segment-number">#132</div>
+    <div class="segment-time">614.130 &rarr; 615.164</div>
+    <div class="segment-text">How do you say?</div>
+</div>
+<div class="segment" data-index="132" data-start="618.348" data-end="621.613">
+    <div class="segment-number">#133</div>
+    <div class="segment-time">618.348 &rarr; 621.613</div>
+    <div class="segment-text">To see. See.</div>
+</div>
+<div class="segment" data-index="133" data-start="624.114" data-end="627.392">
+    <div class="segment-number">#134</div>
+    <div class="segment-time">624.114 &rarr; 627.392</div>
+    <div class="segment-text">To see. Say,</div>
+</div>
+<div class="segment" data-index="134" data-start="627.844" data-end="628.522">
+    <div class="segment-number">#135</div>
+    <div class="segment-time">627.844 &rarr; 628.522</div>
+    <div class="segment-text">eu vou ver.</div>
+</div>
+<div class="segment" data-index="135" data-start="631.771" data-end="632.791">
+    <div class="segment-number">#136</div>
+    <div class="segment-time">631.771 &rarr; 632.791</div>
+    <div class="segment-text">I'm going to see.</div>
+</div>
+<div class="segment" data-index="136" data-start="636.26" data-end="637.078">
+    <div class="segment-number">#137</div>
+    <div class="segment-time">636.260 &rarr; 637.078</div>
+    <div class="segment-text">I'm going to see.</div>
+</div>
+<div class="segment" data-index="137" data-start="640.621" data-end="641.749">
+    <div class="segment-number">#138</div>
+    <div class="segment-time">640.621 &rarr; 641.749</div>
+    <div class="segment-text">Eu vou ver uns amigos.</div>
+</div>
+<div class="segment" data-index="138" data-start="645.27" data-end="647.426">
+    <div class="segment-number">#139</div>
+    <div class="segment-time">645.270 &rarr; 647.426</div>
+    <div class="segment-text">I'm going to see some friends.</div>
+</div>
+<div class="segment" data-index="139" data-start="651.206" data-end="651.97">
+    <div class="segment-number">#140</div>
+    <div class="segment-time">651.206 &rarr; 651.970</div>
+    <div class="segment-text">In Washington,</div>
+</div>
+<div class="segment" data-index="140" data-start="656.243" data-end="657.46">
+    <div class="segment-number">#141</div>
+    <div class="segment-time">656.243 &rarr; 657.460</div>
+    <div class="segment-text">D.C. In Washington, D.C.</div>
+</div>
+<div class="segment" data-index="141" data-start="661.602" data-end="662.717">
+    <div class="segment-number">#142</div>
+    <div class="segment-time">661.602 &rarr; 662.717</div>
+    <div class="segment-text">In Washington, D.C.</div>
+</div>
+<div class="segment" data-index="142" data-start="666.935" data-end="670.863">
+    <div class="segment-number">#143</div>
+    <div class="segment-time">666.935 &rarr; 670.863</div>
+    <div class="segment-text">alguns amigos. Listen and repeat. A few</div>
+</div>
+<div class="segment" data-index="143" data-start="670.96" data-end="671.332">
+    <div class="segment-number">#144</div>
+    <div class="segment-time">670.960 &rarr; 671.332</div>
+    <div class="segment-text">friends.</div>
+</div>
+<div class="segment" data-index="144" data-start="678.186" data-end="678.669">
+    <div class="segment-number">#145</div>
+    <div class="segment-time">678.186 &rarr; 678.669</div>
+    <div class="segment-text">Few. A few.</div>
+</div>
+<div class="segment" data-index="145" data-start="681.76" data-end="682.758">
+    <div class="segment-number">#146</div>
+    <div class="segment-time">681.760 &rarr; 682.758</div>
+    <div class="segment-text">A few friends.</div>
+</div>
+<div class="segment" data-index="146" data-start="686.416" data-end="688.256">
+    <div class="segment-number">#147</div>
+    <div class="segment-time">686.416 &rarr; 688.256</div>
+    <div class="segment-text">Say again. Alguns amigos.</div>
+</div>
+<div class="segment" data-index="147" data-start="691.887" data-end="693.026">
+    <div class="segment-number">#148</div>
+    <div class="segment-time">691.887 &rarr; 693.026</div>
+    <div class="segment-text">A few friends.</div>
+</div>
+<div class="segment" data-index="148" data-start="696.396" data-end="699.361">
+    <div class="segment-number">#149</div>
+    <div class="segment-time">696.396 &rarr; 699.361</div>
+    <div class="segment-text">Por falar em Washington, diga: eu tenho alguns amigos lá.</div>
+</div>
+<div class="segment" data-index="149" data-start="703.408" data-end="704.757">
+    <div class="segment-number">#150</div>
+    <div class="segment-time">703.408 &rarr; 704.757</div>
+    <div class="segment-text">I have a few friends there.</div>
+</div>
+<div class="segment" data-index="150" data-start="708.913" data-end="710.122">
+    <div class="segment-number">#151</div>
+    <div class="segment-time">708.913 &rarr; 710.122</div>
+    <div class="segment-text">I have a few friends there.</div>
+</div>
+<div class="segment" data-index="151" data-start="714.312" data-end="718.02">
+    <div class="segment-number">#152</div>
+    <div class="segment-time">714.312 &rarr; 718.020</div>
+    <div class="segment-text">E eu vou trabalhar. Listen and repeat.</div>
+</div>
+<div class="segment" data-index="152" data-start="718.15" data-end="719.327">
+    <div class="segment-number">#153</div>
+    <div class="segment-time">718.150 &rarr; 719.327</div>
+    <div class="segment-text">And I'm going to work.</div>
+</div>
+<div class="segment" data-index="153" data-start="722.658" data-end="726.113">
+    <div class="segment-number">#154</div>
+    <div class="segment-time">722.658 &rarr; 726.113</div>
+    <div class="segment-text">Work. To work.</div>
+</div>
+<div class="segment" data-index="154" data-start="726.358" data-end="729.716">
+    <div class="segment-number">#155</div>
+    <div class="segment-time">726.358 &rarr; 729.716</div>
+    <div class="segment-text">I'm going to work.</div>
+</div>
+<div class="segment" data-index="155" data-start="733.21" data-end="734.706">
+    <div class="segment-number">#156</div>
+    <div class="segment-time">733.210 &rarr; 734.706</div>
+    <div class="segment-text">Ask her if she's going to work.</div>
+</div>
+<div class="segment" data-index="156" data-start="738.07" data-end="739.172">
+    <div class="segment-number">#157</div>
+    <div class="segment-time">738.070 &rarr; 739.172</div>
+    <div class="segment-text">Are you going to work?</div>
+</div>
+<div class="segment" data-index="157" data-start="742.624" data-end="746.307">
+    <div class="segment-number">#158</div>
+    <div class="segment-time">742.624 &rarr; 746.307</div>
+    <div class="segment-text">Um pouco. A little.</div>
+</div>
+<div class="segment" data-index="158" data-start="748.545" data-end="749.632">
+    <div class="segment-number">#159</div>
+    <div class="segment-time">748.545 &rarr; 749.632</div>
+    <div class="segment-text">Eu vou ver uns amigos.</div>
+</div>
+<div class="segment" data-index="159" data-start="753.26" data-end="755.526">
+    <div class="segment-number">#160</div>
+    <div class="segment-time">753.260 &rarr; 755.526</div>
+    <div class="segment-text">I'm going to see some friends.</div>
+</div>
+<div class="segment" data-index="160" data-start="759.7" data-end="763.586">
+    <div class="segment-number">#161</div>
+    <div class="segment-time">759.700 &rarr; 763.586</div>
+    <div class="segment-text">Some friends. Eu vou</div>
+</div>
+<div class="segment" data-index="161" data-start="763.602" data-end="764.622">
+    <div class="segment-number">#162</div>
+    <div class="segment-time">763.602 &rarr; 764.622</div>
+    <div class="segment-text">ver meus amigos.</div>
+</div>
+<div class="segment" data-index="162" data-start="767.989" data-end="770.22">
+    <div class="segment-number">#163</div>
+    <div class="segment-time">767.989 &rarr; 770.220</div>
+    <div class="segment-text">I'm going to see my friends.</div>
+</div>
+<div class="segment" data-index="163" data-start="774.045" data-end="778.128">
+    <div class="segment-number">#164</div>
+    <div class="segment-time">774.045 &rarr; 778.128</div>
+    <div class="segment-text">My friends. E eu</div>
+</div>
+<div class="segment" data-index="164" data-start="778.628" data-end="778.912">
+    <div class="segment-number">#165</div>
+    <div class="segment-time">778.628 &rarr; 778.912</div>
+    <div class="segment-text">vou trabalhar.</div>
+</div>
+<div class="segment" data-index="165" data-start="787.65" data-end="792.326">
+    <div class="segment-number">#166</div>
+    <div class="segment-time">787.650 &rarr; 792.326</div>
+    <div class="segment-text">And I'm going to work. And I'm going to</div>
+</div>
+<div class="segment" data-index="166" data-start="792.826" data-end="795.005">
+    <div class="segment-number">#167</div>
+    <div class="segment-time">792.826 &rarr; 795.005</div>
+    <div class="segment-text">work. Try to say: Eu vou trabalhar um pouco.</div>
+</div>
+<div class="segment" data-index="167" data-start="798.139" data-end="800.133">
+    <div class="segment-number">#168</div>
+    <div class="segment-time">798.139 &rarr; 800.133</div>
+    <div class="segment-text">I'm going to work a little.</div>
+</div>
+<div class="segment" data-index="168" data-start="803.528" data-end="805.477">
+    <div class="segment-number">#169</div>
+    <div class="segment-time">803.528 &rarr; 805.477</div>
+    <div class="segment-text">I'm going to work a little.</div>
+</div>
+<div class="segment" data-index="169" data-start="809.151" data-end="810.553">
+    <div class="segment-number">#170</div>
+    <div class="segment-time">809.151 &rarr; 810.553</div>
+    <div class="segment-text">E eu vou ver alguns amigos.</div>
+</div>
+<div class="segment" data-index="170" data-start="815.097" data-end="817.021">
+    <div class="segment-number">#171</div>
+    <div class="segment-time">815.097 &rarr; 817.021</div>
+    <div class="segment-text">And I'm going to see a few friends.</div>
+</div>
+<div class="segment" data-index="171" data-start="821.376" data-end="824.228">
+    <div class="segment-number">#172</div>
+    <div class="segment-time">821.376 &rarr; 824.228</div>
+    <div class="segment-text">Talvez. Listen and repeat. Maybe.</div>
+</div>
+<div class="segment" data-index="172" data-start="826.532" data-end="826.612">
+    <div class="segment-number">#173</div>
+    <div class="segment-time">826.532 &rarr; 826.612</div>
+    <div class="segment-text">B.</div>
+</div>
+<div class="segment" data-index="173" data-start="831.54" data-end="834.942">
+    <div class="segment-number">#174</div>
+    <div class="segment-time">831.540 &rarr; 834.942</div>
+    <div class="segment-text">May. Maybe. Você vai trabalhar?</div>
+</div>
+<div class="segment" data-index="174" data-start="838.406" data-end="839.547">
+    <div class="segment-number">#175</div>
+    <div class="segment-time">838.406 &rarr; 839.547</div>
+    <div class="segment-text">Are you going to work?</div>
+</div>
+<div class="segment" data-index="175" data-start="842.806" data-end="843.176">
+    <div class="segment-number">#176</div>
+    <div class="segment-time">842.806 &rarr; 843.176</div>
+    <div class="segment-text">Talvez.</div>
+</div>
+<div class="segment" data-index="176" data-start="846.107" data-end="846.38">
+    <div class="segment-number">#177</div>
+    <div class="segment-time">846.107 &rarr; 846.380</div>
+    <div class="segment-text">Maybe.</div>
+</div>
+<div class="segment" data-index="177" data-start="849.166" data-end="852.374">
+    <div class="segment-number">#178</div>
+    <div class="segment-time">849.166 &rarr; 852.374</div>
+    <div class="segment-text">Maybe. Sim,</div>
+</div>
+<div class="segment" data-index="178" data-start="852.735" data-end="856.729">
+    <div class="segment-number">#179</div>
+    <div class="segment-time">852.735 &rarr; 856.729</div>
+    <div class="segment-text">eu acho que sim. Listen and repeat. Yes, I think so.</div>
+</div>
+<div class="segment" data-index="179" data-start="860.696" data-end="863.743">
+    <div class="segment-number">#180</div>
+    <div class="segment-time">860.696 &rarr; 863.743</div>
+    <div class="segment-text">So. Think.</div>
+</div>
+<div class="segment" data-index="180" data-start="866.064" data-end="869.078">
+    <div class="segment-number">#181</div>
+    <div class="segment-time">866.064 &rarr; 869.078</div>
+    <div class="segment-text">Think. Think so.</div>
+</div>
+<div class="segment" data-index="181" data-start="872.022" data-end="872.939">
+    <div class="segment-number">#182</div>
+    <div class="segment-time">872.022 &rarr; 872.939</div>
+    <div class="segment-text">Think so.</div>
+</div>
+<div class="segment" data-index="182" data-start="875.53" data-end="875.967">
+    <div class="segment-number">#183</div>
+    <div class="segment-time">875.530 &rarr; 875.967</div>
+    <div class="segment-text">I think so.</div>
+</div>
+<div class="segment" data-index="183" data-start="879.044" data-end="879.978">
+    <div class="segment-number">#184</div>
+    <div class="segment-time">879.044 &rarr; 879.978</div>
+    <div class="segment-text">Yes, I think so.</div>
+</div>
+<div class="segment" data-index="184" data-start="883.088" data-end="886.435">
+    <div class="segment-number">#185</div>
+    <div class="segment-time">883.088 &rarr; 886.435</div>
+    <div class="segment-text">In English, how do you say &quot;Eu acho que sim&quot;?</div>
+</div>
+<div class="segment" data-index="185" data-start="889.519" data-end="890.443">
+    <div class="segment-number">#186</div>
+    <div class="segment-time">889.519 &rarr; 890.443</div>
+    <div class="segment-text">I think so.</div>
+</div>
+<div class="segment" data-index="186" data-start="892.46" data-end="898.572">
+    <div class="segment-number">#187</div>
+    <div class="segment-time">892.460 &rarr; 898.572</div>
+    <div class="segment-text">Now try to say &quot;Eu acho que não.&quot; I</div>
+</div>
+<div class="segment" data-index="187" data-start="898.685" data-end="899.282">
+    <div class="segment-number">#188</div>
+    <div class="segment-time">898.685 &rarr; 899.282</div>
+    <div class="segment-text">don't think so.</div>
+</div>
+<div class="segment" data-index="188" data-start="902.495" data-end="903.171">
+    <div class="segment-number">#189</div>
+    <div class="segment-time">902.495 &rarr; 903.171</div>
+    <div class="segment-text">I don't think so.</div>
+</div>
+<div class="segment" data-index="189" data-start="906.253" data-end="908.929">
+    <div class="segment-number">#190</div>
+    <div class="segment-time">906.253 &rarr; 908.929</div>
+    <div class="segment-text">Agora pergunte-lhe se ela vai ver George.</div>
+</div>
+<div class="segment" data-index="190" data-start="913.75" data-end="914.992">
+    <div class="segment-number">#191</div>
+    <div class="segment-time">913.750 &rarr; 914.992</div>
+    <div class="segment-text">Are you going to see George?</div>
+</div>
+<div class="segment" data-index="191" data-start="919.108" data-end="922.624">
+    <div class="segment-number">#192</div>
+    <div class="segment-time">919.108 &rarr; 922.624</div>
+    <div class="segment-text">George? Are you going</div>
+</div>
+<div class="segment" data-index="192" data-start="922.64" data-end="923.347">
+    <div class="segment-number">#193</div>
+    <div class="segment-time">922.640 &rarr; 923.347</div>
+    <div class="segment-text">to see George?</div>
+</div>
+<div class="segment" data-index="193" data-start="927.529" data-end="928.331">
+    <div class="segment-number">#194</div>
+    <div class="segment-time">927.529 &rarr; 928.331</div>
+    <div class="segment-text">Eu acho que não.</div>
+</div>
+<div class="segment" data-index="194" data-start="931.412" data-end="932.677">
+    <div class="segment-number">#195</div>
+    <div class="segment-time">931.412 &rarr; 932.677</div>
+    <div class="segment-text">I don't think so.</div>
+</div>
+<div class="segment" data-index="195" data-start="935.54" data-end="936.283">
+    <div class="segment-number">#196</div>
+    <div class="segment-time">935.540 &rarr; 936.283</div>
+    <div class="segment-text">I don't think so.</div>
+</div>
+<div class="segment" data-index="196" data-start="939.58" data-end="942.52">
+    <div class="segment-number">#197</div>
+    <div class="segment-time">939.580 &rarr; 942.520</div>
+    <div class="segment-text">Talvez. Maybe.</div>
+</div>
+<div class="segment" data-index="197" data-start="944.979" data-end="948.692">
+    <div class="segment-number">#198</div>
+    <div class="segment-time">944.979 &rarr; 948.692</div>
+    <div class="segment-text">Maybe. Now try to ask</div>
+</div>
+<div class="segment" data-index="198" data-start="948.693" data-end="950.45">
+    <div class="segment-number">#199</div>
+    <div class="segment-time">948.693 &rarr; 950.450</div>
+    <div class="segment-text">if George works in Washington.</div>
+</div>
+<div class="segment" data-index="199" data-start="955.745" data-end="957.441">
+    <div class="segment-number">#200</div>
+    <div class="segment-time">955.745 &rarr; 957.441</div>
+    <div class="segment-text">Does George work in Washington?</div>
+</div>
+<div class="segment" data-index="200" data-start="962.131" data-end="963.95">
+    <div class="segment-number">#201</div>
+    <div class="segment-time">962.131 &rarr; 963.950</div>
+    <div class="segment-text">Does George work in Washington?</div>
+</div>
+<div class="segment" data-index="201" data-start="968.703" data-end="970.474">
+    <div class="segment-number">#202</div>
+    <div class="segment-time">968.703 &rarr; 970.474</div>
+    <div class="segment-text">Eu acho que sim, mas eu não sei.</div>
+</div>
+<div class="segment" data-index="202" data-start="974.305" data-end="976.037">
+    <div class="segment-number">#203</div>
+    <div class="segment-time">974.305 &rarr; 976.037</div>
+    <div class="segment-text">I think so, but I don't know.</div>
+</div>
+<div class="segment" data-index="203" data-start="979.926" data-end="981.723">
+    <div class="segment-number">#204</div>
+    <div class="segment-time">979.926 &rarr; 981.723</div>
+    <div class="segment-text">I think so, but I don't know.</div>
+</div>
+<div class="segment" data-index="204" data-start="985.943" data-end="988.852">
+    <div class="segment-number">#205</div>
+    <div class="segment-time">985.943 &rarr; 988.852</div>
+    <div class="segment-text">Agora tente perguntar se ela vai ver Charles.</div>
+</div>
+<div class="segment" data-index="205" data-start="992.934" data-end="994.477">
+    <div class="segment-number">#206</div>
+    <div class="segment-time">992.934 &rarr; 994.477</div>
+    <div class="segment-text">Are you going to see Charles?</div>
+</div>
+<div class="segment" data-index="206" data-start="998.398" data-end="1001.158">
+    <div class="segment-number">#207</div>
+    <div class="segment-time">998.398 &rarr; 1001.158</div>
+    <div class="segment-text">Como ela responde? Não, eu acho que não.</div>
+</div>
+<div class="segment" data-index="207" data-start="1004.904" data-end="1006.213">
+    <div class="segment-number">#208</div>
+    <div class="segment-time">1004.904 &rarr; 1006.213</div>
+    <div class="segment-text">No, I don't think so.</div>
+</div>
+<div class="segment" data-index="208" data-start="1009.887" data-end="1010.987">
+    <div class="segment-number">#209</div>
+    <div class="segment-time">1009.887 &rarr; 1010.987</div>
+    <div class="segment-text">No, I don't think so.</div>
+</div>
+<div class="segment" data-index="209" data-start="1014.806" data-end="1018.147">
+    <div class="segment-number">#210</div>
+    <div class="segment-time">1014.806 &rarr; 1018.147</div>
+    <div class="segment-text">Talvez. Maybe.</div>
+</div>
+<div class="segment" data-index="210" data-start="1020.778" data-end="1024.088">
+    <div class="segment-number">#211</div>
+    <div class="segment-time">1020.778 &rarr; 1024.088</div>
+    <div class="segment-text">Maybe. Try to say,</div>
+</div>
+<div class="segment" data-index="211" data-start="1024.744" data-end="1026.351">
+    <div class="segment-number">#212</div>
+    <div class="segment-time">1024.744 &rarr; 1026.351</div>
+    <div class="segment-text">Charles trabalha em Nova York.</div>
+</div>
+<div class="segment" data-index="212" data-start="1030.486" data-end="1032.092">
+    <div class="segment-number">#213</div>
+    <div class="segment-time">1030.486 &rarr; 1032.092</div>
+    <div class="segment-text">Charles works in New York.</div>
+</div>
+<div class="segment" data-index="213" data-start="1038.928" data-end="1040.453">
+    <div class="segment-number">#214</div>
+    <div class="segment-time">1038.928 &rarr; 1040.453</div>
+    <div class="segment-text">Works. Charles works in New York.</div>
+</div>
+<div class="segment" data-index="214" data-start="1040.567" data-end="1045.178">
+    <div class="segment-number">#215</div>
+    <div class="segment-time">1040.567 &rarr; 1045.178</div>
+    <div class="segment-text">Diga que</div>
+</div>
+<div class="segment" data-index="215" data-start="1045.678" data-end="1046.198">
+    <div class="segment-number">#216</div>
+    <div class="segment-time">1045.678 &rarr; 1046.198</div>
+    <div class="segment-text">você acha que não.</div>
+</div>
+<div class="segment" data-index="216" data-start="1049.272" data-end="1050.058">
+    <div class="segment-number">#217</div>
+    <div class="segment-time">1049.272 &rarr; 1050.058</div>
+    <div class="segment-text">I don't think so.</div>
+</div>
+<div class="segment" data-index="217" data-start="1053.276" data-end="1056.4">
+    <div class="segment-number">#218</div>
+    <div class="segment-time">1053.276 &rarr; 1056.400</div>
+    <div class="segment-text">Try to say: Eu acho que ele trabalha em Nova York.</div>
+</div>
+<div class="segment" data-index="218" data-start="1061.254" data-end="1062.731">
+    <div class="segment-number">#219</div>
+    <div class="segment-time">1061.254 &rarr; 1062.731</div>
+    <div class="segment-text">I think he works in New York.</div>
+</div>
+<div class="segment" data-index="219" data-start="1067.648" data-end="1069.056">
+    <div class="segment-number">#220</div>
+    <div class="segment-time">1067.648 &rarr; 1069.056</div>
+    <div class="segment-text">I think he works in New York.</div>
+</div>
+<div class="segment" data-index="220" data-start="1073.626" data-end="1079.641">
+    <div class="segment-number">#221</div>
+    <div class="segment-time">1073.626 &rarr; 1079.641</div>
+    <div class="segment-text">Try to say, &quot;Ele mora em Nova York.&quot; He</div>
+</div>
+<div class="segment" data-index="221" data-start="1079.754" data-end="1080.754">
+    <div class="segment-number">#222</div>
+    <div class="segment-time">1079.754 &rarr; 1080.754</div>
+    <div class="segment-text">lives in New York.</div>
+</div>
+<div class="segment" data-index="222" data-start="1084.164" data-end="1088.022">
+    <div class="segment-number">#223</div>
+    <div class="segment-time">1084.164 &rarr; 1088.022</div>
+    <div class="segment-text">He lives. Eu acho</div>
+</div>
+<div class="segment" data-index="223" data-start="1088.103" data-end="1089.288">
+    <div class="segment-number">#224</div>
+    <div class="segment-time">1088.103 &rarr; 1089.288</div>
+    <div class="segment-text">que ele mora em Nova York.</div>
+</div>
+<div class="segment" data-index="224" data-start="1093.619" data-end="1095.064">
+    <div class="segment-number">#225</div>
+    <div class="segment-time">1093.619 &rarr; 1095.064</div>
+    <div class="segment-text">I think he lives in New York.</div>
+</div>
+<div class="segment" data-index="225" data-start="1099.32" data-end="1100.902">
+    <div class="segment-number">#226</div>
+    <div class="segment-time">1099.320 &rarr; 1100.902</div>
+    <div class="segment-text">I think he lives in New York.</div>
+</div>
+<div class="segment" data-index="226" data-start="1105.256" data-end="1107.669">
+    <div class="segment-number">#227</div>
+    <div class="segment-time">1105.256 &rarr; 1107.669</div>
+    <div class="segment-text">Ask. Então você vai ver Mary.</div>
+</div>
+<div class="segment" data-index="227" data-start="1111.11" data-end="1112.935">
+    <div class="segment-number">#228</div>
+    <div class="segment-time">1111.110 &rarr; 1112.935</div>
+    <div class="segment-text">Then are you going to see Mary?</div>
+</div>
+<div class="segment" data-index="228" data-start="1116.686" data-end="1120.597">
+    <div class="segment-number">#229</div>
+    <div class="segment-time">1116.686 &rarr; 1120.597</div>
+    <div class="segment-text">Say, talvez. Maybe.</div>
+</div>
+<div class="segment" data-index="229" data-start="1120.952" data-end="1124.3">
+    <div class="segment-number">#230</div>
+    <div class="segment-time">1120.952 &rarr; 1124.300</div>
+    <div class="segment-text">Diga que você acha que sim.</div>
+</div>
+<div class="segment" data-index="230" data-start="1127.31" data-end="1127.797">
+    <div class="segment-number">#231</div>
+    <div class="segment-time">1127.310 &rarr; 1127.797</div>
+    <div class="segment-text">I think so.</div>
+</div>
+<div class="segment" data-index="231" data-start="1130.91" data-end="1131.354">
+    <div class="segment-number">#232</div>
+    <div class="segment-time">1130.910 &rarr; 1131.354</div>
+    <div class="segment-text">I think so.</div>
+</div>
+<div class="segment" data-index="232" data-start="1134.463" data-end="1135.907">
+    <div class="segment-number">#233</div>
+    <div class="segment-time">1134.463 &rarr; 1135.907</div>
+    <div class="segment-text">Eu acho que eu vou ver Mary.</div>
+</div>
+<div class="segment" data-index="233" data-start="1140.251" data-end="1141.745">
+    <div class="segment-number">#234</div>
+    <div class="segment-time">1140.251 &rarr; 1141.745</div>
+    <div class="segment-text">I think I'm going to see Mary.</div>
+</div>
+<div class="segment" data-index="234" data-start="1145.863" data-end="1147.12">
+    <div class="segment-number">#235</div>
+    <div class="segment-time">1145.863 &rarr; 1147.120</div>
+    <div class="segment-text">Mas eu também vou trabalhar.</div>
+</div>
+<div class="segment" data-index="235" data-start="1150.972" data-end="1152.617">
+    <div class="segment-number">#236</div>
+    <div class="segment-time">1150.972 &rarr; 1152.617</div>
+    <div class="segment-text">But I'm going to work too.</div>
+</div>
+<div class="segment" data-index="236" data-start="1156.476" data-end="1158.029">
+    <div class="segment-number">#237</div>
+    <div class="segment-time">1156.476 &rarr; 1158.029</div>
+    <div class="segment-text">But I'm going to work too.</div>
+</div>
+<div class="segment" data-index="237" data-start="1162.023" data-end="1163.588">
+    <div class="segment-number">#238</div>
+    <div class="segment-time">1162.023 &rarr; 1163.588</div>
+    <div class="segment-text">E eu vou ver alguns amigos.</div>
+</div>
+<div class="segment" data-index="238" data-start="1168.493" data-end="1170.35">
+    <div class="segment-number">#239</div>
+    <div class="segment-time">1168.493 &rarr; 1170.350</div>
+    <div class="segment-text">And I'm going to see a few friends.</div>
+</div>
+<div class="segment" data-index="239" data-start="1175.14" data-end="1176.736">
+    <div class="segment-number">#240</div>
+    <div class="segment-time">1175.140 &rarr; 1176.736</div>
+    <div class="segment-text">I'm going to see a few friends.</div>
+</div>
+<div class="segment" data-index="240" data-start="1181.916" data-end="1183.533">
+    <div class="segment-number">#241</div>
+    <div class="segment-time">1181.916 &rarr; 1183.533</div>
+    <div class="segment-text">Say, por favor me dê.</div>
+</div>
+<div class="segment" data-index="241" data-start="1186.312" data-end="1187.102">
+    <div class="segment-number">#242</div>
+    <div class="segment-time">1186.312 &rarr; 1187.102</div>
+    <div class="segment-text">Please give me.</div>
+</div>
+<div class="segment" data-index="242" data-start="1189.829" data-end="1192.116">
+    <div class="segment-number">#243</div>
+    <div class="segment-time">1189.829 &rarr; 1192.116</div>
+    <div class="segment-text">Try to say alguns dólares.</div>
+</div>
+<div class="segment" data-index="243" data-start="1195.035" data-end="1196.041">
+    <div class="segment-number">#244</div>
+    <div class="segment-time">1195.035 &rarr; 1196.041</div>
+    <div class="segment-text">A few dollars.</div>
+</div>
+<div class="segment" data-index="244" data-start="1198.89" data-end="1200.37">
+    <div class="segment-number">#245</div>
+    <div class="segment-time">1198.890 &rarr; 1200.370</div>
+    <div class="segment-text">Please give me a few dollars.</div>
+</div>
+<div class="segment" data-index="245" data-start="1203.827" data-end="1206.991">
+    <div class="segment-number">#246</div>
+    <div class="segment-time">1203.827 &rarr; 1206.991</div>
+    <div class="segment-text">Por quê? Why?</div>
+</div>
+<div class="segment" data-index="246" data-start="1209.75" data-end="1211.34">
+    <div class="segment-number">#247</div>
+    <div class="segment-time">1209.750 &rarr; 1211.340</div>
+    <div class="segment-text">Porque eu vou para Washington, D.C.</div>
+</div>
+<div class="segment" data-index="247" data-start="1216.631" data-end="1218.701">
+    <div class="segment-number">#248</div>
+    <div class="segment-time">1216.631 &rarr; 1218.701</div>
+    <div class="segment-text">Because I'm going to Washington, D.C.</div>
+</div>
+<div class="segment" data-index="248" data-start="1224.311" data-end="1225.248">
+    <div class="segment-number">#249</div>
+    <div class="segment-time">1224.311 &rarr; 1225.248</div>
+    <div class="segment-text">Washington é caro.</div>
+</div>
+<div class="segment" data-index="249" data-start="1229.558" data-end="1230.881">
+    <div class="segment-number">#250</div>
+    <div class="segment-time">1229.558 &rarr; 1230.881</div>
+    <div class="segment-text">Washington is expensive.</div>
+</div>
+<div class="segment" data-index="250" data-start="1235.056" data-end="1237.306">
+    <div class="segment-number">#251</div>
+    <div class="segment-time">1235.056 &rarr; 1237.306</div>
+    <div class="segment-text">Try to say, minha amiga Mary.</div>
+</div>
+<div class="segment" data-index="251" data-start="1240.397" data-end="1241.333">
+    <div class="segment-number">#252</div>
+    <div class="segment-time">1240.397 &rarr; 1241.333</div>
+    <div class="segment-text">My friend Mary.</div>
+</div>
+<div class="segment" data-index="252" data-start="1244.583" data-end="1245.598">
+    <div class="segment-number">#253</div>
+    <div class="segment-time">1244.583 &rarr; 1245.598</div>
+    <div class="segment-text">My friend Mary.</div>
+</div>
+<div class="segment" data-index="253" data-start="1248.774" data-end="1252.207">
+    <div class="segment-number">#254</div>
+    <div class="segment-time">1248.774 &rarr; 1252.207</div>
+    <div class="segment-text">Por falar em Washington, diga: minha amiga Mary mora lá.</div>
+</div>
+<div class="segment" data-index="254" data-start="1256.256" data-end="1257.792">
+    <div class="segment-number">#255</div>
+    <div class="segment-time">1256.256 &rarr; 1257.792</div>
+    <div class="segment-text">My friend Mary lives there.</div>
+</div>
+<div class="segment" data-index="255" data-start="1261.876" data-end="1262.755">
+    <div class="segment-number">#256</div>
+    <div class="segment-time">1261.876 &rarr; 1262.755</div>
+    <div class="segment-text">Ela trabalha lá.</div>
+</div>
+<div class="segment" data-index="256" data-start="1265.885" data-end="1266.542">
+    <div class="segment-number">#257</div>
+    <div class="segment-time">1265.885 &rarr; 1266.542</div>
+    <div class="segment-text">She works there.</div>
+</div>
+<div class="segment" data-index="257" data-start="1269.724" data-end="1270.433">
+    <div class="segment-number">#258</div>
+    <div class="segment-time">1269.724 &rarr; 1270.433</div>
+    <div class="segment-text">She works there.</div>
+</div>
+<div class="segment" data-index="258" data-start="1273.512" data-end="1275.092">
+    <div class="segment-number">#259</div>
+    <div class="segment-time">1273.512 &rarr; 1275.092</div>
+    <div class="segment-text">Quão longe fica Washington?</div>
+</div>
+<div class="segment" data-index="259" data-start="1278.77" data-end="1280.045">
+    <div class="segment-number">#260</div>
+    <div class="segment-time">1278.770 &rarr; 1280.045</div>
+    <div class="segment-text">How far is Washington?</div>
+</div>
+<div class="segment" data-index="260" data-start="1280.448" data-end="1284.533">
+    <div class="segment-number">#261</div>
+    <div class="segment-time">1280.448 &rarr; 1284.533</div>
+    <div class="segment-text">How far</div>
+</div>
+<div class="segment" data-index="261" data-start="1285.033" data-end="1289.128">
+    <div class="segment-number">#262</div>
+    <div class="segment-time">1285.033 &rarr; 1289.128</div>
+    <div class="segment-text">is Washington?</div>
+</div>
+<div class="segment" data-index="262" data-start="1289.628" data-end="1293.694">
+    <div class="segment-number">#263</div>
+    <div class="segment-time">1289.628 &rarr; 1293.694</div>
+    <div class="segment-text">Oitenta milhas. 80 miles.</div>
+</div>
+<div class="segment" data-index="263" data-start="1296.818" data-end="1297.741">
+    <div class="segment-number">#264</div>
+    <div class="segment-time">1296.818 &rarr; 1297.741</div>
+    <div class="segment-text">It's 80 miles.</div>
+</div>
+<div class="segment" data-index="264" data-start="1301.334" data-end="1302.176">
+    <div class="segment-number">#265</div>
+    <div class="segment-time">1301.334 &rarr; 1302.176</div>
+    <div class="segment-text">Você vai hoje?</div>
+</div>
+<div class="segment" data-index="265" data-start="1305.719" data-end="1306.695">
+    <div class="segment-number">#266</div>
+    <div class="segment-time">1305.719 &rarr; 1306.695</div>
+    <div class="segment-text">Are you going today?</div>
+</div>
+<div class="segment" data-index="266" data-start="1310.284" data-end="1311.54">
+    <div class="segment-number">#267</div>
+    <div class="segment-time">1310.284 &rarr; 1311.540</div>
+    <div class="segment-text">Eu não sei, talvez.</div>
+</div>
+<div class="segment" data-index="267" data-start="1315.86" data-end="1317.025">
+    <div class="segment-number">#268</div>
+    <div class="segment-time">1315.860 &rarr; 1317.025</div>
+    <div class="segment-text">I don't know, maybe.</div>
+</div>
+<div class="segment" data-index="268" data-start="1321.442" data-end="1322.043">
+    <div class="segment-number">#269</div>
+    <div class="segment-time">1321.442 &rarr; 1322.043</div>
+    <div class="segment-text">Eu acho que não.</div>
+</div>
+<div class="segment" data-index="269" data-start="1325.43" data-end="1326.146">
+    <div class="segment-number">#270</div>
+    <div class="segment-time">1325.430 &rarr; 1326.146</div>
+    <div class="segment-text">I don't think so.</div>
+</div>
+<div class="segment" data-index="270" data-start="1329.482" data-end="1330.417">
+    <div class="segment-number">#271</div>
+    <div class="segment-time">1329.482 &rarr; 1330.417</div>
+    <div class="segment-text">I don't think so.</div>
+</div>
+<div class="segment" data-index="271" data-start="1333.771" data-end="1335.508">
+    <div class="segment-number">#272</div>
+    <div class="segment-time">1333.771 &rarr; 1335.508</div>
+    <div class="segment-text">Mas eu gostaria de ver Washington.</div>
+</div>
+<div class="segment" data-index="272" data-start="1339.796" data-end="1341.48">
+    <div class="segment-number">#273</div>
+    <div class="segment-time">1339.796 &rarr; 1341.480</div>
+    <div class="segment-text">But I'd like to see Washington.</div>
+</div>
+<div class="segment" data-index="273" data-start="1345.975" data-end="1351.461">
+    <div class="segment-number">#274</div>
+    <div class="segment-time">1345.975 &rarr; 1351.461</div>
+    <div class="segment-text">And I have</div>
+</div>
+<div class="segment" data-index="274" data-start="1352.233" data-end="1353.102">
+    <div class="segment-number">#275</div>
+    <div class="segment-time">1352.233 &rarr; 1353.102</div>
+    <div class="segment-text">some friends there.</div>
+</div>
+<div class="segment" data-index="275" data-start="1357.32" data-end="1357.998">
+    <div class="segment-number">#276</div>
+    <div class="segment-time">1357.320 &rarr; 1357.998</div>
+    <div class="segment-text">Some friends.</div>
+</div>
+<div class="segment" data-index="276" data-start="1360.903" data-end="1365.133">
+    <div class="segment-number">#277</div>
+    <div class="segment-time">1360.903 &rarr; 1365.133</div>
+    <div class="segment-text">Agora imagine que você está indo para Washington. Pare para pedir informações.</div>
+</div>
+<div class="segment" data-index="277" data-start="1366.036" data-end="1368.441">
+    <div class="segment-number">#278</div>
+    <div class="segment-time">1366.036 &rarr; 1368.441</div>
+    <div class="segment-text">Pergunte se é esta estrada para Washington, D.C.</div>
+</div>
+<div class="segment" data-index="278" data-start="1376.06" data-end="1378.191">
+    <div class="segment-number">#279</div>
+    <div class="segment-time">1376.060 &rarr; 1378.191</div>
+    <div class="segment-text">Is this the road to Washington, D.C.?</div>
+</div>
+<div class="segment" data-index="279" data-start="1384.794" data-end="1388.456">
+    <div class="segment-number">#280</div>
+    <div class="segment-time">1384.794 &rarr; 1388.456</div>
+    <div class="segment-text">No, the road you want is to the right. Você não ouviu</div>
+</div>
+<div class="segment" data-index="280" data-start="1388.505" data-end="1391.552">
+    <div class="segment-number">#281</div>
+    <div class="segment-time">1388.505 &rarr; 1391.552</div>
+    <div class="segment-text">bem o que ela disse. Pergunte: à esquerda?</div>
+</div>
+<div class="segment" data-index="281" data-start="1394.287" data-end="1394.97">
+    <div class="segment-number">#282</div>
+    <div class="segment-time">1394.287 &rarr; 1394.970</div>
+    <div class="segment-text">To the left?</div>
+</div>
+<div class="segment" data-index="282" data-start="1397.827" data-end="1400.22">
+    <div class="segment-number">#283</div>
+    <div class="segment-time">1397.827 &rarr; 1400.220</div>
+    <div class="segment-text">No, go to the right and then straight ahead.</div>
+</div>
+<div class="segment" data-index="283" data-start="1400.899" data-end="1404.392">
+    <div class="segment-number">#284</div>
+    <div class="segment-time">1400.899 &rarr; 1404.392</div>
+    <div class="segment-text">Você quer fazer compras ao chegar. Pergunte: As</div>
+</div>
+<div class="segment" data-index="284" data-start="1404.892" data-end="1406.849">
+    <div class="segment-number">#285</div>
+    <div class="segment-time">1404.892 &rarr; 1406.849</div>
+    <div class="segment-text">lojas de departamentos estão abertas agora?</div>
+</div>
+<div class="segment" data-index="285" data-start="1411.006" data-end="1413.453">
+    <div class="segment-number">#286</div>
+    <div class="segment-time">1411.006 &rarr; 1413.453</div>
+    <div class="segment-text">Are the department stores open now?</div>
+</div>
+<div class="segment" data-index="286" data-start="1418.673" data-end="1421.919">
+    <div class="segment-number">#287</div>
+    <div class="segment-time">1418.673 &rarr; 1421.919</div>
+    <div class="segment-text">No, it's late. I think the department stores are closed.</div>
+</div>
+<div class="segment" data-index="287" data-start="1422.754" data-end="1424.172">
+    <div class="segment-number">#288</div>
+    <div class="segment-time">1422.754 &rarr; 1424.172</div>
+    <div class="segment-text">Say that it's not late.</div>
+</div>
+<div class="segment" data-index="288" data-start="1428.11" data-end="1429.129">
+    <div class="segment-number">#289</div>
+    <div class="segment-time">1428.110 &rarr; 1429.129</div>
+    <div class="segment-text">It's not late.</div>
+</div>
+<div class="segment" data-index="289" data-start="1432.326" data-end="1434.632">
+    <div class="segment-number">#290</div>
+    <div class="segment-time">1432.326 &rarr; 1434.632</div>
+    <div class="segment-text">Como ela discordaria enfaticamente?</div>
+</div>
+<div class="segment" data-index="290" data-start="1438.8" data-end="1440.108">
+    <div class="segment-number">#291</div>
+    <div class="segment-time">1438.800 &rarr; 1440.108</div>
+    <div class="segment-text">Yes, it is late.</div>
+</div>
+<div class="segment" data-index="291" data-start="1444.129" data-end="1445.098">
+    <div class="segment-number">#292</div>
+    <div class="segment-time">1444.129 &rarr; 1445.098</div>
+    <div class="segment-text">Yes, it is.</div>
+</div>
+<div class="segment" data-index="292" data-start="1448.223" data-end="1450.32">
+    <div class="segment-number">#293</div>
+    <div class="segment-time">1448.223 &rarr; 1450.320</div>
+    <div class="segment-text">E eu acho que as lojas estão fechadas.</div>
+</div>
+<div class="segment" data-index="293" data-start="1454.976" data-end="1456.774">
+    <div class="segment-number">#294</div>
+    <div class="segment-time">1454.976 &rarr; 1456.774</div>
+    <div class="segment-text">And I think the stores are closed.</div>
+</div>
+<div class="segment" data-index="294" data-start="1461.28" data-end="1464.12">
+    <div class="segment-number">#295</div>
+    <div class="segment-time">1461.280 &rarr; 1464.120</div>
+    <div class="segment-text">Nesta lição de inglês um se incluem exercícios de leitura.</div>
+</div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+const segments = [{"sequence_number": 1, "start_time": 0.81, "end_time": 4.28, "text": "Esta lição 26 de Pimsleur Inglês 1.", "speaker_id": null}, {"sequence_number": 2, "start_time": 4.78, "end_time": 8.72, "text": "Listen to this conversation. Katie acaba de reconhecer o seu amigo Carlos na", "speaker_id": null}, {"sequence_number": 3, "start_time": 9.22, "end_time": 12.32, "text": "rua. Carlos, wait! Where are you going?", "speaker_id": null}, {"sequence_number": 4, "start_time": 12.82, "end_time": 15.92, "text": "I'm going to the department store on Park Avenue. Why?", "speaker_id": null}, {"sequence_number": 5, "start_time": 16.42, "end_time": 19.72, "text": "Because I want to buy something for my wife. Do you know what time it", "speaker_id": null}, {"sequence_number": 6, "start_time": 20.22, "end_time": 24.04, "text": "is? Are the stores open? Yes, they are. It's not too late.", "speaker_id": null}, {"sequence_number": 7, "start_time": 24.54, "end_time": 26.87, "text": "It's only eight o'clock. Thanks. Goodbye,", "speaker_id": null}, {"sequence_number": 8, "start_time": 27.37, "end_time": 30.77, "text": "Katie. Goodbye, Carlos. Nesta conversa,", "speaker_id": null}, {"sequence_number": 9, "start_time": 31.27, "end_time": 35.15, "text": "a mulher disse: It's only eight o'clock. O que quer dizer? São só", "speaker_id": null}, {"sequence_number": 10, "start_time": 35.65, "end_time": 39.23, "text": "oito horas. Listen again. Carlos,", "speaker_id": null}, {"sequence_number": 11, "start_time": 39.73, "end_time": 42.97, "text": "wait! Where are you going? I'm going to the department store on Park", "speaker_id": null}, {"sequence_number": 12, "start_time": 43.47, "end_time": 46.68, "text": "Avenue. Why? Because I want to buy something for my wife.", "speaker_id": null}, {"sequence_number": 13, "start_time": 47.13, "end_time": 50.33, "text": "Do you know what time it is? Are the stores open?", "speaker_id": null}, {"sequence_number": 14, "start_time": 50.83, "end_time": 53.61, "text": "Yes, they are. It's not too late. It's only eight o'clock.", "speaker_id": null}, {"sequence_number": 15, "start_time": 53.73, "end_time": 56.933, "text": "Thanks. Goodbye, Katie. Goodbye, Carlos.", "speaker_id": null}, {"sequence_number": 16, "start_time": 58.141, "end_time": 61.473, "text": "Now answer the questions. Agora responda as", "speaker_id": null}, {"sequence_number": 17, "start_time": 61.973, "end_time": 65.322, "text": "perguntas. Now answer the questions. Hello,", "speaker_id": null}, {"sequence_number": 18, "start_time": 65.502, "end_time": 66.485, "text": "how are you today?", "speaker_id": null}, {"sequence_number": 19, "start_time": 68.826, "end_time": 70.573, "text": "I'm fine.", "speaker_id": null}, {"sequence_number": 20, "start_time": 73.614, "end_time": 74.633, "text": "I'm fine, thanks.", "speaker_id": null}, {"sequence_number": 21, "start_time": 77.33, "end_time": 80.117, "text": "How's your wife? Is she fine?", "speaker_id": null}, {"sequence_number": 22, "start_time": 84.474, "end_time": 86.067, "text": "Yes, she's fine too.", "speaker_id": null}, {"sequence_number": 23, "start_time": 90.084, "end_time": 91.933, "text": "My wife's fine too, thank you.", "speaker_id": null}, {"sequence_number": 24, "start_time": 96.873, "end_time": 98.925, "text": "Ask. E você, como vai?", "speaker_id": null}, {"sequence_number": 25, "start_time": 103.984, "end_time": 105.292, "text": "And you? How are you?", "speaker_id": null}, {"sequence_number": 26, "start_time": 109.75, "end_time": 111.607, "text": "Como ela diz? Ah, eu não sei.", "speaker_id": null}, {"sequence_number": 27, "start_time": 115.406, "end_time": 116.395, "text": "Oh, I don't know.", "speaker_id": null}, {"sequence_number": 28, "start_time": 119.758, "end_time": 121.315, "text": "Ask por quê?", "speaker_id": null}, {"sequence_number": 29, "start_time": 126.941, "end_time": 130.09, "text": "Why? Why? Porque eu", "speaker_id": null}, {"sequence_number": 30, "start_time": 130.59, "end_time": 131.591, "text": "gostaria de comprar algo.", "speaker_id": null}, {"sequence_number": 31, "start_time": 135.712, "end_time": 137.666, "text": "Because I'd like to buy something.", "speaker_id": null}, {"sequence_number": 32, "start_time": 142.12, "end_time": 143.55, "text": "Because I'd like to buy something.", "speaker_id": null}, {"sequence_number": 33, "start_time": 147.767, "end_time": 148.44, "text": "E eu não posso.", "speaker_id": null}, {"sequence_number": 34, "start_time": 150.696, "end_time": 151.833, "text": "And I can't.", "speaker_id": null}, {"sequence_number": 35, "start_time": 154.401, "end_time": 158.078, "text": "And I can't. Try to", "speaker_id": null}, {"sequence_number": 36, "start_time": 158.094, "end_time": 159.512, "text": "ask. Por que não?", "speaker_id": null}, {"sequence_number": 37, "start_time": 162.206, "end_time": 165.853, "text": "Why not? Why not?", "speaker_id": null}, {"sequence_number": 38, "start_time": 168.5, "end_time": 170.243, "text": "Porque as lojas estão fechadas.", "speaker_id": null}, {"sequence_number": 39, "start_time": 174.52, "end_time": 176.264, "text": "Because the stores are closed.", "speaker_id": null}, {"sequence_number": 40, "start_time": 180.05, "end_time": 181.671, "text": "The stores are closed.", "speaker_id": null}, {"sequence_number": 41, "start_time": 184.981, "end_time": 185.898, "text": "Verdade.", "speaker_id": null}, {"sequence_number": 42, "start_time": 188.297, "end_time": 192.209, "text": "Really? Sim, elas estão", "speaker_id": null}, {"sequence_number": 43, "start_time": 192.709, "end_time": 192.821, "text": "fechadas.", "speaker_id": null}, {"sequence_number": 44, "start_time": 196.336, "end_time": 197.517, "text": "Yes, they're closed.", "speaker_id": null}, {"sequence_number": 45, "start_time": 200.882, "end_time": 202.273, "text": "Yes, they're closed.", "speaker_id": null}, {"sequence_number": 46, "start_time": 205.38, "end_time": 206.207, "text": "É tarde.", "speaker_id": null}, {"sequence_number": 47, "start_time": 211.515, "end_time": 215.097, "text": "It's late. It's late. É tarde", "speaker_id": null}, {"sequence_number": 48, "start_time": 215.597, "end_time": 219.489, "text": "demais. It's too", "speaker_id": null}, {"sequence_number": 49, "start_time": 219.506, "end_time": 219.884, "text": "late.", "speaker_id": null}, {"sequence_number": 50, "start_time": 223.09, "end_time": 224.019, "text": "It's too late.", "speaker_id": null}, {"sequence_number": 51, "start_time": 227.288, "end_time": 228.817, "text": "Mas elas estão abertas amanhã.", "speaker_id": null}, {"sequence_number": 52, "start_time": 232.518, "end_time": 233.583, "text": "But they're open tomorrow.", "speaker_id": null}, {"sequence_number": 53, "start_time": 237.446, "end_time": 238.655, "text": "But they're open tomorrow.", "speaker_id": null}, {"sequence_number": 54, "start_time": 242.307, "end_time": 249.555, "text": "Try to say, \"Elas estão abertas tarde amanhã.\" They're", "speaker_id": null}, {"sequence_number": 55, "start_time": 249.685, "end_time": 250.785, "text": "open late tomorrow.", "speaker_id": null}, {"sequence_number": 56, "start_time": 254.05, "end_time": 255.975, "text": "They're open late tomorrow.", "speaker_id": null}, {"sequence_number": 57, "start_time": 259.857, "end_time": 261.523, "text": "Você pode comprar algo amanhã.", "speaker_id": null}, {"sequence_number": 58, "start_time": 265.275, "end_time": 266.714, "text": "You can buy something tomorrow.", "speaker_id": null}, {"sequence_number": 59, "start_time": 270.503, "end_time": 272.162, "text": "Em uma loja de departamentos.", "speaker_id": null}, {"sequence_number": 60, "start_time": 275.66, "end_time": 276.72, "text": "In a department store.", "speaker_id": null}, {"sequence_number": 61, "start_time": 280.14, "end_time": 281.121, "text": "In a department store.", "speaker_id": null}, {"sequence_number": 62, "start_time": 284.573, "end_time": 285.585, "text": "O que você quer comprar?", "speaker_id": null}, {"sequence_number": 63, "start_time": 289.002, "end_time": 289.97, "text": "What do you want to buy?", "speaker_id": null}, {"sequence_number": 64, "start_time": 293.603, "end_time": 295.847, "text": "Sai, meu marido quer comprar algo.", "speaker_id": null}, {"sequence_number": 65, "start_time": 299.958, "end_time": 301.829, "text": "My husband wants to buy something.", "speaker_id": null}, {"sequence_number": 66, "start_time": 305.856, "end_time": 307.248, "text": "Para nossa menina pequena.", "speaker_id": null}, {"sequence_number": 67, "start_time": 309.673, "end_time": 311.278, "text": "For our little girl.", "speaker_id": null}, {"sequence_number": 68, "start_time": 314.076, "end_time": 317.353, "text": "Try to say. Então vá para a loja de departamentos.", "speaker_id": null}, {"sequence_number": 69, "start_time": 321.58, "end_time": 322.999, "text": "Then go to the department store.", "speaker_id": null}, {"sequence_number": 70, "start_time": 327.1, "end_time": 327.967, "text": "The department store.", "speaker_id": null}, {"sequence_number": 71, "start_time": 331.173, "end_time": 332.209, "text": "Na Avenida Parque.", "speaker_id": null}, {"sequence_number": 72, "start_time": 335.334, "end_time": 335.976, "text": "On Park Avenue.", "speaker_id": null}, {"sequence_number": 73, "start_time": 339.189, "end_time": 341.409, "text": "Amanhã as lojas estão abertas.", "speaker_id": null}, {"sequence_number": 74, "start_time": 345.89, "end_time": 347.399, "text": "Tomorrow the stores are open.", "speaker_id": null}, {"sequence_number": 75, "start_time": 351.57, "end_time": 355.024, "text": "Ask where Park Avenue is. Ask where Park Avenue", "speaker_id": null}, {"sequence_number": 76, "start_time": 355.041, "end_time": 355.073, "text": "is.", "speaker_id": null}, {"sequence_number": 77, "start_time": 358.395, "end_time": 359.439, "text": "Where's Park Avenue?", "speaker_id": null}, {"sequence_number": 78, "start_time": 362.796, "end_time": 363.33, "text": "Fica lá.", "speaker_id": null}, {"sequence_number": 79, "start_time": 366.609, "end_time": 367.304, "text": "It's over there.", "speaker_id": null}, {"sequence_number": 80, "start_time": 370.713, "end_time": 371.731, "text": "Vá para a direita.", "speaker_id": null}, {"sequence_number": 81, "start_time": 374.617, "end_time": 375.354, "text": "Go to the right.", "speaker_id": null}, {"sequence_number": 82, "start_time": 378.337, "end_time": 379.496, "text": "Depois para a esquerda.", "speaker_id": null}, {"sequence_number": 83, "start_time": 382.36, "end_time": 383.419, "text": "Then to the left.", "speaker_id": null}, {"sequence_number": 84, "start_time": 386.282, "end_time": 389.735, "text": "To the left. Sei.", "speaker_id": null}, {"sequence_number": 85, "start_time": 390.422, "end_time": 392.762, "text": "Meu marido precisa de um pouco de dinheiro.", "speaker_id": null}, {"sequence_number": 86, "start_time": 396.426, "end_time": 397.867, "text": "My husband needs some money.", "speaker_id": null}, {"sequence_number": 87, "start_time": 401.566, "end_time": 405.342, "text": "Needs. My husband needs some", "speaker_id": null}, {"sequence_number": 88, "start_time": 405.842, "end_time": 409.761, "text": "money. Eu também", "speaker_id": null}, {"sequence_number": 89, "start_time": 409.795, "end_time": 411.349, "text": "preciso de um pouco de dinheiro.", "speaker_id": null}, {"sequence_number": 90, "start_time": 415.116, "end_time": 416.389, "text": "I need some money too.", "speaker_id": null}, {"sequence_number": 91, "start_time": 420.337, "end_time": 421.5, "text": "I need some money too.", "speaker_id": null}, {"sequence_number": 92, "start_time": 425.516, "end_time": 428.416, "text": "Por quê? Why?", "speaker_id": null}, {"sequence_number": 93, "start_time": 431.156, "end_time": 434.267, "text": "Porque eu vou para Washington, D.C. Washington,", "speaker_id": null}, {"sequence_number": 94, "start_time": 434.299, "end_time": 437.424, "text": "D.C. Escute e repita parte por parte.", "speaker_id": null}, {"sequence_number": 95, "start_time": 438.347, "end_time": 438.833, "text": "D.C.", "speaker_id": null}, {"sequence_number": 96, "start_time": 441.842, "end_time": 442.197, "text": "D.C.", "speaker_id": null}, {"sequence_number": 97, "start_time": 448.51, "end_time": 449.941, "text": "Washington.", "speaker_id": null}, {"sequence_number": 98, "start_time": 452.709, "end_time": 453.047, "text": "Ton, ton,", "speaker_id": null}, {"sequence_number": 99, "start_time": 455.782, "end_time": 456.024, "text": "ing,", "speaker_id": null}, {"sequence_number": 100, "start_time": 458.592, "end_time": 462.031, "text": "wash. Washington.", "speaker_id": null}, {"sequence_number": 101, "start_time": 464.568, "end_time": 465.683, "text": "Washington, D.C.", "speaker_id": null}, {"sequence_number": 102, "start_time": 474.683, "end_time": 477.843, "text": "Washington, D.C. D.C. significa District of Columbia,", "speaker_id": null}, {"sequence_number": 103, "start_time": 478.214, "end_time": 481.999, "text": "o que quer dizer Distrito da Colúmbia. Isto distingue", "speaker_id": null}, {"sequence_number": 104, "start_time": 482.063, "end_time": 485.493, "text": "a capital do estado com o mesmo nome. Agora diga: por", "speaker_id": null}, {"sequence_number": 105, "start_time": 485.557, "end_time": 486.981, "text": "que eu vou para Washington, D.C.?", "speaker_id": null}, {"sequence_number": 106, "start_time": 492.524, "end_time": 494.712, "text": "Because I'm going to Washington, D.C.", "speaker_id": null}, {"sequence_number": 107, "start_time": 500.37, "end_time": 500.597, "text": "D.C.", "speaker_id": null}, {"sequence_number": 108, "start_time": 503.228, "end_time": 504.251, "text": "Washington, D.C.", "speaker_id": null}, {"sequence_number": 109, "start_time": 504.381, "end_time": 507.921, "text": "I'm going", "speaker_id": null}, {"sequence_number": 110, "start_time": 507.937, "end_time": 508.392, "text": "to Washington,", "speaker_id": null}, {"sequence_number": 111, "start_time": 512.597, "end_time": 516.441, "text": "D.C. Sem mudar a ordem das palavras, pergunte: Você vai para Washington?", "speaker_id": null}, {"sequence_number": 112, "start_time": 519.79, "end_time": 521.487, "text": "You're going to Washington.", "speaker_id": null}, {"sequence_number": 113, "start_time": 525.216, "end_time": 526.472, "text": "You're going to Washington.", "speaker_id": null}, {"sequence_number": 114, "start_time": 530.227, "end_time": 533.079, "text": "O que você vai fazer lá? Listen and repeat.", "speaker_id": null}, {"sequence_number": 115, "start_time": 533.852, "end_time": 534.996, "text": "What are you going to do there?", "speaker_id": null}, {"sequence_number": 116, "start_time": 539.24, "end_time": 539.652, "text": "There.", "speaker_id": null}, {"sequence_number": 117, "start_time": 542.356, "end_time": 546.189, "text": "There. Você já usou", "speaker_id": null}, {"sequence_number": 118, "start_time": 546.221, "end_time": 549.115, "text": "there antes nas expressões there are,", "speaker_id": null}, {"sequence_number": 119, "start_time": 549.484, "end_time": 553.07, "text": "over there. Quando a palavra é usada sozinha, quer dizer", "speaker_id": null}, {"sequence_number": 120, "start_time": 553.167, "end_time": 556.691, "text": "naquele lugar. Pergunte outra vez: o que você vai fazer", "speaker_id": null}, {"sequence_number": 121, "start_time": 560.967, "end_time": 561.998, "text": "What are you going to do there?", "speaker_id": null}, {"sequence_number": 122, "start_time": 566.37, "end_time": 569.42, "text": "Você quer dizer eu vou ver uns amigos. Primeiro,", "speaker_id": null}, {"sequence_number": 123, "start_time": 569.712, "end_time": 573.621, "text": "uns amigos. Listen and repeat. Some friends.", "speaker_id": null}, {"sequence_number": 124, "start_time": 576.586, "end_time": 580.429, "text": "Friends. Friends.", "speaker_id": null}, {"sequence_number": 125, "start_time": 583.11, "end_time": 583.788, "text": "Some friends.", "speaker_id": null}, {"sequence_number": 126, "start_time": 586.842, "end_time": 588.588, "text": "Say again. Uns amigos.", "speaker_id": null}, {"sequence_number": 127, "start_time": 591.611, "end_time": 592.436, "text": "Some friends.", "speaker_id": null}, {"sequence_number": 128, "start_time": 595.432, "end_time": 598.741, "text": "Eu vou ver. Listen and repeat. I'm going", "speaker_id": null}, {"sequence_number": 129, "start_time": 598.758, "end_time": 599.038, "text": "to see.", "speaker_id": null}, {"sequence_number": 130, "start_time": 604.946, "end_time": 607.988, "text": "See. See. To see.", "speaker_id": null}, {"sequence_number": 131, "start_time": 608.134, "end_time": 611.545, "text": "I'm going to see.", "speaker_id": null}, {"sequence_number": 132, "start_time": 614.13, "end_time": 615.164, "text": "How do you say?", "speaker_id": null}, {"sequence_number": 133, "start_time": 618.348, "end_time": 621.613, "text": "To see. See.", "speaker_id": null}, {"sequence_number": 134, "start_time": 624.114, "end_time": 627.392, "text": "To see. Say,", "speaker_id": null}, {"sequence_number": 135, "start_time": 627.844, "end_time": 628.522, "text": "eu vou ver.", "speaker_id": null}, {"sequence_number": 136, "start_time": 631.771, "end_time": 632.791, "text": "I'm going to see.", "speaker_id": null}, {"sequence_number": 137, "start_time": 636.26, "end_time": 637.078, "text": "I'm going to see.", "speaker_id": null}, {"sequence_number": 138, "start_time": 640.621, "end_time": 641.749, "text": "Eu vou ver uns amigos.", "speaker_id": null}, {"sequence_number": 139, "start_time": 645.27, "end_time": 647.426, "text": "I'm going to see some friends.", "speaker_id": null}, {"sequence_number": 140, "start_time": 651.206, "end_time": 651.97, "text": "In Washington,", "speaker_id": null}, {"sequence_number": 141, "start_time": 656.243, "end_time": 657.46, "text": "D.C. In Washington, D.C.", "speaker_id": null}, {"sequence_number": 142, "start_time": 661.602, "end_time": 662.717, "text": "In Washington, D.C.", "speaker_id": null}, {"sequence_number": 143, "start_time": 666.935, "end_time": 670.863, "text": "alguns amigos. Listen and repeat. A few", "speaker_id": null}, {"sequence_number": 144, "start_time": 670.96, "end_time": 671.332, "text": "friends.", "speaker_id": null}, {"sequence_number": 145, "start_time": 678.186, "end_time": 678.669, "text": "Few. A few.", "speaker_id": null}, {"sequence_number": 146, "start_time": 681.76, "end_time": 682.758, "text": "A few friends.", "speaker_id": null}, {"sequence_number": 147, "start_time": 686.416, "end_time": 688.256, "text": "Say again. Alguns amigos.", "speaker_id": null}, {"sequence_number": 148, "start_time": 691.887, "end_time": 693.026, "text": "A few friends.", "speaker_id": null}, {"sequence_number": 149, "start_time": 696.396, "end_time": 699.361, "text": "Por falar em Washington, diga: eu tenho alguns amigos lá.", "speaker_id": null}, {"sequence_number": 150, "start_time": 703.408, "end_time": 704.757, "text": "I have a few friends there.", "speaker_id": null}, {"sequence_number": 151, "start_time": 708.913, "end_time": 710.122, "text": "I have a few friends there.", "speaker_id": null}, {"sequence_number": 152, "start_time": 714.312, "end_time": 718.02, "text": "E eu vou trabalhar. Listen and repeat.", "speaker_id": null}, {"sequence_number": 153, "start_time": 718.15, "end_time": 719.327, "text": "And I'm going to work.", "speaker_id": null}, {"sequence_number": 154, "start_time": 722.658, "end_time": 726.113, "text": "Work. To work.", "speaker_id": null}, {"sequence_number": 155, "start_time": 726.358, "end_time": 729.716, "text": "I'm going to work.", "speaker_id": null}, {"sequence_number": 156, "start_time": 733.21, "end_time": 734.706, "text": "Ask her if she's going to work.", "speaker_id": null}, {"sequence_number": 157, "start_time": 738.07, "end_time": 739.172, "text": "Are you going to work?", "speaker_id": null}, {"sequence_number": 158, "start_time": 742.624, "end_time": 746.307, "text": "Um pouco. A little.", "speaker_id": null}, {"sequence_number": 159, "start_time": 748.545, "end_time": 749.632, "text": "Eu vou ver uns amigos.", "speaker_id": null}, {"sequence_number": 160, "start_time": 753.26, "end_time": 755.526, "text": "I'm going to see some friends.", "speaker_id": null}, {"sequence_number": 161, "start_time": 759.7, "end_time": 763.586, "text": "Some friends. Eu vou", "speaker_id": null}, {"sequence_number": 162, "start_time": 763.602, "end_time": 764.622, "text": "ver meus amigos.", "speaker_id": null}, {"sequence_number": 163, "start_time": 767.989, "end_time": 770.22, "text": "I'm going to see my friends.", "speaker_id": null}, {"sequence_number": 164, "start_time": 774.045, "end_time": 778.128, "text": "My friends. E eu", "speaker_id": null}, {"sequence_number": 165, "start_time": 778.628, "end_time": 778.912, "text": "vou trabalhar.", "speaker_id": null}, {"sequence_number": 166, "start_time": 787.65, "end_time": 792.326, "text": "And I'm going to work. And I'm going to", "speaker_id": null}, {"sequence_number": 167, "start_time": 792.826, "end_time": 795.005, "text": "work. Try to say: Eu vou trabalhar um pouco.", "speaker_id": null}, {"sequence_number": 168, "start_time": 798.139, "end_time": 800.133, "text": "I'm going to work a little.", "speaker_id": null}, {"sequence_number": 169, "start_time": 803.528, "end_time": 805.477, "text": "I'm going to work a little.", "speaker_id": null}, {"sequence_number": 170, "start_time": 809.151, "end_time": 810.553, "text": "E eu vou ver alguns amigos.", "speaker_id": null}, {"sequence_number": 171, "start_time": 815.097, "end_time": 817.021, "text": "And I'm going to see a few friends.", "speaker_id": null}, {"sequence_number": 172, "start_time": 821.376, "end_time": 824.228, "text": "Talvez. Listen and repeat. Maybe.", "speaker_id": null}, {"sequence_number": 173, "start_time": 826.532, "end_time": 826.612, "text": "B.", "speaker_id": null}, {"sequence_number": 174, "start_time": 831.54, "end_time": 834.942, "text": "May. Maybe. Você vai trabalhar?", "speaker_id": null}, {"sequence_number": 175, "start_time": 838.406, "end_time": 839.547, "text": "Are you going to work?", "speaker_id": null}, {"sequence_number": 176, "start_time": 842.806, "end_time": 843.176, "text": "Talvez.", "speaker_id": null}, {"sequence_number": 177, "start_time": 846.107, "end_time": 846.38, "text": "Maybe.", "speaker_id": null}, {"sequence_number": 178, "start_time": 849.166, "end_time": 852.374, "text": "Maybe. Sim,", "speaker_id": null}, {"sequence_number": 179, "start_time": 852.735, "end_time": 856.729, "text": "eu acho que sim. Listen and repeat. Yes, I think so.", "speaker_id": null}, {"sequence_number": 180, "start_time": 860.696, "end_time": 863.743, "text": "So. Think.", "speaker_id": null}, {"sequence_number": 181, "start_time": 866.064, "end_time": 869.078, "text": "Think. Think so.", "speaker_id": null}, {"sequence_number": 182, "start_time": 872.022, "end_time": 872.939, "text": "Think so.", "speaker_id": null}, {"sequence_number": 183, "start_time": 875.53, "end_time": 875.967, "text": "I think so.", "speaker_id": null}, {"sequence_number": 184, "start_time": 879.044, "end_time": 879.978, "text": "Yes, I think so.", "speaker_id": null}, {"sequence_number": 185, "start_time": 883.088, "end_time": 886.435, "text": "In English, how do you say \"Eu acho que sim\"?", "speaker_id": null}, {"sequence_number": 186, "start_time": 889.519, "end_time": 890.443, "text": "I think so.", "speaker_id": null}, {"sequence_number": 187, "start_time": 892.46, "end_time": 898.572, "text": "Now try to say \"Eu acho que não.\" I", "speaker_id": null}, {"sequence_number": 188, "start_time": 898.685, "end_time": 899.282, "text": "don't think so.", "speaker_id": null}, {"sequence_number": 189, "start_time": 902.495, "end_time": 903.171, "text": "I don't think so.", "speaker_id": null}, {"sequence_number": 190, "start_time": 906.253, "end_time": 908.929, "text": "Agora pergunte-lhe se ela vai ver George.", "speaker_id": null}, {"sequence_number": 191, "start_time": 913.75, "end_time": 914.992, "text": "Are you going to see George?", "speaker_id": null}, {"sequence_number": 192, "start_time": 919.108, "end_time": 922.624, "text": "George? Are you going", "speaker_id": null}, {"sequence_number": 193, "start_time": 922.64, "end_time": 923.347, "text": "to see George?", "speaker_id": null}, {"sequence_number": 194, "start_time": 927.529, "end_time": 928.331, "text": "Eu acho que não.", "speaker_id": null}, {"sequence_number": 195, "start_time": 931.412, "end_time": 932.677, "text": "I don't think so.", "speaker_id": null}, {"sequence_number": 196, "start_time": 935.54, "end_time": 936.283, "text": "I don't think so.", "speaker_id": null}, {"sequence_number": 197, "start_time": 939.58, "end_time": 942.52, "text": "Talvez. Maybe.", "speaker_id": null}, {"sequence_number": 198, "start_time": 944.979, "end_time": 948.692, "text": "Maybe. Now try to ask", "speaker_id": null}, {"sequence_number": 199, "start_time": 948.693, "end_time": 950.45, "text": "if George works in Washington.", "speaker_id": null}, {"sequence_number": 200, "start_time": 955.745, "end_time": 957.441, "text": "Does George work in Washington?", "speaker_id": null}, {"sequence_number": 201, "start_time": 962.131, "end_time": 963.95, "text": "Does George work in Washington?", "speaker_id": null}, {"sequence_number": 202, "start_time": 968.703, "end_time": 970.474, "text": "Eu acho que sim, mas eu não sei.", "speaker_id": null}, {"sequence_number": 203, "start_time": 974.305, "end_time": 976.037, "text": "I think so, but I don't know.", "speaker_id": null}, {"sequence_number": 204, "start_time": 979.926, "end_time": 981.723, "text": "I think so, but I don't know.", "speaker_id": null}, {"sequence_number": 205, "start_time": 985.943, "end_time": 988.852, "text": "Agora tente perguntar se ela vai ver Charles.", "speaker_id": null}, {"sequence_number": 206, "start_time": 992.934, "end_time": 994.477, "text": "Are you going to see Charles?", "speaker_id": null}, {"sequence_number": 207, "start_time": 998.398, "end_time": 1001.158, "text": "Como ela responde? Não, eu acho que não.", "speaker_id": null}, {"sequence_number": 208, "start_time": 1004.904, "end_time": 1006.213, "text": "No, I don't think so.", "speaker_id": null}, {"sequence_number": 209, "start_time": 1009.887, "end_time": 1010.987, "text": "No, I don't think so.", "speaker_id": null}, {"sequence_number": 210, "start_time": 1014.806, "end_time": 1018.147, "text": "Talvez. Maybe.", "speaker_id": null}, {"sequence_number": 211, "start_time": 1020.778, "end_time": 1024.088, "text": "Maybe. Try to say,", "speaker_id": null}, {"sequence_number": 212, "start_time": 1024.744, "end_time": 1026.351, "text": "Charles trabalha em Nova York.", "speaker_id": null}, {"sequence_number": 213, "start_time": 1030.486, "end_time": 1032.092, "text": "Charles works in New York.", "speaker_id": null}, {"sequence_number": 214, "start_time": 1038.928, "end_time": 1040.453, "text": "Works. Charles works in New York.", "speaker_id": null}, {"sequence_number": 215, "start_time": 1040.567, "end_time": 1045.178, "text": "Diga que", "speaker_id": null}, {"sequence_number": 216, "start_time": 1045.678, "end_time": 1046.198, "text": "você acha que não.", "speaker_id": null}, {"sequence_number": 217, "start_time": 1049.272, "end_time": 1050.058, "text": "I don't think so.", "speaker_id": null}, {"sequence_number": 218, "start_time": 1053.276, "end_time": 1056.4, "text": "Try to say: Eu acho que ele trabalha em Nova York.", "speaker_id": null}, {"sequence_number": 219, "start_time": 1061.254, "end_time": 1062.731, "text": "I think he works in New York.", "speaker_id": null}, {"sequence_number": 220, "start_time": 1067.648, "end_time": 1069.056, "text": "I think he works in New York.", "speaker_id": null}, {"sequence_number": 221, "start_time": 1073.626, "end_time": 1079.641, "text": "Try to say, \"Ele mora em Nova York.\" He", "speaker_id": null}, {"sequence_number": 222, "start_time": 1079.754, "end_time": 1080.754, "text": "lives in New York.", "speaker_id": null}, {"sequence_number": 223, "start_time": 1084.164, "end_time": 1088.022, "text": "He lives. Eu acho", "speaker_id": null}, {"sequence_number": 224, "start_time": 1088.103, "end_time": 1089.288, "text": "que ele mora em Nova York.", "speaker_id": null}, {"sequence_number": 225, "start_time": 1093.619, "end_time": 1095.064, "text": "I think he lives in New York.", "speaker_id": null}, {"sequence_number": 226, "start_time": 1099.32, "end_time": 1100.902, "text": "I think he lives in New York.", "speaker_id": null}, {"sequence_number": 227, "start_time": 1105.256, "end_time": 1107.669, "text": "Ask. Então você vai ver Mary.", "speaker_id": null}, {"sequence_number": 228, "start_time": 1111.11, "end_time": 1112.935, "text": "Then are you going to see Mary?", "speaker_id": null}, {"sequence_number": 229, "start_time": 1116.686, "end_time": 1120.597, "text": "Say, talvez. Maybe.", "speaker_id": null}, {"sequence_number": 230, "start_time": 1120.952, "end_time": 1124.3, "text": "Diga que você acha que sim.", "speaker_id": null}, {"sequence_number": 231, "start_time": 1127.31, "end_time": 1127.797, "text": "I think so.", "speaker_id": null}, {"sequence_number": 232, "start_time": 1130.91, "end_time": 1131.354, "text": "I think so.", "speaker_id": null}, {"sequence_number": 233, "start_time": 1134.463, "end_time": 1135.907, "text": "Eu acho que eu vou ver Mary.", "speaker_id": null}, {"sequence_number": 234, "start_time": 1140.251, "end_time": 1141.745, "text": "I think I'm going to see Mary.", "speaker_id": null}, {"sequence_number": 235, "start_time": 1145.863, "end_time": 1147.12, "text": "Mas eu também vou trabalhar.", "speaker_id": null}, {"sequence_number": 236, "start_time": 1150.972, "end_time": 1152.617, "text": "But I'm going to work too.", "speaker_id": null}, {"sequence_number": 237, "start_time": 1156.476, "end_time": 1158.029, "text": "But I'm going to work too.", "speaker_id": null}, {"sequence_number": 238, "start_time": 1162.023, "end_time": 1163.588, "text": "E eu vou ver alguns amigos.", "speaker_id": null}, {"sequence_number": 239, "start_time": 1168.493, "end_time": 1170.35, "text": "And I'm going to see a few friends.", "speaker_id": null}, {"sequence_number": 240, "start_time": 1175.14, "end_time": 1176.736, "text": "I'm going to see a few friends.", "speaker_id": null}, {"sequence_number": 241, "start_time": 1181.916, "end_time": 1183.533, "text": "Say, por favor me dê.", "speaker_id": null}, {"sequence_number": 242, "start_time": 1186.312, "end_time": 1187.102, "text": "Please give me.", "speaker_id": null}, {"sequence_number": 243, "start_time": 1189.829, "end_time": 1192.116, "text": "Try to say alguns dólares.", "speaker_id": null}, {"sequence_number": 244, "start_time": 1195.035, "end_time": 1196.041, "text": "A few dollars.", "speaker_id": null}, {"sequence_number": 245, "start_time": 1198.89, "end_time": 1200.37, "text": "Please give me a few dollars.", "speaker_id": null}, {"sequence_number": 246, "start_time": 1203.827, "end_time": 1206.991, "text": "Por quê? Why?", "speaker_id": null}, {"sequence_number": 247, "start_time": 1209.75, "end_time": 1211.34, "text": "Porque eu vou para Washington, D.C.", "speaker_id": null}, {"sequence_number": 248, "start_time": 1216.631, "end_time": 1218.701, "text": "Because I'm going to Washington, D.C.", "speaker_id": null}, {"sequence_number": 249, "start_time": 1224.311, "end_time": 1225.248, "text": "Washington é caro.", "speaker_id": null}, {"sequence_number": 250, "start_time": 1229.558, "end_time": 1230.881, "text": "Washington is expensive.", "speaker_id": null}, {"sequence_number": 251, "start_time": 1235.056, "end_time": 1237.306, "text": "Try to say, minha amiga Mary.", "speaker_id": null}, {"sequence_number": 252, "start_time": 1240.397, "end_time": 1241.333, "text": "My friend Mary.", "speaker_id": null}, {"sequence_number": 253, "start_time": 1244.583, "end_time": 1245.598, "text": "My friend Mary.", "speaker_id": null}, {"sequence_number": 254, "start_time": 1248.774, "end_time": 1252.207, "text": "Por falar em Washington, diga: minha amiga Mary mora lá.", "speaker_id": null}, {"sequence_number": 255, "start_time": 1256.256, "end_time": 1257.792, "text": "My friend Mary lives there.", "speaker_id": null}, {"sequence_number": 256, "start_time": 1261.876, "end_time": 1262.755, "text": "Ela trabalha lá.", "speaker_id": null}, {"sequence_number": 257, "start_time": 1265.885, "end_time": 1266.542, "text": "She works there.", "speaker_id": null}, {"sequence_number": 258, "start_time": 1269.724, "end_time": 1270.433, "text": "She works there.", "speaker_id": null}, {"sequence_number": 259, "start_time": 1273.512, "end_time": 1275.092, "text": "Quão longe fica Washington?", "speaker_id": null}, {"sequence_number": 260, "start_time": 1278.77, "end_time": 1280.045, "text": "How far is Washington?", "speaker_id": null}, {"sequence_number": 261, "start_time": 1280.448, "end_time": 1284.533, "text": "How far", "speaker_id": null}, {"sequence_number": 262, "start_time": 1285.033, "end_time": 1289.128, "text": "is Washington?", "speaker_id": null}, {"sequence_number": 263, "start_time": 1289.628, "end_time": 1293.694, "text": "Oitenta milhas. 80 miles.", "speaker_id": null}, {"sequence_number": 264, "start_time": 1296.818, "end_time": 1297.741, "text": "It's 80 miles.", "speaker_id": null}, {"sequence_number": 265, "start_time": 1301.334, "end_time": 1302.176, "text": "Você vai hoje?", "speaker_id": null}, {"sequence_number": 266, "start_time": 1305.719, "end_time": 1306.695, "text": "Are you going today?", "speaker_id": null}, {"sequence_number": 267, "start_time": 1310.284, "end_time": 1311.54, "text": "Eu não sei, talvez.", "speaker_id": null}, {"sequence_number": 268, "start_time": 1315.86, "end_time": 1317.025, "text": "I don't know, maybe.", "speaker_id": null}, {"sequence_number": 269, "start_time": 1321.442, "end_time": 1322.043, "text": "Eu acho que não.", "speaker_id": null}, {"sequence_number": 270, "start_time": 1325.43, "end_time": 1326.146, "text": "I don't think so.", "speaker_id": null}, {"sequence_number": 271, "start_time": 1329.482, "end_time": 1330.417, "text": "I don't think so.", "speaker_id": null}, {"sequence_number": 272, "start_time": 1333.771, "end_time": 1335.508, "text": "Mas eu gostaria de ver Washington.", "speaker_id": null}, {"sequence_number": 273, "start_time": 1339.796, "end_time": 1341.48, "text": "But I'd like to see Washington.", "speaker_id": null}, {"sequence_number": 274, "start_time": 1345.975, "end_time": 1351.461, "text": "And I have", "speaker_id": null}, {"sequence_number": 275, "start_time": 1352.233, "end_time": 1353.102, "text": "some friends there.", "speaker_id": null}, {"sequence_number": 276, "start_time": 1357.32, "end_time": 1357.998, "text": "Some friends.", "speaker_id": null}, {"sequence_number": 277, "start_time": 1360.903, "end_time": 1365.133, "text": "Agora imagine que você está indo para Washington. Pare para pedir informações.", "speaker_id": null}, {"sequence_number": 278, "start_time": 1366.036, "end_time": 1368.441, "text": "Pergunte se é esta estrada para Washington, D.C.", "speaker_id": null}, {"sequence_number": 279, "start_time": 1376.06, "end_time": 1378.191, "text": "Is this the road to Washington, D.C.?", "speaker_id": null}, {"sequence_number": 280, "start_time": 1384.794, "end_time": 1388.456, "text": "No, the road you want is to the right. Você não ouviu", "speaker_id": null}, {"sequence_number": 281, "start_time": 1388.505, "end_time": 1391.552, "text": "bem o que ela disse. Pergunte: à esquerda?", "speaker_id": null}, {"sequence_number": 282, "start_time": 1394.287, "end_time": 1394.97, "text": "To the left?", "speaker_id": null}, {"sequence_number": 283, "start_time": 1397.827, "end_time": 1400.22, "text": "No, go to the right and then straight ahead.", "speaker_id": null}, {"sequence_number": 284, "start_time": 1400.899, "end_time": 1404.392, "text": "Você quer fazer compras ao chegar. Pergunte: As", "speaker_id": null}, {"sequence_number": 285, "start_time": 1404.892, "end_time": 1406.849, "text": "lojas de departamentos estão abertas agora?", "speaker_id": null}, {"sequence_number": 286, "start_time": 1411.006, "end_time": 1413.453, "text": "Are the department stores open now?", "speaker_id": null}, {"sequence_number": 287, "start_time": 1418.673, "end_time": 1421.919, "text": "No, it's late. I think the department stores are closed.", "speaker_id": null}, {"sequence_number": 288, "start_time": 1422.754, "end_time": 1424.172, "text": "Say that it's not late.", "speaker_id": null}, {"sequence_number": 289, "start_time": 1428.11, "end_time": 1429.129, "text": "It's not late.", "speaker_id": null}, {"sequence_number": 290, "start_time": 1432.326, "end_time": 1434.632, "text": "Como ela discordaria enfaticamente?", "speaker_id": null}, {"sequence_number": 291, "start_time": 1438.8, "end_time": 1440.108, "text": "Yes, it is late.", "speaker_id": null}, {"sequence_number": 292, "start_time": 1444.129, "end_time": 1445.098, "text": "Yes, it is.", "speaker_id": null}, {"sequence_number": 293, "start_time": 1448.223, "end_time": 1450.32, "text": "E eu acho que as lojas estão fechadas.", "speaker_id": null}, {"sequence_number": 294, "start_time": 1454.976, "end_time": 1456.774, "text": "And I think the stores are closed.", "speaker_id": null}, {"sequence_number": 295, "start_time": 1461.28, "end_time": 1464.12, "text": "Nesta lição de inglês um se incluem exercícios de leitura.", "speaker_id": null}];
+const audio = document.getElementById('audio');
+const current = document.getElementById('current');
+const segmentElements = document.querySelectorAll('.segment');
+let currentIndex = -1;
+const subtitleOffset = 0.2;
+
+function formatTime(seconds) {
+    seconds = Number(seconds);
+    if (!Number.isFinite(seconds)) return '0:00';
+    const minutes = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return minutes + ':' + String(secs).padStart(2, '0');
+}
+
+function findSegmentIndex(time) {
+    for (let i = 0; i < segments.length; i++) {
+        const start = Number(segments[i].start_time);
+        const end = Number(segments[i].end_time);
+        if (time >= start && time < end) return i;
+    }
+    return -1;
+}
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+function updateSubtitle() {
+    if (!audio) return;
+    const time = audio.currentTime + subtitleOffset;
+    const index = findSegmentIndex(time);
+
+    if (index === -1) {
+        if (currentIndex !== -1) {
+            segmentElements[currentIndex].classList.remove('active');
+            currentIndex = -1;
+        }
+        return;
+    }
+
+    if (index === currentIndex) return;
+
+    if (currentIndex !== -1) {
+        segmentElements[currentIndex].classList.remove('active');
+    }
+    currentIndex = index;
+
+    const element = segmentElements[index];
+    element.classList.add('active');
+
+    const segment = segments[index];
+    current.innerHTML = `
+        <div>
+            <div class="current-speaker">
+                ${formatTime(segment.start_time)} &rarr; ${formatTime(segment.end_time)}
+            </div>
+            <div class="current-text">${escapeHtml(segment.text)}</div>
+        </div>
+    `;
+}
+
+if (audio) {
+    audio.addEventListener('timeupdate', updateSubtitle);
+    audio.addEventListener('seeked', updateSubtitle);
+    audio.addEventListener('loadedmetadata', updateSubtitle);
+}
+
+segmentElements.forEach((element, index) => {
+    element.addEventListener('click', () => {
+        if (!audio) return;
+        const start = Number(segments[index].start_time);
+        audio.currentTime = start;
+        updateSubtitle();
+    });
+});
+
+</script>
+</body>
+</html>
