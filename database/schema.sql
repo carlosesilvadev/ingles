@@ -228,6 +228,7 @@ UPDATE lessons
 SET subtitle_offset = 0.20
 WHERE id = 2;
 
+/*Criar lições no banco, para importar somente as legendas .str em process_lesson.php*/
 DELIMITER $$
 
 CREATE PROCEDURE inserirAulas()*/
